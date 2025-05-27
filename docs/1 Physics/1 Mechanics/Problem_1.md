@@ -1,16 +1,15 @@
 # Problem 1
-📘 Problem 1: Investigating the Range as a Function of the Angle of Projection
-1. 🧠 Theoretical Foundation
-Equations of Motion
-From Newtonian mechanics, assume:
+Investigating the Range as a Function of the Angle of Projection
+1. Theoretical Foundation
+We begin with a classical model of projectile motion assuming:
+
+Constant gravitational field 
+𝑔
+g
 
 No air resistance
 
-Launch from ground level
-
-Constant acceleration due to gravity 
-𝑔
-g
+Flat launch and landing height
 
 Initial speed 
 𝑣
@@ -24,9 +23,44 @@ Launch angle
 𝜃
 θ
 
-The position of a projectile at time 
-𝑡
-t is given by:
+Equations of Motion
+Breaking down the initial velocity:
+
+𝑣
+0
+𝑥
+=
+𝑣
+0
+cos
+⁡
+𝜃
+v 
+0x
+​
+ =v 
+0
+​
+ cosθ
+
+𝑣
+0
+𝑦
+=
+𝑣
+0
+sin
+⁡
+𝜃
+v 
+0y
+​
+ =v 
+0
+​
+ sinθ
+
+Position as a function of time:
 
 𝑥
 (
@@ -37,15 +71,13 @@ t is given by:
 0
 cos
 ⁡
-(
 𝜃
-)
 ⋅
 𝑡
 x(t)=v 
 0
 ​
- cos(θ)⋅t
+ cosθ⋅t
 
 𝑦
 (
@@ -56,9 +88,7 @@ x(t)=v
 0
 sin
 ⁡
-(
 𝜃
-)
 ⋅
 𝑡
 −
@@ -70,7 +100,7 @@ sin
 y(t)=v 
 0
 ​
- sin(θ)⋅t− 
+ sinθ⋅t− 
 2
 1
 ​
@@ -78,54 +108,77 @@ y(t)=v
 2
  
 
-The time of flight 
-𝑇
-T is determined when 
+Time of Flight (until 
 𝑦
 (
-𝑇
+𝑡
 )
 =
 0
-y(T)=0:
-
-𝑇
+y(t)=0):
+0
+=
+𝑣
+0
+sin
+⁡
+𝜃
+⋅
+𝑡
+−
+1
+2
+𝑔
+𝑡
+2
+⇒
+𝑡
 =
 2
 𝑣
 0
 sin
 ⁡
-(
 𝜃
-)
 𝑔
-T= 
+0=v 
+0
+​
+ sinθ⋅t− 
+2
+1
+​
+ gt 
+2
+ ⇒t= 
 g
 2v 
 0
 ​
- sin(θ)
+ sinθ
 ​
  
-The range 
+Range (Horizontal Distance):
 𝑅
-R is then:
-
-𝑅
+=
+𝑥
 (
-𝜃
+𝑡
 )
 =
 𝑣
 0
 cos
 ⁡
-(
 𝜃
-)
 ⋅
-𝑇
+2
+𝑣
+0
+sin
+⁡
+𝜃
+𝑔
 =
 𝑣
 0
@@ -137,10 +190,17 @@ sin
 𝜃
 )
 𝑔
-R(θ)=v 
+R=x(t)=v 
 0
 ​
- cos(θ)⋅T= 
+ cosθ⋅ 
+g
+2v 
+0
+​
+ sinθ
+​
+ = 
 g
 v 
 0
@@ -149,46 +209,37 @@ v
  sin(2θ)
 ​
  
-Family of Solutions
-Varying 
-𝜃
-θ generates a family of parabolic trajectories.
+This is the classic range formula.
 
-Maximum range occurs when 
+2. Analysis of the Range
+Dependence on Angle:
+Maximum range occurs at 
 𝜃
 =
 45
 ∘
 θ=45 
 ∘
- .
-
-2. 📊 Analysis of the Range
-Influence of Parameters
-Initial velocity 
-𝑣
-0
-v 
-0
-​
- : Proportional to the square of the velocity.
-
-Gravity 
-𝑔
-g: Inversely proportional to the gravitational field strength.
-
-Angle 
-𝜃
-θ: Drives a sinusoidal pattern 
+  since 
 sin
 ⁡
 (
 2
 𝜃
 )
-sin(2θ).
+sin(2θ) is maximal at 
+90
+∘
+90 
+∘
+ .
 
-Symmetry
+The function is symmetric around 
+45
+∘
+45 
+∘
+ : 
 𝑅
 (
 𝜃
@@ -204,63 +255,89 @@ Symmetry
 R(θ)=R(90 
 ∘
  −θ)
-3. 🌍 Practical Applications
-Sports (soccer, basketball)
 
-Ballistics and military applications
+Influence of Other Parameters:
+Initial velocity: Range is proportional to 
+𝑣
+0
+2
+v 
+0
+2
+​
+ 
 
-Launch trajectories in aerospace
+Gravitational acceleration: Range is inversely proportional to 
+𝑔
+g
 
-Realistic conditions may require accounting for:
+3. Practical Applications
+In real-world cases:
 
-Air resistance
+Uneven terrain: Final height 
+ℎ
+≠
+0
+h
+
+=0 requires solving a quadratic in 
+𝑡
+t
 
-Uneven terrain
+Air resistance: Adds drag force 
+𝐹
+𝑑
+=
+−
+𝑘
+𝑣
+F 
+d
+​
+ =−kv, making equations nonlinear
 
-Variable gravity
+Ballistics, sports, rocketry: All involve tuning angle/velocity to maximize distance or accuracy
 
-4. 💻 Python Simulation
-Here's a simple simulation script:
-
+4. Implementation (Python Script)
 python
 Copy
 Edit
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Constants
-v0 = 50  # Initial speed in m/s
-g = 9.81  # Gravity in m/s^2
+def compute_range(v0, g, theta_deg):
+    theta_rad = np.radians(theta_deg)
+    return (v0**2 * np.sin(2 * theta_rad)) / g
 
-# Angle array from 0 to 90 degrees
-angles_deg = np.linspace(0, 90, 500)
-angles_rad = np.radians(angles_deg)
+# Parameters
+v0 = 30  # m/s
+g = 9.81  # m/s²
+angles = np.linspace(0, 90, 500)
+ranges = [compute_range(v0, g, angle) for angle in angles]
 
-# Compute range for each angle
-ranges = (v0**2) * np.sin(2 * angles_rad) / g
-
-# Plotting
+# Plot
 plt.figure(figsize=(10, 6))
-plt.plot(angles_deg, ranges)
-plt.title("Projectile Range vs Angle of Projection")
-plt.xlabel("Angle (degrees)")
-plt.ylabel("Range (meters)")
+plt.plot(angles, ranges, label=f'v₀ = {v0} m/s, g = {g} m/s²')
+plt.title('Projectile Range vs. Angle of Projection')
+plt.xlabel('Angle (degrees)')
+plt.ylabel('Range (meters)')
 plt.grid(True)
-plt.axvline(45, color='red', linestyle='--', label='Maximum Range')
 plt.legend()
 plt.show()
-5. 🔍 Limitations & Extensions
-Limitations
+5. Limitations & Extensions
+Limitations:
 Assumes no air resistance
 
-Launch and landing at same height
+Launch and landing heights are equal
 
-No Coriolis effect or wind
+Ignores wind, spin, or terrain
 
-Extensions
-Use numerical integration to include drag
+Extensions:
+Air drag model: Use numerical integration (e.g., Runge-Kutta)
 
-Simulate for varied terrain elevations
+Non-flat terrain: Include different landing height
 
-Monte Carlo simulations for uncertainty
+Wind or spin: Add lateral forces
 
+6. Conclusion
+This analysis shows the elegance of projectile motion and its strong dependence on projection angle. While idealized, the model is foundational for many applied physics problems, from sports to aerospace.
