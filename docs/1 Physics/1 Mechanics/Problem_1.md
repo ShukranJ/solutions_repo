@@ -1,7 +1,7 @@
 # Problem 1
 Theoretical Foundation
 Equations of Motion: A Fundamental Approach
-Projectile motion can be analyzed by decomposing it into horizontal and vertical components, based on Newton’s Second Law:
+Projectile motion can be described by breaking it into horizontal and vertical components. According to Newton’s Second Law:
 
 𝐹
 ⃗
@@ -17,16 +17,16 @@ where
 𝐹
 ⃗
 F
-  is the force, 
+  represents force, 
 𝑚
-m is the mass, and 
+m is mass, and 
 𝑎
 ⃗
 a
-  is the acceleration of the projectile.
+  is acceleration.
 
 Horizontal Motion: Constant Velocity
-Assuming no air resistance, no net force acts horizontally, so the horizontal velocity remains constant:
+Neglecting air resistance, no horizontal force acts on the projectile. Thus, the horizontal velocity remains constant:
 
 𝑣
 𝑥
@@ -47,7 +47,7 @@ x
  cos(θ)
 The horizontal displacement over time 
 𝑡
-t is:
+t is given by:
 
 𝑥
 (
@@ -61,15 +61,16 @@ cos
 (
 𝜃
 )
+ 
 𝑡
 x(t)=v 
 0
 ​
  cos(θ)t
 Vertical Motion: Accelerated Motion Due to Gravity
-Gravity acts vertically downward with acceleration 
+In the vertical direction, gravity provides a constant acceleration downward (
 𝑔
-g:
+g):
 
 𝑎
 𝑦
@@ -80,7 +81,7 @@ a
 y
 ​
  =−g
-Integrating acceleration with respect to time yields:
+Integrating the acceleration, we obtain the vertical velocity:
 
 𝑣
 𝑦
@@ -105,6 +106,8 @@ y
 0
 ​
  sin(θ)−gt
+and the vertical displacement:
+
 𝑦
 (
 𝑡
@@ -117,6 +120,7 @@ sin
 (
 𝜃
 )
+ 
 𝑡
 −
 1
@@ -135,14 +139,14 @@ y(t)=v
 2
  
 Time of Flight
-The projectile lands when 
+The time of flight is determined by when the projectile returns to the ground (i.e., when 
 𝑦
 (
 𝑡
 )
 =
 0
-y(t)=0. Solving:
+y(t)=0). Setting the vertical displacement equation equal to zero gives:
 
 𝑣
 0
@@ -151,6 +155,7 @@ sin
 (
 𝜃
 )
+ 
 𝑡
 −
 1
@@ -170,7 +175,9 @@ v
  gt 
 2
  =0
-Factoring:
+Factoring out 
+𝑡
+t:
 
 𝑡
 (
@@ -197,12 +204,12 @@ t(v
 1
 ​
  gt)=0
-Solutions:
+This results in two solutions:
 
 𝑡
 =
 0
-t=0 (launch)
+t=0 (at launch)
 
 𝑡
 =
@@ -227,7 +234,7 @@ g
 Horizontal Range 
 𝑅
 R
-Substitute total time into horizontal motion equation:
+The horizontal range is found by substituting the total time of flight into the horizontal displacement equation:
 
 𝑅
 =
@@ -259,7 +266,7 @@ g
  sin(θ)
 ​
  
-Using identity 
+Using the trigonometric identity 
 sin
 ⁡
 (
@@ -302,7 +309,7 @@ v
 ​
  
 Key Insights
-Maximum range occurs at 
+Maximum Range: Occurs when 
 𝜃
 =
 45
@@ -311,18 +318,20 @@ Maximum range occurs at
 ∘
  
 
-Symmetry: 
+Symmetry: Launching at 
 𝜃
 θ and 
+(
 90
 ∘
 −
 𝜃
-90 
+)
+(90 
 ∘
- −θ yield the same range
+ −θ) results in the same range.
 
-Quadratic dependence: 
+Dependence on Initial Velocity: The range scales with the square of the initial speed (
 𝑅
 ∝
 𝑣
@@ -332,17 +341,29 @@ R∝v
 0
 2
 ​
- ; doubling 
+ ). Thus, doubling 
 𝑣
 0
 v 
 0
 ​
-  quadruples the range
+  quadruples the range.
+
+Gravity’s Effect: Larger gravitational acceleration reduces the range (
+𝑅
+∝
+1
+𝑔
+R∝ 
+g
+1
+​
+ ).
 
 Analysis of the Range
-Effect of Angle of Projection
-From 
+Effect of the Angle of Projection
+The formula
+
 𝑅
 =
 𝑣
@@ -363,27 +384,24 @@ v
 ​
  sin(2θ)
 ​
- :
-
-Maximum when 
+ 
+shows that 
+𝑅
+R is maximized when 
 sin
 ⁡
 (
 2
 𝜃
 )
-=
-1
-⇒
+sin(2θ) is at its maximum value, which occurs at 
 𝜃
 =
 45
 ∘
-sin(2θ)=1⇒θ=45 
+θ=45 
 ∘
- 
-
-Same range at complementary angles (e.g., 
+ . In addition, complementary angles (e.g., 
 30
 ∘
 30 
@@ -393,10 +411,10 @@ Same range at complementary angles (e.g.,
 ∘
 60 
 ∘
- )
+ ) yield the same range.
 
-Effect of Initial Velocity
-Since 
+Effects of Initial Velocity and Gravity
+Initial Velocity: Since 
 𝑅
 ∝
 𝑣
@@ -406,29 +424,11 @@ R∝v
 0
 2
 ​
- :
+ , a small increase in speed leads to a substantial increase in range. High-speed projectiles travel much further.
 
-Doubling the speed results in a range four times longer
-
-High-speed projectiles, like bullets or rockets, travel significantly farther
-
-Effect of Gravity
-The greater the gravitational acceleration 
+Gravity: A stronger gravitational field (larger 
 𝑔
-g, the shorter the range:
-
-𝑅
-∝
-1
-𝑔
-R∝ 
-g
-1
-​
- 
-Example:
-
-On the Moon (
+g) results in a shorter range. For example, on the Moon (with 
 𝑔
 ≈
 1.6
@@ -437,33 +437,31 @@ m/s
 2
 g≈1.6m/s 
 2
- ), the range is ~6 times greater than on Earth
+ ), the range would be significantly greater than on Earth.
 
 Practical Applications
 Sports
-Soccer: Long passes use angles near 
+Soccer & Baseball: Players often aim for launch angles close to 
 45
 ∘
 45 
 ∘
- 
+  to maximize distance.
 
-Basketball: Higher arcs improve the chance of scoring
-
-Baseball: Home runs involve optimal launch angles and high initial velocities
+Basketball: Shots might use higher arcs for better chances of scoring.
 
 Engineering & Ballistics
-Artillery: Cannons are often angled near 
+Artillery: Designing trajectories for maximum range usually involves angles near 
 45
 ∘
 45 
 ∘
-  for maximum distance
+ .
 
-Aerospace: Trajectories must consider gravity, air resistance, and Earth's curvature
+Aerospace: Projectile motion under varying gravitational fields is critical in planning spacecraft trajectories.
 
-Effects of Uneven Terrain
-When the projectile lands at a height different from the launch height (e.g., a hill, valley, or platform), the standard range formula must be adjusted. The vertical motion becomes:
+Uneven Terrain
+When the landing height differs from the launch height, the vertical motion is modeled as:
 
 𝑦
 (
@@ -480,6 +478,7 @@ sin
 (
 𝜃
 )
+ 
 𝑡
 −
 1
@@ -500,7 +499,7 @@ y(t)=y
  gt 
 2
  
-Set 
+Setting 
 𝑦
 (
 𝑡
@@ -511,7 +510,9 @@ Set
 y(t)=y 
 f
 ​
-  to solve for time of flight using the quadratic formula:
+  and solving for 
+𝑡
+t using the quadratic formula allows adjustment of the range calculation:
 
 1
 2
@@ -552,13 +553,7 @@ sin
 f
 ​
  )=0
-Solving this equation gives the time(s) when the projectile reaches the final height 
-𝑦
-𝑓
-y 
-f
-​
- . The corresponding horizontal range is then:
+The horizontal range becomes:
 
 𝑅
 =
@@ -580,8 +575,7 @@ landing
 ​
  
 Air Resistance and Wind Effects
-Air Resistance
-Real projectiles experience drag, a force opposing motion through the air:
+Air Resistance: The drag force on a projectile is given by:
 
 𝐹
 drag
@@ -607,43 +601,12 @@ d
  ρAv 
 2
  
-Where:
+This force reduces the range and alters the trajectory shape, necessitating numerical simulations for accurate predictions.
 
-𝐶
-𝑑
-C 
-d
-​
-  = drag coefficient
-
-𝜌
-ρ = air density
-
-𝐴
-A = cross-sectional area
-
-𝑣
-v = instantaneous velocity
-
-Air resistance causes the trajectory to:
-
-Decrease in range
-
-Become asymmetrical
-
-Flatten at the peak
-
-Analytical solutions become impractical; numerical simulations are needed.
-
-Wind Effects
-Tailwind (wind blowing in the direction of motion) increases range
-
-Headwind (opposing motion) decreases range
-
-Crosswinds can alter the projectile's lateral position
+Wind Effects: A tailwind increases the range, while a headwind decreases it. Crosswinds may alter the lateral position of the projectile.
 
 Computational Modeling: Python Simulation
-Below is a Python script that simulates the range as a function of the angle of projection under ideal conditions (no air resistance or wind):
+The following Python script simulates the range versus angle for an ideal projectile (ignoring air resistance and wind). It plots the projectile range as a function of the launch angle.
 
 python
 Copy
@@ -669,7 +632,8 @@ optimal_angle = angles_deg[np.argmax(ranges)]
 # Plotting
 plt.figure(figsize=(10, 6))
 plt.plot(angles_deg, ranges, label=f'v0 = {v0} m/s', color='royalblue')
-plt.axvline(optimal_angle, color='red', linestyle='--', label=f'Max at {optimal_angle:.1f}°')
+plt.axvline(optimal_angle, color='red', linestyle='--', 
+            label=f'Max at {optimal_angle:.1f}°')
 plt.title('Projectile Range vs Launch Angle')
 plt.xlabel('Launch Angle (degrees)')
 plt.ylabel('Range (meters)')
@@ -678,23 +642,25 @@ plt.legend()
 plt.tight_layout()
 plt.show()
 Limitations and Realistic Considerations
-Assumptions of the Ideal Model:
-No air resistance
+Assumptions of the Ideal Model
+No air resistance: The simple model neglects drag.
 
-Flat terrain (initial and final height are equal)
+Flat terrain: The formula assumes the launch and landing heights are equal.
 
-Constant gravity
+Constant gravity: Gravity is treated as uniform.
 
-No wind
+No wind: External forces such as wind are not included.
 
-When These Assumptions Fail:
-In long-distance or high-speed motion, drag significantly affects results
+Extending the Model
+For more realistic scenarios, consider the following enhancements:
 
-In hilly environments, terrain must be accounted for
+Air Resistance: Introduce a drag force and solve the differential equations using numerical methods (e.g., Euler or Runge-Kutta methods).
 
-For planetary applications, gravity may not be constant (e.g., large altitudes)
+Wind Effects: Include wind as a variable force in the simulation.
+
+Uneven Terrain: Modify the model to account for differences in launch and landing heights.
 
 Conclusion
-This exploration of projectile motion demonstrates how range depends on the angle of launch, with the ideal model offering simple and insightful predictions. However, real-world complexities like air resistance, wind, and terrain require more sophisticated modeling using numerical methods.
+This analysis of projectile motion reveals how the range depends on the launch angle, initial velocity, and gravitational acceleration. While the ideal model—with its clear mathematical relationships—provides a strong basis for understanding projectile motion, real-world conditions such as air resistance, wind, and uneven terrain necessitate more complex modeling.
 
-By combining theory with computational tools such as Python, we gain not only a deep understanding of projectile mechanics but also a powerful method to explore real-world applications in sports, engineering, and space science.
+By combining theoretical derivations with computational simulations in Python, one gains valuable insights into both the simplicity and the complexity of projectile dynamics. These principles find application in fields ranging from sports and engineering to aerospace science.
