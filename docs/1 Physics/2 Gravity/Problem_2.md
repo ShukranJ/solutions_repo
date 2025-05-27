@@ -72,13 +72,7 @@ The third cosmic velocity depends on the body’s position relative to the Sun a
 
 ---
 
-## Python Simulation and Velocity Calculations
-
-We compute these velocities for:
-
-- Earth
-- Mars
-- Jupiter
+### Planetary Data
 
 ```python
 import numpy as np
@@ -87,43 +81,30 @@ import matplotlib.pyplot as plt
 # Gravitational constant
 G = 6.674e-11  # N·m²/kg²
 
-# Planetary data
+# Planetary mass (kg) and radius (m)
 bodies = {
-    "Earth": {"M": 5.972e24, "r": 6.371e6},
-    "Mars": {"M": 6.39e23, "r": 3.39e6},
+    "Earth":   {"M": 5.972e24, "r": 6.371e6},
+    "Mars":    {"M": 6.39e23,  "r": 3.39e6},
     "Jupiter": {"M": 1.898e27, "r": 6.99e7}
 }
 
 results = {}
 
+# Compute v1 and v2 for each body
 for body, data in bodies.items():
     M = data["M"]
     r = data["r"]
-    v1 = np.sqrt(G * M / r)
-    v2 = np.sqrt(2 * G * M / r)
-    results[body] = {"v1 (km/s)": v1 / 1000, "v2 (km/s)": v2 / 1000}
+    v1 = np.sqrt(G * M / r)            # First Cosmic Velocity (orbital)
+    v2 = np.sqrt(2 * G * M / r)        # Second Cosmic Velocity (escape)
+    results[body] = {
+        "v1 (km/s)": v1 / 1000,
+        "v2 (km/s)": v2 / 1000
+    }
 
 # Print results
 for body in results:
     print(f"{body} - First Cosmic Velocity: {results[body]['v1 (km/s)']:.2f} km/s")
     print(f"{body} - Second Cosmic Velocity: {results[body]['v2 (km/s)']:.2f} km/s\n")
-
-# Plotting
-labels = list(results.keys())
-v1_vals = [results[b]["v1 (km/s)"] for b in labels]
-v2_vals = [results[b]["v2 (km/s)"] for b in labels]
-
-x = np.arange(len(labels))
-width = 0.35
-
-plt.bar(x - width/2, v1_vals, width, label='First Cosmic Velocity')
-plt.bar(x + width/2, v2_vals, width, label='Second Cosmic Velocity')
-plt.ylabel("Velocity (km/s)")
-plt.title("Cosmic Velocities for Celestial Bodies")
-plt.xticks(x, labels)
-plt.legend()
-plt.grid(True)
-plt.show()
 
 ## Sample Output (Approximate)
 
@@ -191,4 +172,5 @@ Cosmic velocities define the **minimum energy requirements** for various classes
 - And ultimately, traveling beyond the solar system
 
 Understanding these velocities helps engineers and scientists **design feasible missions**, optimize fuel efficiency, and explore the **limits of human space exploration**. Through both **analytical equations** and **numerical simulations**, we gain powerful insights into the physics that govern motion in our universe.
+
 
