@@ -147,7 +147,5 @@ Variable gravitational environments (e.g., other planets),
 
 3D projectile motion.
 
-vbnet
-Copy
-Edit
+
 
