@@ -56,11 +56,25 @@
 </li>
 <li class="toctree-l4"><a class="reference internal" href="#time-of-flight">Time of Flight</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#horizontal-range">Horizontal Range</a>
+<li class="toctree-l4"><a class="reference internal" href="#range-equation">Range Equation</a>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#python-simulation-example">Python Simulation Example</a>
+<li class="toctree-l3"><a class="reference internal" href="#analysis-of-range-behavior">Analysis of Range Behavior</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#parameter-influence">Parameter Influence</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#symmetry">Symmetry</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#practical-applications">Practical Applications</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#extensions">Extensions</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#python-simulation">Python Simulation</a>
 </li>
 </ul>
 </li>
@@ -187,120 +201,93 @@
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1-investigating-the-range-as-a-function-of-the-angle-of-projection">Problem 1: Investigating the Range as a Function of the Angle of Projection</h1>
 <h2 id="motivation">Motivation</h2>
-<p>Projectile motion, while seemingly simple, provides a rich framework for exploring core principles of classical mechanics. The goal of this problem is to analyze how the <strong>range</strong> of a projectile depends on its <strong>angle of projection</strong>.</p>
-<p>Despite the apparent simplicity of launching an object into the air, the underlying physics involves a delicate interplay between vertical and horizontal motion, governed by both linear and quadratic relationships. These relationships are influenced by parameters such as:</p>
+<p>Projectile motion, while seemingly simple, provides a rich framework for exploring core principles of physics.</p>
+<p>Despite the apparent simplicity of launching an object into the air, the underlying physics involves various interacting parameters:</p>
 <ul>
 <li><strong>Initial velocity</strong>: <span class="arithmatex">\( v_0 \)</span></li>
 <li><strong>Gravitational acceleration</strong>: <span class="arithmatex">\( g \)</span></li>
-<li><strong>Launch height</strong>: <span class="arithmatex">\( h \)</span></li>
+<li><strong>Launch angle</strong>: <span class="arithmatex">\( \theta \)</span></li>
 </ul>
-<p>These variables result in a wide variety of possible trajectories, modeling real-world phenomena such as the arc of a soccer ball or the path of a rocket.</p>
+<p>These variables result in a wide variety of possible trajectories, modeling real-world phenomena from sports to spacecraft dynamics.</p>
 <hr/>
 <h2 id="theoretical-background">Theoretical Background</h2>
-<p>Assume an object is launched from flat ground with an initial velocity <span class="arithmatex">\( v_0 \)</span> at an angle <span class="arithmatex">\( \theta \)</span> (above the horizontal). Neglecting air resistance:</p>
+<p>Assume an object is launched from flat ground with an initial velocity <span class="arithmatex">\( v_0 \)</span> at an angle <span class="arithmatex">\( \theta \)</span> above the horizontal, and neglect air resistance.</p>
 <h3 id="equations-of-motion">Equations of Motion</h3>
 <ul>
 <li>
-<p><strong>Horizontal position</strong>:
-  $$
+<p><strong>Horizontal position</strong>:<br/>
+  [
   x(t) = v_0 \cos(\theta) \cdot t
-  $$</p>
+  ]</p>
 </li>
 <li>
-<p><strong>Vertical position</strong>:
-  $$
+<p><strong>Vertical position</strong>:<br/>
+  [
   y(t) = v_0 \sin(\theta) \cdot t - \frac{1}{2} g t^2
-  $$</p>
+  ]</p>
 </li>
 </ul>
 <h3 id="time-of-flight">Time of Flight</h3>
-<p>The projectile returns to the ground when <span class="arithmatex">\( y(t) = 0 \)</span>. Solving:</p>
+<p>The projectile returns to the ground when <span class="arithmatex">\( y(t) = 0 \)</span>:</p>
 <div class="arithmatex">\[
-t = \frac{2 v_0 \sin(\theta)}{g}
+T = \frac{2 v_0 \sin(\theta)}{g}
 \]</div>
-<h3 id="horizontal-range">Horizontal Range</h3>
-<p>The horizontal range <span class="arithmatex">\( R \)</span> is:</p>
+<h3 id="range-equation">Range Equation</h3>
+<p>Substitute time of flight into the horizontal equation to find range:</p>
 <div class="arithmatex">\[
-R = v_0 \cos(\theta) \cdot t = \frac{v_0^2 \sin(2\theta)}{g}
+R = v_0 \cos(\theta) \cdot T = \frac{v_0^2 \sin(2\theta)}{g}
 \]</div>
-<blockquote>
-<p>📌 <strong>Maximum range</strong> occurs at <span class="arithmatex">\( \theta = 45^\circ \)</span></p>
-</blockquote>
+<p>This expression defines a <strong>family of solutions</strong> depending on:
+- <span class="arithmatex">\( v_0 \)</span>: launch speed
+- <span class="arithmatex">\( \theta \)</span>: launch angle
+- <span class="arithmatex">\( g \)</span>: local gravity</p>
+<p>Maximum range is achieved when <span class="arithmatex">\( \theta = 45^\circ \)</span>, since <span class="arithmatex">\( \sin(2\theta) \)</span> reaches its maximum of 1.</p>
 <hr/>
-<h2 id="python-simulation-example">Python Simulation Example</h2>
-<p>import numpy as np
+<h2 id="analysis-of-range-behavior">Analysis of Range Behavior</h2>
+<h3 id="parameter-influence">Parameter Influence</h3>
+<ul>
+<li><strong>Velocity</strong>: <span class="arithmatex">\( R \propto v_0^2 \)</span> → doubling speed quadruples the range.</li>
+<li><strong>Gravity</strong>: <span class="arithmatex">\( R \propto \frac{1}{g} \)</span> → lower gravity increases range.</li>
+</ul>
+<h3 id="symmetry">Symmetry</h3>
+<p>The range is symmetric around <span class="arithmatex">\( \theta = 45^\circ \)</span>. Angles <span class="arithmatex">\( \theta \)</span> and <span class="arithmatex">\( 90^\circ - \theta \)</span> yield the same range.</p>
+<hr/>
+<h2 id="practical-applications">Practical Applications</h2>
+<p>This model applies to real-world phenomena such as:</p>
+<ul>
+<li><strong>Sports</strong>: Ball trajectories in football, basketball, etc.</li>
+<li><strong>Engineering</strong>: Calculations in artillery or construction.</li>
+<li><strong>Astrophysics</strong>: Trajectories of planetary probes and landers.</li>
+</ul>
+<h3 id="extensions">Extensions</h3>
+<ul>
+<li>Uneven launch and landing heights.</li>
+<li>Air resistance (drag).</li>
+<li>Wind and rotational effects (e.g., Coriolis force).</li>
+</ul>
+<hr/>
+<h2 id="python-simulation">Python Simulation</h2>
+<p>```python
+import numpy as np
 import matplotlib.pyplot as plt</p>
-<h1 id="parameters">Parameters</h1>
-<p>v0 = 20  # initial velocity in m/s
-g = 9.81  # acceleration due to gravity in m/s^2</p>
-<h1 id="angle-range-from-0-to-90-degrees">Angle range (from 0 to 90 degrees)</h1>
+<h1 id="constants">Constants</h1>
+<p>g = 9.81  # gravity (m/s²)
+v0 = 30   # initial velocity (m/s)</p>
+<h1 id="angles-from-0-to-90-degrees">Angles from 0 to 90 degrees</h1>
 <p>angles_deg = np.linspace(0, 90, 500)
 angles_rad = np.radians(angles_deg)</p>
-<h1 id="calculate-the-range-for-each-angle">Calculate the range for each angle</h1>
-<p>ranges = (v0**2 * np.sin(2 * angles_rad)) / g</p>
-<h1 id="plotting">Plotting</h1>
+<h1 id="range-calculation">Range calculation</h1>
+<p>R = (v0**2) * np.sin(2 * angles_rad) / g</p>
+<h1 id="plot">Plot</h1>
 <p>plt.figure(figsize=(10, 6))
-plt.plot(angles_deg, ranges, label=f'Initial Velocity = {v0} m/s', color='blue')
-plt.title('Projectile Range vs. Angle of Projection')
-plt.xlabel('Launch Angle (degrees)')
+plt.plot(angles_deg, R, color='navy', label=f'v₀ = {v0} m/s')
+plt.axvline(45, color='red', linestyle='--', label='Maximum at 45°')
+plt.title('Range vs Angle of Projection')
+plt.xlabel('Angle (degrees)')
 plt.ylabel('Range (meters)')
-plt.grid(True)
 plt.legend()
-plt.xlim(0, 90)
-plt.ylim(0, max(ranges) * 1.1)
+plt.grid(True)
 plt.show()</p>
-<h2 id="observations">Observations</h2>
-<p>From the analytical expression:</p>
-<div class="arithmatex">\[
-R = \frac{v_0^2 \sin(2\theta)}{g}
-\]</div>
-<p>We observe the following:</p>
-<ul>
-<li>The range is <strong>maximum at</strong> <span class="arithmatex">\( \theta = 45^\circ \)</span>, since <span class="arithmatex">\( \sin(90^\circ) = 1 \)</span>.</li>
-<li>The function <span class="arithmatex">\( \sin(2\theta) \)</span> is <strong>symmetric</strong> about <span class="arithmatex">\( \theta = 45^\circ \)</span>, meaning:
-  [
-  R(\theta) = R(90^\circ - \theta)
-  ]</li>
-<li><strong>Doubling</strong> the initial velocity <span class="arithmatex">\( v_0 \)</span> results in <strong>quadrupling</strong> the range, due to the <span class="arithmatex">\( v_0^2 \)</span> term.</li>
-<li><strong>Gravitational acceleration</strong> <span class="arithmatex">\( g \)</span> is inversely proportional to the range; lower gravity (e.g., on the Moon) results in longer ranges.</li>
-<li>For small and large angles (close to <span class="arithmatex">\( 0^\circ \)</span> or <span class="arithmatex">\( 90^\circ \)</span>), the range is very short due to <span class="arithmatex">\( \sin(2\theta) \approx 0 \)</span>.</li>
-</ul>
-<hr/>
-<h2 id="limitations">Limitations</h2>
-<p>While the ideal projectile motion model is insightful, it has several simplifying assumptions:</p>
-<ul>
-<li><strong>No air resistance</strong>: Real-world projectiles experience drag forces that reduce range.</li>
-<li><strong>Flat terrain</strong>: The model assumes launch and landing occur at the same height.</li>
-<li><strong>No wind</strong>: External forces such as wind or spin are not considered.</li>
-<li><strong>No rotational effects</strong>: The projectile is treated as a point mass.</li>
-</ul>
-<p>These simplifications may result in discrepancies when comparing theoretical and experimental outcomes.</p>
-<hr/>
-<h2 id="extensions-and-real-world-applications">Extensions and Real-World Applications</h2>
-<p>The basic model can be extended to account for more complex and realistic situations:</p>
-<ul>
-<li><strong>Initial Height</strong>: If the projectile is launched from a height <span class="arithmatex">\( h \)</span>, the total flight time and range change significantly.</li>
-<li><strong>Air Resistance</strong>: Incorporating drag introduces nonlinear differential equations, which typically require numerical methods.</li>
-<li><strong>Uneven Terrain</strong>: Modeling launch and landing at different elevations reflects real-life applications like ballistic launches.</li>
-<li><strong>Wind Effects</strong>: Adding wind velocity vectors changes both the range and trajectory shape.</li>
-<li><strong>Rotational Dynamics</strong>: For spinning objects (e.g., balls), lift forces like the Magnus effect may alter the motion.</li>
-</ul>
-<p>These extensions make the model applicable in fields such as:</p>
-<ul>
-<li><strong>Sports Physics</strong> (e.g., soccer, basketball, golf)</li>
-<li><strong>Aerospace and Ballistics</strong></li>
-<li><strong>Robotics and Engineering Trajectory Planning</strong></li>
-</ul>
-<hr/>
-<h2 id="deliverables-summary">Deliverables Summary</h2>
-<p>Your submission should include:</p>
-<ul>
-<li>📄 A <strong>Markdown document</strong> or <strong>Jupyter Notebook</strong> containing:</li>
-<li>✅ Derivation of theoretical equations</li>
-<li>✅ Simulation using Python</li>
-<li>✅ Graphical analysis (e.g., range vs. angle)</li>
-<li>✅ Discussion on assumptions, limitations, and real-world extensions</li>
-</ul>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
