@@ -63,10 +63,6 @@ We solve the second-order ODE using numerical integration (e.g., RK4):
 - Continue until simulation time ends or payload hits Earth.
 
 ---
-
-## 4. Python Implementation
-
-```python
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -164,3 +160,4 @@ plt.ylabel('Specific Mechanical Energy (J/kg)')
 plt.title('Energy vs Time (should be roughly constant)')
 plt.grid()
 plt.show()
+
