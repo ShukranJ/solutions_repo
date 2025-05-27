@@ -51,31 +51,34 @@ $$
 ---
 
 ## Python Simulation Example
-
-```python
 import numpy as np
 import matplotlib.pyplot as plt
 
 # Parameters
 v0 = 20  # initial velocity in m/s
-g = 9.81  # gravity in m/s^2
+g = 9.81  # acceleration due to gravity in m/s^2
 
-# Angle range
-angles_deg = np.linspace(0, 90, 100)
+# Angle range (from 0 to 90 degrees)
+angles_deg = np.linspace(0, 90, 500)
 angles_rad = np.radians(angles_deg)
 
-# Calculate range
+# Calculate the range for each angle
 ranges = (v0**2 * np.sin(2 * angles_rad)) / g
 
-# Plot
+# Plotting
 plt.figure(figsize=(10, 6))
 plt.plot(angles_deg, ranges, label=f'Initial Velocity = {v0} m/s', color='blue')
-plt.title('Projectile Range vs Angle of Projection')
+plt.title('Projectile Range vs. Angle of Projection')
 plt.xlabel('Launch Angle (degrees)')
 plt.ylabel('Range (meters)')
 plt.grid(True)
 plt.legend()
+plt.xlim(0, 90)
+plt.ylim(0, max(ranges) * 1.1)
 plt.show()
+
+
+
 ## Observations
 
 From the analytical expression:
