@@ -1,163 +1,129 @@
 # Problem 3: Trajectories of a Freely Released Payload Near Earth
 
----
+## Motivation
+When an object is released from a moving rocket near Earth, its trajectory depends on initial conditions and gravitational forces. This scenario is critical for understanding orbital mechanics, with applications in space mission planning, satellite deployment, and reentry scenarios.
 
-## 1. Background & Physics Principles
+## Task
+1. **Analyze** possible trajectories (parabolic, hyperbolic, elliptical) of a payload released near Earth.
+2. **Perform** numerical analysis to compute the payload's path based on initial conditions (position, velocity, altitude).
+3. **Discuss** how trajectories relate to orbital insertion, reentry, or escape scenarios.
+4. **Develop** a computational tool to simulate and visualize the payload's motion under Earth's gravity.
 
-### Newton's Law of Gravitation
+## Explanation of Subjects
+The motion of a payload near Earth is governed by **Newton's Law of Gravitation**:
 
-The gravitational force acting on the payload near Earth is:
+\[ F = \frac{G M m}{r^2} \]
 
-\[
-\mathbf{F} = - \frac{GMm}{r^2} \hat{r}
-\]
+where:
+- \( G \) is the gravitational constant (\( 6.67430 \times 10^{-11} \, \text{m}^3 \text{kg}^{-1} \text{s}^{-2} \)),
+- \( M \) is Earth's mass (\( 5.972 \times 10^{24} \, \text{kg} \)),
+- \( m \) is the payload's mass,
+- \( r \) is the distance from Earth's center.
 
-where
+The trajectory depends on the **specific mechanical energy** (\( \epsilon \)):
 
-- \(G = 6.67430 \times 10^{-11} \, m^3 kg^{-1} s^{-2}\) is the gravitational constant,
-- \(M = 5.972 \times 10^{24} \, kg\) is Earth's mass,
-- \(m\) is the payload mass,
-- \(r\) is the distance from Earth's center,
-- \(\hat{r}\) is the unit vector from Earth’s center to the payload.
+\[ \epsilon = \frac{v^2}{2} - \frac{\mu}{r} \]
 
-The acceleration due to Earth's gravity is:
+where:
+- \( v \) is the payload's velocity,
+- \( \mu = G M \) is Earth's gravitational parameter (\( 3.986 \times 10^{14} \, \text{m}^3 \text{s}^{-2} \)),
+- \( r \) is the radial distance.
 
-\[
-\mathbf{a} = - \frac{GM}{r^3} \mathbf{r}
-\]
+The trajectory type is determined by the **eccentricity** (\( e \)) of the orbit:
+- **Elliptical** (\( e < 1 \)): Closed orbit, e.g., satellite in low Earth orbit.
+- **Parabolic** (\( e = 1 \)): Escape trajectory with zero residual energy.
+- **Hyperbolic** (\( e > 1 \)): Escape trajectory with excess energy.
 
----
+**Applications**:
+- **Orbital insertion**: Achieving a stable elliptical orbit (e.g., for satellites).
+- **Reentry**: Elliptical or parabolic trajectories that intersect Earth's atmosphere.
+- **Escape**: Hyperbolic trajectories for interplanetary missions.
 
-### Equations of Motion
+## Python Implementation
+The following Python script simulates the payload's motion using numerical integration (Runge-Kutta 4 method) and visualizes trajectories for different initial velocities. It assumes a 2D plane for simplicity and neglects atmospheric drag.
 
-The motion of the payload under gravity satisfies:
-
-\[
-\frac{d^2 \mathbf{r}}{dt^2} = - \frac{GM}{r^3} \mathbf{r}
-\]
-
-Given initial conditions \(\mathbf{r}_0\) and \(\mathbf{v}_0\), the trajectory is computed numerically.
-
----
-
-## 2. Types of Trajectories
-
-The shape of the trajectory depends on the total specific mechanical energy \(E\):
-
-\[
-E = \frac{v^2}{2} - \frac{GM}{r}
-\]
-
-- **Elliptical orbit:** \(E < 0\) (bound orbit),
-- **Parabolic trajectory:** \(E = 0\) (escape velocity),
-- **Hyperbolic trajectory:** \(E > 0\) (unbound, escape path).
-
----
-
-## 3. Numerical Simulation Method
-
-We solve the second-order ODE using numerical integration (e.g., RK4):
-
-- Initial conditions: \(\mathbf{r}_0\), \(\mathbf{v}_0\),
-- Update position and velocity at each timestep \(\Delta t\),
-- Continue until simulation time ends or payload hits Earth.
-
----
+```python
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.integrate import solve_ivp
 
 # Constants
-G = 6.67430e-11           # m^3 kg^-1 s^-2
-M = 5.972e24              # kg
-R_earth = 6371e3          # Earth radius in meters
+G = 6.67430e-11  # Gravitational constant (m^3 kg^-1 s^-2)
+M = 5.972e24     # Earth's mass (kg)
+mu = G * M       # Gravitational parameter (m^3 s^-2)
+R_earth = 6.371e6  # Earth's radius (m)
 
+# Equations of motion for 2D orbit
+def equations_of_motion(t, state):
+    x, y, vx, vy = state
+    r = np.sqrt(x**2 + y**2)
+    ax = -mu * x / r**3
+    ay = -mu * y / r**3
+    return [vx, vy, ax, ay]
+
+# Compute specific energy and eccentricity
+def compute_orbit_params(r, v):
+    r_mag = np.sqrt(r.dot(r))
+    v_mag = np.sqrt(v.dot(v))
+    energy = v_mag**2 / 2 - mu / r_mag
+    h = np.cross(r, v)  # Specific angular momentum (2D: scalar)
+    e = np.sqrt(1 + (2 * energy * h**2) / mu**2)
+    return energy, e
+
+# Simulate trajectory
+def simulate_trajectory(initial_altitude, initial_velocity, angle_deg, t_span, t_eval):
+    # Initial conditions
+    r0 = [R_earth + initial_altitude, 0]  # Start at (x, 0)
+    angle = np.radians(angle_deg)
+    v0 = [initial_velocity * np.cos(angle), initial_velocity * np.sin(angle)]
+    
+    # Compute initial orbit parameters
+    energy, eccentricity = compute_orbit_params(np.array(r0), np.array(v0))
+    
+    # Integrate equations of motion
+    state0 = r0 + v0
+    sol = solve_ivp(equations_of_motion, t_span, state0, t_eval=t_eval, method='RK45')
+    
+    return sol, energy, eccentricity
+
+# Plotting function
+def plot_trajectory(sol, energy, eccentricity, label):
+    x, y = sol.y[0], sol.y[1]
+    plt.plot(x / 1e6, y / 1e6, label=f'{label}, e={eccentricity:.2f}, ε={energy:.2e} J/kg')
+    
+    # Plot Earth
+    theta = np.linspace(0, 2 * np.pi, 100)
+    x_earth = (R_earth / 1e6) * np.cos(theta)
+    y_earth = (R_earth / 1e6) * np.sin(theta)
+    plt.fill(x_earth, y_earth, 'b', alpha=0.3, label='Earth')
+    
 # Simulation parameters
-dt = 1.0                  # time step in seconds
-t_max = 20000             # max simulation time in seconds
+initial_altitude = 200e3  # 200 km altitude
+t_span = [0, 3600]  # 1 hour simulation
+t_eval = np.linspace(0, 3600, 1000)
 
-# Initial conditions
-altitude = 500e3          # 500 km above Earth surface
-r0 = np.array([R_earth + altitude, 0.0])  # initial position (x,y)
-v_circular = np.sqrt(G * M / np.linalg.norm(r0))  # circular orbit velocity
+# Test different initial velocities for circular, elliptical, parabolic, and hyperbolic orbits
+v_circular = np.sqrt(mu / (R_earth + initial_altitude))  # Circular orbit velocity
+v_escape = np.sqrt(2 * mu / (R_earth + initial_altitude))  # Escape velocity
+velocities = [
+    (v_circular, 'Circular', 90),  # Circular orbit (tangential)
+    (v_circular * 0.9, 'Elliptical', 90),  # Sub-circular (elliptical)
+    (v_escape, 'Parabolic', 90),  # Escape velocity (parabolic)
+    (v_escape * 1.2, 'Hyperbolic', 90)  # Above escape (hyperbolic)
+]
 
-# Set initial velocity: 10% faster than circular velocity (example)
-v0 = np.array([0.0, 1.1 * v_circular])
+# Plot setup
+plt.figure(figsize=(10, 8))
+for v, label, angle in velocities:
+    sol, energy, eccentricity = simulate_trajectory(initial_altitude, v, angle, t_span, t_eval)
+    plot_trajectory(sol, energy, eccentricity, label)
 
-# Initialize state variables
-r = r0.copy()
-v = v0.copy()
-
-positions = []
-velocities = []
-times = []
-
-def acceleration(r):
-    r_norm = np.linalg.norm(r)
-    return -G * M * r / r_norm**3
-
-t = 0
-while t < t_max:
-    # Record data
-    positions.append(r.copy())
-    velocities.append(v.copy())
-    times.append(t)
-    
-    # RK4 integration steps
-    a1 = acceleration(r)
-    k1v = a1 * dt
-    k1r = v * dt
-    
-    a2 = acceleration(r + 0.5 * k1r)
-    k2v = a2 * dt
-    k2r = (v + 0.5 * k1v) * dt
-    
-    a3 = acceleration(r + 0.5 * k2r)
-    k3v = a3 * dt
-    k3r = (v + 0.5 * k2v) * dt
-    
-    a4 = acceleration(r + k3r)
-    k4v = a4 * dt
-    k4r = (v + k3v) * dt
-    
-    # Update velocity and position
-    v += (k1v + 2*k2v + 2*k3v + k4v) / 6
-    r += (k1r + 2*k2r + 2*k3r + k4r) / 6
-    
-    # Stop if payload hits Earth's surface
-    if np.linalg.norm(r) <= R_earth:
-        print(f"Payload hit Earth surface at t={t:.2f} seconds")
-        break
-    
-    t += dt
-
-positions = np.array(positions)
-velocities = np.array(velocities)
-times = np.array(times)
-
-# Plot trajectory
-plt.figure(figsize=(8,8))
-earth = plt.Circle((0,0), R_earth, color='b', alpha=0.3)
-plt.gca().add_patch(earth)
-plt.plot(positions[:,0], positions[:,1], label="Payload Trajectory")
-plt.scatter([r0[0]], [r0[1]], color='green', label='Initial Position')
-plt.axis('equal')
-plt.xlabel('x (m)')
-plt.ylabel('y (m)')
-plt.title('Payload Trajectory Near Earth')
+# Finalize plot
+plt.xlabel('X (Mm)')
+plt.ylabel('Y (Mm)')
+plt.title('Payload Trajectories Near Earth')
 plt.legend()
-plt.grid()
-plt.show()
-
-# Plot energy over time
-speeds = np.linalg.norm(velocities, axis=1)
-radii = np.linalg.norm(positions, axis=1)
-energy = 0.5 * speeds**2 - G * M / radii
-
-plt.figure()
-plt.plot(times, energy)
-plt.xlabel('Time (s)')
-plt.ylabel('Specific Mechanical Energy (J/kg)')
-plt.title('Energy vs Time (should be roughly constant)')
-plt.grid()
+plt.grid(True)
+plt.axis('equal')
 plt.show()
 
