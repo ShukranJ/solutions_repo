@@ -24,7 +24,11 @@ The concept of **escape velocity** is crucial for understanding the conditions r
 ---
 
 ## Python Simulation Code
-
+ """
+ 
+`` `python
+code
+`` `
 ```python
 import numpy as np
 
