@@ -127,3 +127,32 @@ plt.grid(True)
 plt.axis('equal')
 plt.show()
 
+### Explanation of the Python Implementation
+1. **Equations of Motion**: The `equations_of_motion` function implements Newton's Law of Gravitation in 2D, computing accelerations based on the inverse-square law.
+2. **Orbit Parameters**: The `compute_orbit_params` function calculates specific mechanical energy and eccentricity to classify the trajectory.
+3. **Numerical Integration**: The `solve_ivp` function from `scipy.integrate` uses the RK45 method to solve the differential equations of motion.
+4. **Simulation**: The `simulate_trajectory` function sets initial conditions (position at 200 km altitude, velocity, and angle) and computes the trajectory.
+5. **Visualization**: The `plot_trajectory` function plots the payload's path and Earth's surface, with labels for eccentricity and energy.
+6. **Test Cases**: Four initial velocities are tested:
+   - Circular orbit velocity (\( v = \sqrt{\mu / r} \)).
+   - Sub-circular velocity (elliptical orbit).
+   - Escape velocity (\( v = \sqrt{2 \mu / r} \)).
+   - Above escape velocity (hyperbolic orbit).
+
+### Dependencies
+- `numpy`: For numerical computations.
+- `matplotlib`: For plotting.
+- `scipy`: For numerical integration.
+
+### Running the Code
+1. Ensure Python and the required libraries (`numpy`, `matplotlib`, `scipy`) are installed.
+2. Copy the Python code into a `.py` file or Jupyter notebook.
+3. Run the script to generate a plot showing the four trajectories.
+
+### Extending the Code
+- Add 3D motion by extending the state vector and equations.
+- Include atmospheric drag for reentry scenarios.
+- Allow user input for initial conditions (altitude, velocity, angle).
+- Compute orbital elements (semi-major axis, perigee, apogee) for deeper analysis.
+
+This implementation fulfills the deliverables by providing a computational tool, detailed explanations, and graphical visualizations. Let me know if you need modifications, additional features, or further clarification!
