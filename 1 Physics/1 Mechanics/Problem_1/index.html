@@ -247,45 +247,59 @@ plt.xlabel('Launch Angle (degrees)')
 plt.ylabel('Range (meters)')
 plt.grid(True)
 plt.legend()
-plt.show()
-Observations
-The function 
-𝑅
-(
-𝜃
-)
-R(θ) is symmetric about 45°.</p>
-<p>The range is maximum at 
-𝜃
-=
-45
-∘
-θ=45 
-∘
- .</p>
-<p>Increasing the initial velocity 
-𝑣
-0
-v 
-0
-​
-  increases the range quadratically.</p>
-<p>Limitations and Extensions
-Limitations:</p>
-<p>Assumes no air resistance.</p>
-<p>Flat launch and landing surfaces.</p>
-<p>Extensions:</p>
-<p>Include initial height 
-ℎ
-h.</p>
-<p>Model air drag or wind.</p>
-<p>Simulate real-world applications (e.g., soccer kicks, rocket launches).</p>
-<p>Deliverables
-A Markdown or Jupyter Notebook including:</p>
-<p>Theoretical derivation.</p>
-<p>Python script for simulation.</p>
-<p>Graphs of range vs angle.</p>
-<p>Discussion on model limitations and extensions.</p>
+plt.show()</p>
+<h2 id="observations">Observations</h2>
+<p>From the analytical expression:</p>
+<div class="arithmatex">\[
+R = \frac{v_0^2 \sin(2\theta)}{g}
+\]</div>
+<p>We observe the following:</p>
+<ul>
+<li>The range is <strong>maximum at</strong> <span class="arithmatex">\( \theta = 45^\circ \)</span>, since <span class="arithmatex">\( \sin(90^\circ) = 1 \)</span>.</li>
+<li>The function <span class="arithmatex">\( \sin(2\theta) \)</span> is <strong>symmetric</strong> about <span class="arithmatex">\( \theta = 45^\circ \)</span>, meaning:
+  [
+  R(\theta) = R(90^\circ - \theta)
+  ]</li>
+<li><strong>Doubling</strong> the initial velocity <span class="arithmatex">\( v_0 \)</span> results in <strong>quadrupling</strong> the range, due to the <span class="arithmatex">\( v_0^2 \)</span> term.</li>
+<li><strong>Gravitational acceleration</strong> <span class="arithmatex">\( g \)</span> is inversely proportional to the range; lower gravity (e.g., on the Moon) results in longer ranges.</li>
+<li>For small and large angles (close to <span class="arithmatex">\( 0^\circ \)</span> or <span class="arithmatex">\( 90^\circ \)</span>), the range is very short due to <span class="arithmatex">\( \sin(2\theta) \approx 0 \)</span>.</li>
+</ul>
+<hr/>
+<h2 id="limitations">Limitations</h2>
+<p>While the ideal projectile motion model is insightful, it has several simplifying assumptions:</p>
+<ul>
+<li><strong>No air resistance</strong>: Real-world projectiles experience drag forces that reduce range.</li>
+<li><strong>Flat terrain</strong>: The model assumes launch and landing occur at the same height.</li>
+<li><strong>No wind</strong>: External forces such as wind or spin are not considered.</li>
+<li><strong>No rotational effects</strong>: The projectile is treated as a point mass.</li>
+</ul>
+<p>These simplifications may result in discrepancies when comparing theoretical and experimental outcomes.</p>
+<hr/>
+<h2 id="extensions-and-real-world-applications">Extensions and Real-World Applications</h2>
+<p>The basic model can be extended to account for more complex and realistic situations:</p>
+<ul>
+<li><strong>Initial Height</strong>: If the projectile is launched from a height <span class="arithmatex">\( h \)</span>, the total flight time and range change significantly.</li>
+<li><strong>Air Resistance</strong>: Incorporating drag introduces nonlinear differential equations, which typically require numerical methods.</li>
+<li><strong>Uneven Terrain</strong>: Modeling launch and landing at different elevations reflects real-life applications like ballistic launches.</li>
+<li><strong>Wind Effects</strong>: Adding wind velocity vectors changes both the range and trajectory shape.</li>
+<li><strong>Rotational Dynamics</strong>: For spinning objects (e.g., balls), lift forces like the Magnus effect may alter the motion.</li>
+</ul>
+<p>These extensions make the model applicable in fields such as:</p>
+<ul>
+<li><strong>Sports Physics</strong> (e.g., soccer, basketball, golf)</li>
+<li><strong>Aerospace and Ballistics</strong></li>
+<li><strong>Robotics and Engineering Trajectory Planning</strong></li>
+</ul>
+<hr/>
+<h2 id="deliverables-summary">Deliverables Summary</h2>
+<p>Your submission should include:</p>
+<ul>
+<li>📄 A <strong>Markdown document</strong> or <strong>Jupyter Notebook</strong> containing:</li>
+<li>✅ Derivation of theoretical equations</li>
+<li>✅ Simulation using Python</li>
+<li>✅ Graphical analysis (e.g., range vs. angle)</li>
+<li>✅ Discussion on assumptions, limitations, and real-world extensions</li>
+</ul>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
