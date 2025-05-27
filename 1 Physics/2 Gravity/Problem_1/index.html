@@ -172,6 +172,114 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="gravity">Gravity</h1>
+<h2 id="problem-1-orbital-period-and-orbital-radius">Problem 1: Orbital Period and Orbital Radius</h2>
+<h3 id="motivation">Motivation</h3>
+<p>The relationship between the square of the orbital period and the cube of the orbital radius, known as <strong>Kepler's Third Law</strong>, is a cornerstone of celestial mechanics. This fundamental law enables the prediction of planetary motions and helps us understand gravitational interactions across the universe. By exploring this principle, we connect classical mechanics with observable astrophysical systems, such as satellite trajectories and planetary orbits.</p>
+<hr/>
+<h3 id="task">Task</h3>
+<ol>
+<li><strong>Theoretical Derivation</strong></li>
+<li>
+<p>Derive Kepler's Third Law for circular orbits:
+     [
+     T^2 \propto r^3
+     ]
+     using Newton's Law of Gravitation and centripetal force.</p>
+</li>
+<li>
+<p><strong>Astronomical Implications</strong></p>
+</li>
+<li>
+<p>Discuss how this law is used to:</p>
+<ul>
+<li>Determine planetary masses</li>
+<li>Estimate distances between celestial bodies</li>
+<li>Understand orbital stability</li>
+</ul>
+</li>
+<li>
+<p><strong>Real-World Examples</strong></p>
+</li>
+<li>
+<p>Analyze orbits such as:</p>
+<ul>
+<li>The Moon orbiting Earth</li>
+<li>Planetary orbits in the Solar System</li>
+<li>Artificial satellites (e.g., GPS, ISS)</li>
+</ul>
+</li>
+<li>
+<p><strong>Computational Simulation</strong></p>
+</li>
+<li>Implement a Python simulation to:<ul>
+<li>Calculate orbital periods for various radii</li>
+<li>Visualize circular orbits</li>
+<li>Plot <span class="arithmatex">\( T^2 \)</span> vs <span class="arithmatex">\( r^3 \)</span> and verify linearity</li>
+</ul>
+</li>
+</ol>
+<hr/>
+<h3 id="deliverables">Deliverables</h3>
+<ul>
+<li>📄 <strong>Markdown Report</strong></li>
+<li>Includes derivation of Kepler’s Third Law from Newtonian mechanics</li>
+<li>
+<p>Discussion of astrophysical implications and extensions to elliptical orbits</p>
+</li>
+<li>
+<p>🐍 <strong>Python Script or Jupyter Notebook</strong></p>
+</li>
+<li>Simulates circular orbits using gravitational formulas</li>
+<li>Computes and plots the relationship between period and radius</li>
+<li>
+<p>Validates <span class="arithmatex">\( T^2 \propto r^3 \)</span></p>
+</li>
+<li>
+<p>📊 <strong>Visualizations</strong></p>
+</li>
+<li>Diagrams of orbital paths</li>
+<li>Log-log or linear plots of <span class="arithmatex">\( T^2 \)</span> vs. <span class="arithmatex">\( r^3 \)</span></li>
+<li>
+<p>Example comparisons using real astronomical data (e.g., Earth-Moon system)</p>
+</li>
+<li>
+<p>🔍 <strong>Discussion Section</strong></p>
+</li>
+<li>How Kepler's Law holds in elliptical orbits</li>
+<li>Generalization to systems beyond the Solar System</li>
+<li>Assumptions and limitations of circular orbit modeling</li>
+</ul>
+<hr/>
+<h3 id="hints-and-resources">Hints and Resources</h3>
+<ul>
+<li>
+<p>Use Newton’s Law of Gravitation:
+  [
+  F = \frac{G M m}{r^2}
+  ]
+  and equate it with centripetal force:
+  [
+  F = \frac{m v^2}{r}
+  ]</p>
+</li>
+<li>
+<p>Solve for <span class="arithmatex">\( T \)</span> using:
+  [
+  T = \frac{2 \pi r}{v}
+  ]</p>
+</li>
+<li>
+<p>Plot using libraries like Matplotlib and compute with NumPy.</p>
+</li>
+<li>
+<p>Use SI units (mass in kg, radius in meters, time in seconds) for consistency.</p>
+</li>
+<li>
+<p>Optionally analyze deviations from linearity due to eccentricity or external forces.</p>
+</li>
+</ul>
+<hr/>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
