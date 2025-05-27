@@ -119,8 +119,5 @@ plt.show()
 - `R = (v0**2) * np.sin(2 * θ) / g`: Formula for range of projectile on flat ground.
 - `plt.axvline(45, ...)`: Highlights the theoretical maximum range at 45°.
 
-Let me know if you’d like:
-- The version with launch height,
-- A notebook file (.ipynb),
-- Or explanations included as comments for educational purposes.
+
 
