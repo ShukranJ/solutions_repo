@@ -172,6 +172,200 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<p>Interference Patterns on a Water Surface
+1. Chosen Polygon
+We'll use a square (4-point sources) as an example. You can easily switch to a triangle, pentagon, etc.</p>
+<ol>
+<li>Wave Equation
+For each source at position 
+(
+𝑥
+𝑖
+,
+𝑦
+𝑖
+)
+(x 
+i
+​
+ ,y 
+i
+​
+ ), the wave at a point 
+(
+𝑥
+,
+𝑦
+)
+(x,y) and time 
+𝑡
+t is:</li>
+</ol>
+<p>𝜓
+𝑖
+(
+𝑥
+,
+𝑦
+,
+𝑡
+)
+=
+𝐴
+⋅
+cos
+⁡
+(
+𝑘
+𝑟
+𝑖
+−
+𝜔
+𝑡
++
+𝜙
+)
+ψ 
+i
+​
+ (x,y,t)=A⋅cos(kr 
+i
+​
+ −ωt+ϕ)
+Where:</p>
+<p>𝐴
+A: amplitude (same for all)</p>
+<h1 id="k">𝑘</h1>
+<p>2
+𝜋
+𝜆
+k= 
+λ
+2π
+​
+ : wave number</p>
+<h1 id="_1">𝜔</h1>
+<p>2
+𝜋
+𝑓
+ω=2πf: angular frequency</p>
+<p>𝑟
+𝑖
+=
+(
+𝑥
+−
+𝑥
+𝑖
+)
+2
++
+(
+𝑦
+−
+𝑦
+𝑖
+)
+2
+r 
+i
+​
+ = 
+(x−x 
+i
+​
+ ) 
+2
+ +(y−y 
+i
+​
+ ) 
+2</p>
+<p>​
+ : distance from source 
+𝑖
+i</p>
+<p>𝜙
+ϕ: initial phase (same for all sources due to coherence)</p>
+<ol>
+<li>Superposition
+Total displacement:</li>
+</ol>
+<p>𝜓
+total
+(
+𝑥
+,
+𝑦
+,
+𝑡
+)
+=
+∑
+𝑖
+=
+1
+𝑁
+𝜓
+𝑖
+(
+𝑥
+,
+𝑦
+,
+𝑡
+)
+ψ 
+total
+​
+ (x,y,t)= 
+i=1
+∑
+N
+​
+ ψ 
+i
+​
+ (x,y,t)</p>
+<p>Python Code Outline
+import numpy as np
+import matplotlib.pyplot as plt</p>
+<h1 id="parameters">Parameters</h1>
+<p>A = 1.0         # amplitude
+wavelength = 1  # wavelength (λ)
+frequency = 1   # frequency (f)
+phi = 0         # initial phase
+N = 4           # number of sources (square)
+radius = 3      # radius of the polygon</p>
+<h1 id="derived-parameters">Derived parameters</h1>
+<p>k = 2 * np.pi / wavelength
+omega = 2 * np.pi * frequency</p>
+<h1 id="create-the-polygon-vertices">Create the polygon vertices</h1>
+<p>angles = np.linspace(0, 2 * np.pi, N, endpoint=False)
+sources = [(radius * np.cos(a), radius * np.sin(a)) for a in angles]</p>
+<h1 id="grid-setup">Grid setup</h1>
+<p>x = np.linspace(-6, 6, 500)
+y = np.linspace(-6, 6, 500)
+X, Y = np.meshgrid(x, y)
+t = 0  # fixed time</p>
+<h1 id="compute-the-total-wave">Compute the total wave</h1>
+<p>Z = np.zeros_like(X)
+for (x0, y0) in sources:
+    r = np.sqrt((X - x0)<strong>2 + (Y - y0)</strong>2)
+    Z += A * np.cos(k * r - omega * t + phi)</p>
+<h1 id="plot">Plot</h1>
+<p>plt.figure(figsize=(8, 6))
+plt.contourf(X, Y, Z, levels=100, cmap='RdBu')
+plt.colorbar(label='Wave Displacement')
+plt.title('Interference Pattern from 4 Point Sources (Square)')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.axis('equal')
+plt.show()
+Explanation of Interference Patterns
+Constructive Interference occurs where the crests (or troughs) from multiple sources align, resulting in higher amplitude.</p>
+<p>Destructive Interference happens where crests meet troughs, cancelling out the displacement.</p>
+<p>The pattern reflects the symmetry of the polygon, and periodic regions of constructive and destructive interference form.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
