@@ -86,22 +86,23 @@ This model applies to real-world phenomena such as:
 
 ## Python Simulation
 
+## Python Simulation
+
+### Constants
+
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Constants
-g = 9.81  # gravity (m/s²)
-v0 = 30   # initial velocity (m/s)
-
-# Angles from 0 to 90 degrees
+# Gravity and initial velocity
+g = 9.81            # gravitational acceleration (m/s²)
+v0 = 30             # initial velocity (m/s)
+# Create an array of angles in degrees and convert to radians
 angles_deg = np.linspace(0, 90, 500)
 angles_rad = np.radians(angles_deg)
-
-# Range calculation
+# Calculate range using the projectile motion formula
 R = (v0**2) * np.sin(2 * angles_rad) / g
-
-# Plot
+# Plot range versus angle
 plt.figure(figsize=(10, 6))
 plt.plot(angles_deg, R, color='navy', label=f'v₀ = {v0} m/s')
 plt.axvline(45, color='red', linestyle='--', label='Maximum at 45°')
@@ -111,3 +112,4 @@ plt.ylabel('Range (meters)')
 plt.legend()
 plt.grid(True)
 plt.show()
+
