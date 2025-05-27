@@ -214,7 +214,6 @@ R=x(T)=v
 0
 ​
  Tcosθ
-
 R=v 
 0
 ​
@@ -226,7 +225,6 @@ g
  sinθ
 ​
  )cosθ
-
 R= 
 g
 2v 
@@ -334,12 +332,12 @@ import matplotlib.pyplot as plt
 def projectile_range(v0, theta_deg, g=9.81):
     """
     Calculates the horizontal range of a projectile.
-    
+
     Args:
         v0 (float): Initial velocity in m/s.
         theta_deg (float): Angle of projection in degrees.
         g (float): Gravitational acceleration in m/s^2.
-        
+
     Returns:
         float: Horizontal range in meters.
     """
@@ -350,26 +348,26 @@ def projectile_range(v0, theta_deg, g=9.81):
 def simulate_projectile_path(v0, theta_deg, g=9.81, num_points=100):
     """
     Simulates the trajectory of a projectile.
-    
+
     Args:
         v0 (float): Initial velocity in m/s.
         theta_deg (float): Angle of projection in degrees.
         g (float): Gravitational acceleration in m/s^2.
         num_points (int): Number of points to simulate for the trajectory.
-        
+
     Returns:
         tuple: (x_coords, y_coords) of the trajectory.
     """
     theta_rad = np.deg2rad(theta_deg)
-    
+
     # Calculate time of flight
     T = (2 * v0 * np.sin(theta_rad)) / g
-    
+
     t = np.linspace(0, T, num_points)
-    
+
     x = v0 * t * np.cos(theta_rad)
     y = v0 * t * np.sin(theta_rad) - 0.5 * g * t**2
-    
+
     return x, y
 
 # --- Simulation and Visualization ---
