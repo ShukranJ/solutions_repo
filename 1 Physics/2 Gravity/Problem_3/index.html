@@ -171,7 +171,349 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-3">Problem 3</h1>
+<p>Problem 3: Trajectories of a Freely Released Payload Near Earth</p>
+<ol>
+<li>Background &amp; Physics Principles</li>
+</ol>
+<p>Newton's Law of Gravitation
+The gravitational force acting on the payload near Earth is:</p>
+<h1 id="f">F</h1>
+<p>−
+G
+M
+m
+r
+2
+r
+^
+F=− 
+r 
+2</p>
+<p>GMm
+​   </p>
+<p>r
+^</p>
+<p>where</p>
+<h1 id="g">G</h1>
+<p>6.67430
+×
+10
+−
+11
+ 
+m
+3
+k
+g
+−
+1
+s
+−
+2
+G=6.67430×10 
+−11
+ m 
+3
+ kg 
+−1
+ s 
+−2
+  is the gravitational constant,
+M
+=
+5.972
+×
+10
+24
+ 
+k
+g
+M=5.972×10 
+24
+ kg is Earth's mass,
+m
+m is the payload mass,
+r
+r is the distance from Earth's center,
+r
+^
+r
+^
+  is the unit vector from Earth’s center to the payload.
+The acceleration due to Earth's gravity is:</p>
+<h1 id="a">a</h1>
+<p>−
+G
+M
+r
+3
+r
+a=− 
+r 
+3</p>
+<p>GM
+​ <br/>
+ r
+Equations of Motion
+The motion of the payload under gravity satisfies:</p>
+<p>d
+2
+r
+d
+t
+2
+=
+−
+G
+M
+r
+3
+r
+dt 
+2</p>
+<p>d 
+2
+ r
+​ <br/>
+ =− 
+r 
+3</p>
+<p>GM
+​ <br/>
+ r
+Given initial conditions 
+r
+0
+r 
+0
+​ <br/>
+  and 
+v
+0
+v 
+0
+​ <br/>
+ , the trajectory is computed numerically.</p>
+<ol>
+<li>Types of Trajectories</li>
+</ol>
+<p>The shape of the trajectory depends on the total specific mechanical energy 
+E
+E:</p>
+<h1 id="e">E</h1>
+<p>v
+2
+2
+−
+G
+M
+r
+E= 
+2
+v 
+2</p>
+<p>​ <br/>
+ − 
+r
+GM
+​   </p>
+<p>Elliptical orbit: 
+E
+&lt;
+0
+E&lt;0 (bound orbit),
+Parabolic trajectory: 
+E
+=
+0
+E=0 (escape velocity),
+Hyperbolic trajectory: 
+E</p>
+<blockquote>
+<p>0
+E&gt;0 (unbound, escape path).
+3. Numerical Simulation Method</p>
+</blockquote>
+<p>We solve the second-order ODE using numerical integration (e.g., RK4):</p>
+<p>Initial conditions: 
+r
+0
+r 
+0
+​ <br/>
+ , 
+v
+0
+v 
+0
+​ <br/>
+ ,
+Update position and velocity at each timestep 
+Δ
+t
+Δt,
+Continue until simulation time ends or payload hits Earth.
+4. Python Implementation</p>
+<p>import numpy as np
+import matplotlib.pyplot as plt</p>
+<h1 id="constants">Constants</h1>
+<p>G = 6.67430e-11           # m^3 kg^-1 s^-2
+M = 5.972e24              # kg
+R_earth = 6371e3          # Earth radius in meters</p>
+<h1 id="simulation-parameters">Simulation parameters</h1>
+<p>dt = 1.0                  # time step in seconds
+t_max = 20000             # max simulation time in seconds</p>
+<h1 id="initial-conditions">Initial conditions</h1>
+<p>altitude = 500e3          # 500 km above Earth surface
+r0 = np.array([R_earth + altitude, 0.0])  # initial position (x,y)
+v_circular = np.sqrt(G * M / np.linalg.norm(r0))  # circular orbit velocity</p>
+<h1 id="set-initial-velocity-10-faster-than-circular-velocity-example">Set initial velocity: 10% faster than circular velocity (example)</h1>
+<p>v0 = np.array([0.0, 1.1 * v_circular])</p>
+<h1 id="initialize-state-variables">Initialize state variables</h1>
+<p>r = r0.copy()
+v = v0.copy()</p>
+<p>positions = []
+velocities = []
+times = []</p>
+<p>def acceleration(r):
+    r_norm = np.linalg.norm(r)
+    return -G * M * r / r_norm**3</p>
+<p>t = 0
+while t &lt; t_max:
+    # Record data
+    positions.append(r.copy())
+    velocities.append(v.copy())
+    times.append(t)</p>
+<pre><code># RK4 integration steps
+a1 = acceleration(r)
+k1v = a1 * dt
+k1r = v * dt
+
+a2 = acceleration(r + 0.5 * k1r)
+k2v = a2 * dt
+k2r = (v + 0.5 * k1v) * dt
+
+a3 = acceleration(r + 0.5 * k2r)
+k3v = a3 * dt
+k3r = (v + 0.5 * k2v) * dt
+
+a4 = acceleration(r + k3r)
+k4v = a4 * dt
+k4r = (v + k3v) * dt
+
+# Update velocity and position
+v += (k1v + 2*k2v + 2*k3v + k4v) / 6
+r += (k1r + 2*k2r + 2*k3r + k4r) / 6
+
+# Stop if payload hits Earth's surface
+if np.linalg.norm(r) &lt;= R_earth:
+    print(f"Payload hit Earth surface at t={t:.2f} seconds")
+    break
+
+t += dt
+</code></pre>
+<p>positions = np.array(positions)
+velocities = np.array(velocities)
+times = np.array(times)</p>
+<h1 id="plot-trajectory">Plot trajectory</h1>
+<p>plt.figure(figsize=(8,8))
+earth = plt.Circle((0,0), R_earth, color='b', alpha=0.3)
+plt.gca().add_patch(earth)
+plt.plot(positions[:,0], positions[:,1], label="Payload Trajectory")
+plt.scatter([r0[0]], [r0[1]], color='green', label='Initial Position')
+plt.axis('equal')
+plt.xlabel('x (m)')
+plt.ylabel('y (m)')
+plt.title('Payload Trajectory Near Earth')
+plt.legend()
+plt.grid()
+plt.show()</p>
+<h1 id="plot-energy-over-time">Plot energy over time</h1>
+<p>speeds = np.linalg.norm(velocities, axis=1)
+radii = np.linalg.norm(positions, axis=1)
+energy = 0.5 * speeds**2 - G * M / radii</p>
+<p>plt.figure()
+plt.plot(times, energy)
+plt.xlabel('Time (s)')
+plt.ylabel('Specific Mechanical Energy (J/kg)')
+plt.title('Energy vs Time (should be roughly constant)')
+plt.grid()
+plt.show()
+5. Interpretation of Results</p>
+<p>When initial velocity 
+v
+0
+&lt;
+v
+e
+s
+c
+a
+p
+e
+=
+2
+G
+M
+/
+r
+0
+v 
+0
+​ <br/>
+ &lt;v 
+escape
+​ <br/>
+ = 
+2GM/r 
+0
+​   </p>
+<p>​ <br/>
+ , the payload remains in elliptical orbit around Earth.
+At exactly escape velocity 
+v
+0
+=
+v
+e
+s
+c
+a
+p
+e
+v 
+0
+​ <br/>
+ =v 
+escape
+​ <br/>
+ , the trajectory becomes parabolic, allowing the payload to escape Earth's gravity.
+If 
+v
+0</p>
+<blockquote>
+<p>v
+e
+s
+c
+a
+p
+e
+v 
+0
+​ <br/>
+v 
+escape
+​ <br/>
+ , the trajectory is hyperbolic and the payload escapes Earth entirely.
+The simulation allows visualization of these trajectories and energy conservation checks.</p>
+</blockquote>
+<ol>
+<li>Real-World Applications</li>
+</ol>
+<p>Orbital insertion: Satellites released from rockets must achieve proper velocity vectors to orbit Earth stably.
+Reentry: Payloads returning to Earth need controlled velocities and angles to avoid burning up or skipping the atmosphere.
+Escape trajectories: Missions aiming for Moon, Mars, or beyond require trajectories above escape velocity.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
