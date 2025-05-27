@@ -50,7 +50,6 @@ We visualize the total wave field \(\psi_{\text{total}}(x, y, t)\) to identify c
 
 ## 🐍 Python Simulation Code
 
-```python
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -91,3 +90,4 @@ plt.xlabel('x')
 plt.ylabel('y')
 plt.axis('equal')
 plt.show()
+
