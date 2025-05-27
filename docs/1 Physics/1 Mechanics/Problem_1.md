@@ -63,6 +63,10 @@ The range \( R \) is maximal when:
 - Include drag force proportional to velocity.
 - Model wind as horizontal acceleration.
 - Use numerical integration for non-constant acceleration.
+
+## 4. Implementation: Python Simulation
+
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -88,3 +92,4 @@ plt.title('Projectile Range as a Function of Angle')
 plt.legend()
 plt.grid(True)
 plt.show()
+
