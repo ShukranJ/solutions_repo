@@ -1,123 +1,90 @@
-# Problem 1: Investigating the Range as a Function of the Angle of Projection
+# Investigating the Range as a Function of the Angle of Projection
 
-## Motivation
+## 1. Theoretical Foundation
 
-Projectile motion, while seemingly simple, provides a rich framework for exploring core principles of physics.
+### 1.1 Deriving the Equations of Motion
 
-Despite the apparent simplicity of launching an object into the air, the underlying physics involves various interacting parameters:
+Consider a projectile launched from the origin at an initial speed \( v_0 \) and angle \( \theta \) above the horizontal. The acceleration due to gravity is \( g \) downward.
 
-- **Initial velocity**: \( v_0 \)
-- **Gravitational acceleration**: \( g \)
-- **Launch angle**: \( \theta \)
-
-These variables result in a wide variety of possible trajectories, modeling real-world phenomena from sports to spacecraft dynamics.
-
----
-
-## Theoretical Background
-
-Assume an object is launched from flat ground with an initial velocity \( v_0 \) at an angle \( \theta \) above the horizontal, and neglect air resistance.
-
-### Equations of Motion
-
-- **Horizontal position**:  
-  \[
-  x(t) = v_0 \cos(\theta) \cdot t
-  \]
-
-- **Vertical position**:  
-  \[
-  y(t) = v_0 \sin(\theta) \cdot t - \frac{1}{2} g t^2
-  \]
-
-### Time of Flight
-
-The projectile returns to the ground when \( y(t) = 0 \):
+- **Horizontal motion:**
 
 \[
-T = \frac{2 v_0 \sin(\theta)}{g}
+x(t) = v_0 \cos\theta \cdot t
 \]
 
-### Range Equation
-
-Substitute time of flight into the horizontal equation to find range:
+- **Vertical motion:**
 
 \[
-R = v_0 \cos(\theta) \cdot T = \frac{v_0^2 \sin(2\theta)}{g}
+y(t) = v_0 \sin\theta \cdot t - \frac{1}{2} g t^2
 \]
 
-This expression defines a **family of solutions** depending on:
-- \( v_0 \): launch speed
-- \( \theta \): launch angle
-- \( g \): local gravity
+These come from integrating the acceleration \( \vec{a} = (0, -g) \) twice, with initial velocity components \( v_0 \cos\theta \) and \( v_0 \sin\theta \).
 
-Maximum range is achieved when \( \theta = 45^\circ \), since \( \sin(2\theta) \) reaches its maximum of 1.
+### 1.2 Family of Solutions
 
----
+The time of flight \( T \) is found by setting \( y(T) = 0 \) (returns to launch height):
 
-## Analysis of Range Behavior
+\[
+v_0 \sin\theta \cdot T - \frac{1}{2} g T^2 = 0 \quad \Rightarrow \quad T = \frac{2 v_0 \sin\theta}{g}
+\]
 
-### Parameter Influence
+The horizontal range \( R \) is:
 
-- **Velocity**: \( R \propto v_0^2 \) → doubling speed quadruples the range.
-- **Gravity**: \( R \propto \frac{1}{g} \) → lower gravity increases range.
+\[
+R = x(T) = v_0 \cos\theta \cdot T = \frac{v_0^2}{g} \sin 2\theta
+\]
 
-### Symmetry
+The family of solutions depends on \( v_0 \), \( g \), and \( \theta \). Changing these parameters alters the shape and extent of the projectile’s trajectory.
 
-The range is symmetric around \( \theta = 45^\circ \). Angles \( \theta \) and \( 90^\circ - \theta \) yield the same range.
+## 2. Analysis of the Range
 
----
+The range \( R \) is maximal when:
 
-## Practical Applications
+\[
+\sin 2\theta = 1 \quad \Rightarrow \quad 2\theta = 90^\circ \quad \Rightarrow \quad \theta = 45^\circ
+\]
 
-This model applies to real-world phenomena such as:
+**Influence of parameters:**
 
-- **Sports**: Ball trajectories in football, basketball, etc.
-- **Engineering**: Calculations in artillery or construction.
-- **Astrophysics**: Trajectories of planetary probes and landers.
+- Increasing \( v_0 \) increases \( R \) quadratically.
+- Increasing \( g \) decreases \( R \) inversely.
+- The angle \( \theta \) controls the shape of the sine function, shifting the range.
 
-### Extensions
+## 3. Practical Applications and Limitations
 
-- Uneven launch and landing heights.
-- Air resistance (drag).
-- Wind and rotational effects (e.g., Coriolis force).
+### Real-world adjustments:
 
----
-## Python Simulation
+- Launch height different from zero modifies the time of flight and range.
+- Air resistance reduces range and alters trajectory shape.
+- Uneven terrain complicates impact points.
 
-```python
+### Extensions:
+
+- Include drag force proportional to velocity.
+- Model wind as horizontal acceleration.
+- Use numerical integration for non-constant acceleration.
 import numpy as np
 import matplotlib.pyplot as plt
 
-# --- Constants ---
-g = 9.81             # Acceleration due to gravity (m/s²)
-v0 = 30              # Initial velocity (m/s)
+# Constants
+g = 9.81  # gravity (m/s^2)
+v0 = 20.0  # initial velocity (m/s)
 
-# --- Angles from 0 to 90 degrees ---
-angles_deg = np.linspace(0, 90, 500)       # 500 points from 0° to 90°
-angles_rad = np.radians(angles_deg)        # Convert to radians for computation
+# Range calculation function
+def projectile_range(v0, theta_deg, g=9.81):
+    theta = np.radians(theta_deg)
+    return (v0**2 / g) * np.sin(2 * theta)
 
-# --- Range Calculation ---
-R = (v0**2) * np.sin(2 * angles_rad) / g   # R = (v₀² * sin(2θ)) / g
+# Generate angles from 0 to 90 degrees
+angles = np.linspace(0, 90, 500)
+ranges = projectile_range(v0, angles)
 
-# --- Plotting ---
-plt.figure(figsize=(10, 6))
-plt.plot(angles_deg, R, color='navy', label=f'v₀ = {v0} m/s')
-plt.axvline(45, color='red', linestyle='--', label='Maximum at 45°')
-plt.title('Range vs Angle of Projection')
-plt.xlabel('Angle (degrees)')
+# Plot range vs angle
+plt.figure(figsize=(8,5))
+plt.plot(angles, ranges, label=f'v0 = {v0} m/s')
+plt.xlabel('Angle of Projection (degrees)')
 plt.ylabel('Range (meters)')
-plt.grid(True)
+plt.title('Projectile Range as a Function of Angle')
 plt.legend()
+plt.grid(True)
 plt.show()
-
----
-
-### ✅ Explanation:
-- `np.linspace(0, 90, 500)`: Generates 500 evenly spaced angles between 0° and 90°.
-- `np.radians(...)`: Converts degrees to radians since `np.sin()` expects radians.
-- `R = (v0**2) * np.sin(2 * θ) / g`: Formula for range of projectile on flat ground.
-- `plt.axvline(45, ...)`: Highlights the theoretical maximum range at 45°.
-
-
-
