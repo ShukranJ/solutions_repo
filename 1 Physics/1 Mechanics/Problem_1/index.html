@@ -175,10 +175,12 @@
 Motivation
 Projectile motion, while seemingly simple, provides a rich framework for exploring core principles of classical mechanics. The goal of this problem is to analyze how the range of a projectile depends on its angle of projection.</p>
 <p>Despite the apparent simplicity of launching an object into the air, the underlying physics involves a delicate interplay between vertical and horizontal motion, governed by both linear and quadratic relationships. These relationships are influenced by parameters such as:</p>
-<p>Initial velocity 
-𝑣
-0
-v 
+<ul>
+<li><strong>Initial velocity</strong>: <span class="arithmatex">\( v_0 \)</span></li>
+<li><strong>Gravitational acceleration</strong>: <span class="arithmatex">\( g \)</span></li>
+<li><strong>Launch height</strong>: <span class="arithmatex">\( h \)</span></li>
+</ul>
+<p>v 
 0
 ​</p>
 <p>Gravitational acceleration 
@@ -189,25 +191,18 @@ g</p>
 h</p>
 <p>These variables result in a wide variety of possible trajectories, modeling real-world phenomena such as the arc of a soccer ball or the path of a rocket.
 Theoretical Background
-Assume an object is launched from flat ground at velocity 
-𝑣
-0
-v 
-0
-​
-  and angle 
-𝜃
-θ (above the horizontal). Neglecting air resistance:</p>
-<p>Equations of Motion:
-𝑥
-(
-𝑡
-)
-=
-𝑣
-0
-cos
-⁡
+Assume an object is launched from flat ground with an initial velocity <span class="arithmatex">\( v_0 \)</span> at an angle <span class="arithmatex">\( \theta \)</span> above the horizontal. Neglecting air resistance:</p>
+<p>θ (above the horizontal). Neglecting air resistance:</p>
+<h3 id="equations-of-motion">Equations of Motion</h3>
+<p>Horizontal position:
+[
+x(t) = v_0 \cos(\theta) \cdot t
+]</p>
+<p>Vertical position:
+[
+y(t) = v_0 \sin(\theta) \cdot t - \frac{1}{2} g t^2
+]</p>
+<p>⁡
 (
 𝜃
 )
@@ -273,32 +268,17 @@ g
 ​
  sin(θ)
 ​</p>
-<p>Range Equation:
-𝑅
-=
-𝑣
-0
-cos
-⁡
-(
-𝜃
-)
-⋅
-𝑡
-=
-𝑣
-0
-2
-sin
-⁡
-(
-2
-𝜃
-)
-𝑔
-R=v 
-0
-​
+<p>Range Equation:</p>
+<h3 id="horizontal-range">Horizontal Range</h3>
+<p>Total time of flight:
+[
+t = \frac{2 v_0 \sin(\theta)}{g}
+]</p>
+<p>Range:
+[
+R = v_0 \cos(\theta) \cdot t = \frac{v_0^2 \sin(2\theta)}{g}
+]</p>
+<p>​
  cos(θ)⋅t= 
 g
 v 
