@@ -71,8 +71,10 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#derivations-and-mathematical-background">Derivations and Mathematical Background</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#planetary-data">Planetary Data</a>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#python-simulation-and-velocity-calculations">Python Simulation and Velocity Calculations</a>
+</ul>
 </li>
 </ul>
 </li>
@@ -236,49 +238,33 @@ F = \frac{G M m}{r^2}
 \]</div>
 <p>The third cosmic velocity depends on the body’s position relative to the Sun and is often computed based on heliocentric energy conditions.</p>
 <hr/>
-<h2 id="python-simulation-and-velocity-calculations">Python Simulation and Velocity Calculations</h2>
-<p>We compute these velocities for:</p>
-<ul>
-<li>Earth</li>
-<li>Mars</li>
-<li>Jupiter</li>
-</ul>
+<h3 id="planetary-data">Planetary Data</h3>
 <p>```python
 import numpy as np
 import matplotlib.pyplot as plt</p>
 <h1 id="gravitational-constant">Gravitational constant</h1>
 <p>G = 6.674e-11  # N·m²/kg²</p>
-<h1 id="planetary-data">Planetary data</h1>
+<h1 id="planetary-mass-kg-and-radius-m">Planetary mass (kg) and radius (m)</h1>
 <p>bodies = {
-    "Earth": {"M": 5.972e24, "r": 6.371e6},
-    "Mars": {"M": 6.39e23, "r": 3.39e6},
+    "Earth":   {"M": 5.972e24, "r": 6.371e6},
+    "Mars":    {"M": 6.39e23,  "r": 3.39e6},
     "Jupiter": {"M": 1.898e27, "r": 6.99e7}
 }</p>
 <p>results = {}</p>
+<h1 id="compute-v1-and-v2-for-each-body">Compute v1 and v2 for each body</h1>
 <p>for body, data in bodies.items():
     M = data["M"]
     r = data["r"]
-    v1 = np.sqrt(G * M / r)
-    v2 = np.sqrt(2 * G * M / r)
-    results[body] = {"v1 (km/s)": v1 / 1000, "v2 (km/s)": v2 / 1000}</p>
+    v1 = np.sqrt(G * M / r)            # First Cosmic Velocity (orbital)
+    v2 = np.sqrt(2 * G * M / r)        # Second Cosmic Velocity (escape)
+    results[body] = {
+        "v1 (km/s)": v1 / 1000,
+        "v2 (km/s)": v2 / 1000
+    }</p>
 <h1 id="print-results">Print results</h1>
 <p>for body in results:
     print(f"{body} - First Cosmic Velocity: {results[body]['v1 (km/s)']:.2f} km/s")
     print(f"{body} - Second Cosmic Velocity: {results[body]['v2 (km/s)']:.2f} km/s\n")</p>
-<h1 id="plotting">Plotting</h1>
-<p>labels = list(results.keys())
-v1_vals = [results[b]["v1 (km/s)"] for b in labels]
-v2_vals = [results[b]["v2 (km/s)"] for b in labels]</p>
-<p>x = np.arange(len(labels))
-width = 0.35</p>
-<p>plt.bar(x - width/2, v1_vals, width, label='First Cosmic Velocity')
-plt.bar(x + width/2, v2_vals, width, label='Second Cosmic Velocity')
-plt.ylabel("Velocity (km/s)")
-plt.title("Cosmic Velocities for Celestial Bodies")
-plt.xticks(x, labels)
-plt.legend()
-plt.grid(True)
-plt.show()</p>
 <h2 id="sample-output-approximate">Sample Output (Approximate)</h2>
 <table>
 <thead>
