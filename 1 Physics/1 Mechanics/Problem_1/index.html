@@ -66,6 +66,8 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#4-implementation-python-simulation">4. Implementation: Python Simulation</a>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Problem_2/">Problem 2: Investigating the Dynamics of a Forced Damped Pendulum</a>
@@ -238,10 +240,12 @@ R = x(T) = v_0 \cos\theta \cdot T = \frac{v_0^2}{g} \sin 2\theta
 <ul>
 <li>Include drag force proportional to velocity.</li>
 <li>Model wind as horizontal acceleration.</li>
-<li>Use numerical integration for non-constant acceleration.
-import numpy as np
-import matplotlib.pyplot as plt</li>
+<li>Use numerical integration for non-constant acceleration.</li>
 </ul>
+<h2 id="4-implementation-python-simulation">4. Implementation: Python Simulation</h2>
+<p>```python
+import numpy as np
+import matplotlib.pyplot as plt</p>
 <h1 id="constants">Constants</h1>
 <p>g = 9.81  # gravity (m/s^2)
 v0 = 20.0  # initial velocity (m/s)</p>
