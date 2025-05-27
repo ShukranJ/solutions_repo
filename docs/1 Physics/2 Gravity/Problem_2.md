@@ -124,27 +124,71 @@ plt.xticks(x, labels)
 plt.legend()
 plt.grid(True)
 plt.show()
-Sample Output (approximate):
-Body	v1 (km/s)	v2 (km/s)
-Earth	7.91	11.2
-Mars	3.55	5.03
-Jupiter	42.1	59.5
-Discussion and Applications
 
-Real-World Uses
-First Cosmic Velocity: Used for launching satellites into Low Earth Orbit (LEO).
-Second Cosmic Velocity: Applied in missions to the Moon, Mars, and outer planets.
-Third Cosmic Velocity: Needed for interstellar probes like Voyager 1 and 2.
-Engineering Considerations
-Real launch speeds are higher due to atmospheric drag and non-vertical launch paths.
-Planetary rotation assists launch at the equator.
-Missions often use gravity assists to achieve interplanetary or interstellar speeds.
-Limitations and Extensions
+## Sample Output (Approximate)
 
-Ideal models ignore air resistance, non-spherical gravity, and rotational effects.
-Relativistic corrections are needed at high speeds or near massive bodies.
-Interstellar travel requires propulsion beyond escape velocity (e.g., ion drives, solar sails).
-Conclusion
+| Body     | v₁ (km/s) | v₂ (km/s) |
+|----------|------------|------------|
+| Earth    | 7.91       | 11.2       |
+| Mars     | 3.55       | 5.03       |
+| Jupiter  | 42.1       | 59.5       |
 
-Cosmic velocities define the energetic boundaries of space travel. From placing satellites into orbit to launching probes beyond the solar system, understanding these velocities is vital for planning and executing space missions. Through theoretical analysis and computational simulation, we gain both practical and conceptual insights into the physics of gravitational escape.
+- **v₁** = First Cosmic Velocity (orbital speed at surface level)
+- **v₂** = Second Cosmic Velocity (escape speed from surface)
+
+---
+
+## Discussion and Applications
+
+### Real-World Uses
+
+- **First Cosmic Velocity**  
+  Used to place satellites into **Low Earth Orbit (LEO)** and other orbital paths around a planet.
+
+- **Second Cosmic Velocity**  
+  Required for **lunar and interplanetary missions**, such as going to Mars, Venus, or outer planets.
+
+- **Third Cosmic Velocity**  
+  Needed to **leave the solar system**, used by **Voyager 1 and 2** and other deep-space probes.
+
+### Engineering Considerations
+
+- **Atmospheric Drag**  
+  In real-world conditions, launch velocities must account for **air resistance**, which is neglected in idealized models.
+
+- **Planetary Rotation**  
+  Launching near the **equator** takes advantage of the planet’s rotational speed to reduce fuel consumption.
+
+- **Gravity Assists**  
+  **Slingshot maneuvers** around planets are commonly used to achieve higher velocities for **interplanetary or interstellar travel**.
+
+---
+
+## Limitations and Extensions
+
+- **Ideal Assumptions**  
+  The basic model assumes:
+  - Vacuum (no atmospheric drag)
+  - Spherical, uniform mass distributions
+  - Non-rotating bodies
+
+- **Relativistic Effects**  
+  Near very **massive bodies** (e.g., black holes), **general relativity** replaces Newtonian gravity.
+
+- **Advanced Propulsion**  
+  Reaching the **third cosmic velocity** and beyond requires:
+  - **Ion thrusters**
+  - **Solar sails**
+  - **Nuclear propulsion**
+
+---
+
+## Conclusion
+
+Cosmic velocities define the **minimum energy requirements** for various classes of space missions:
+- From launching satellites and exploring planets
+- To escaping Earth’s gravity entirely
+- And ultimately, traveling beyond the solar system
+
+Understanding these velocities helps engineers and scientists **design feasible missions**, optimize fuel efficiency, and explore the **limits of human space exploration**. Through both **analytical equations** and **numerical simulations**, we gain powerful insights into the physics that govern motion in our universe.
 
