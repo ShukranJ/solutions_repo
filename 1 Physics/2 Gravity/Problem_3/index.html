@@ -288,39 +288,6 @@ plt.legend()
 plt.grid(True)
 plt.axis('equal')
 plt.show()</p>
-<h3 id="explanation-of-the-python-implementation">Explanation of the Python Implementation</h3>
-<ol>
-<li><strong>Equations of Motion</strong>: The <code>equations_of_motion</code> function implements Newton's Law of Gravitation in 2D, computing accelerations based on the inverse-square law.</li>
-<li><strong>Orbit Parameters</strong>: The <code>compute_orbit_params</code> function calculates specific mechanical energy and eccentricity to classify the trajectory.</li>
-<li><strong>Numerical Integration</strong>: The <code>solve_ivp</code> function from <code>scipy.integrate</code> uses the RK45 method to solve the differential equations of motion.</li>
-<li><strong>Simulation</strong>: The <code>simulate_trajectory</code> function sets initial conditions (position at 200 km altitude, velocity, and angle) and computes the trajectory.</li>
-<li><strong>Visualization</strong>: The <code>plot_trajectory</code> function plots the payload's path and Earth's surface, with labels for eccentricity and energy.</li>
-<li><strong>Test Cases</strong>: Four initial velocities are tested:</li>
-<li>Circular orbit velocity (<span class="arithmatex">\( v = \sqrt{\mu / r} \)</span>).</li>
-<li>Sub-circular velocity (elliptical orbit).</li>
-<li>Escape velocity (<span class="arithmatex">\( v = \sqrt{2 \mu / r} \)</span>).</li>
-<li>Above escape velocity (hyperbolic orbit).</li>
-</ol>
-<h3 id="dependencies">Dependencies</h3>
-<ul>
-<li><code>numpy</code>: For numerical computations.</li>
-<li><code>matplotlib</code>: For plotting.</li>
-<li><code>scipy</code>: For numerical integration.</li>
-</ul>
-<h3 id="running-the-code">Running the Code</h3>
-<ol>
-<li>Ensure Python and the required libraries (<code>numpy</code>, <code>matplotlib</code>, <code>scipy</code>) are installed.</li>
-<li>Copy the Python code into a <code>.py</code> file or Jupyter notebook.</li>
-<li>Run the script to generate a plot showing the four trajectories.</li>
-</ol>
-<h3 id="extending-the-code">Extending the Code</h3>
-<ul>
-<li>Add 3D motion by extending the state vector and equations.</li>
-<li>Include atmospheric drag for reentry scenarios.</li>
-<li>Allow user input for initial conditions (altitude, velocity, angle).</li>
-<li>Compute orbital elements (semi-major axis, perigee, apogee) for deeper analysis.</li>
-</ul>
-<p>This implementation fulfills the deliverables by providing a computational tool, detailed explanations, and graphical visualizations. Let me know if you need modifications, additional features, or further clarification!</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
