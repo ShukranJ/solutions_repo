@@ -1,6 +1,8 @@
-Problem 1: Investigating the Range as a Function of the Angle of Projection
-Motivation
-Projectile motion, while seemingly simple, provides a rich framework for exploring core principles of classical mechanics. The goal of this problem is to analyze how the range of a projectile depends on its angle of projection.
+# Problem 1: Investigating the Range as a Function of the Angle of Projection
+
+## Motivation
+
+Projectile motion, while seemingly simple, provides a rich framework for exploring core principles of classical mechanics. The goal of this problem is to analyze how the **range** of a projectile depends on its **angle of projection**.
 
 Despite the apparent simplicity of launching an object into the air, the underlying physics involves a delicate interplay between vertical and horizontal motion, governed by both linear and quadratic relationships. These relationships are influenced by parameters such as:
 
@@ -8,160 +10,81 @@ Despite the apparent simplicity of launching an object into the air, the underly
 - **Gravitational acceleration**: \( g \)
 - **Launch height**: \( h \)
 
-
-v 
-0
-​
- 
-
-Gravitational acceleration 
-𝑔
-g
-
-Launch height 
-ℎ
-h
-
 These variables result in a wide variety of possible trajectories, modeling real-world phenomena such as the arc of a soccer ball or the path of a rocket.
-Theoretical Background
-Assume an object is launched from flat ground with an initial velocity \( v_0 \) at an angle \( \theta \) above the horizontal. Neglecting air resistance:
 
-θ (above the horizontal). Neglecting air resistance:
+---
+
+## Theoretical Background
+
+Assume an object is launched from flat ground with an initial velocity \( v_0 \) at an angle \( \theta \) (above the horizontal). Neglecting air resistance:
 
 ### Equations of Motion
 
-Horizontal position:
-\[
-x(t) = v_0 \cos(\theta) \cdot t
-\]
+- **Horizontal position**:
+  $$
+  x(t) = v_0 \cos(\theta) \cdot t
+  $$
 
-Vertical position:
-\[
-y(t) = v_0 \sin(\theta) \cdot t - \frac{1}{2} g t^2
-\]
+- **Vertical position**:
+  $$
+  y(t) = v_0 \sin(\theta) \cdot t - \frac{1}{2} g t^2
+  $$
 
-⁡
-(
-𝜃
-)
-⋅
-𝑡
-x(t)=v 
-0
-​
- cos(θ)⋅t
-𝑦
-(
-𝑡
-)
-=
-𝑣
-0
-sin
-⁡
-(
-𝜃
-)
-⋅
-𝑡
-−
-1
-2
-𝑔
-𝑡
-2
-y(t)=v 
-0
-​
- sin(θ)⋅t− 
-2
-1
-​
- gt 
-2
- 
-Time of flight when the projectile returns to the ground 
-(
-𝑦
-(
-𝑡
-)
-=
-0
-)
-(y(t)=0):
+### Time of Flight
 
-𝑡
-=
-2
-𝑣
-0
-sin
-⁡
-(
-𝜃
-)
-𝑔
-t= 
-g
-2v 
-0
-​
- sin(θ)
-​
- 
-Range Equation:
+The projectile returns to the ground when \( y(t) = 0 \). Solving:
+
+$$
+t = \frac{2 v_0 \sin(\theta)}{g}
+$$
+
 ### Horizontal Range
 
-Total time of flight:
-\[
-t = \frac{2 v_0 \sin(\theta)}{g}
-\]
+The horizontal range \( R \) is:
 
-Range:
-\[
+$$
 R = v_0 \cos(\theta) \cdot t = \frac{v_0^2 \sin(2\theta)}{g}
-\]
+$$
 
-​
- cos(θ)⋅t= 
-g
-v 
-0
-2
-​
- sin(2θ)
-​
- 
-Python Simulation Example
-python
-Copy
-Edit
+> 📌 **Maximum range** occurs at \( \theta = 45^\circ \)
+
+---
+
+## Python Simulation Example
+
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 
 # Parameters
-v0 = 20  # initial velocity (m/s)
-g = 9.81  # gravity (m/s^2)
+v0 = 20  # initial velocity in m/s
+g = 9.81  # gravity in m/s^2
 
-# Angle range (0 to 90 degrees)
+# Angle range
 angles_deg = np.linspace(0, 90, 100)
 angles_rad = np.radians(angles_deg)
 
-# Compute range
+# Calculate range
 ranges = (v0**2 * np.sin(2 * angles_rad)) / g
 
-# Plotting
+# Plot
 plt.figure(figsize=(10, 6))
-plt.plot(angles_deg, ranges, color='blue', label=f'Initial Velocity = {v0} m/s')
+plt.plot(angles_deg, ranges, label=f'Initial Velocity = {v0} m/s', color='blue')
 plt.title('Projectile Range vs Angle of Projection')
 plt.xlabel('Launch Angle (degrees)')
 plt.ylabel('Range (meters)')
 plt.grid(True)
 plt.legend()
 plt.show()
-📈 Expected Output and Discussion
-The maximum range occurs at 
+Observations
+The function 
+𝑅
+(
+𝜃
+)
+R(θ) is symmetric about 45°.
+
+The range is maximum at 
 𝜃
 =
 45
@@ -170,57 +93,38 @@ The maximum range occurs at
 ∘
  .
 
-The function 
-𝑅
-(
-𝜃
-)
-R(θ) is symmetric about 45°, i.e., 
-𝑅
-(
-𝜃
-)
-=
-𝑅
-(
-90
-∘
-−
-𝜃
-)
-R(θ)=R(90 
-∘
- −θ).
+Increasing the initial velocity 
+𝑣
+0
+v 
+0
+​
+  increases the range quadratically.
 
-Higher initial velocities result in longer ranges.
-
-This model assumes no air resistance and launch/landing at equal heights.
-
- Limitations and Extensions
+Limitations and Extensions
 Limitations:
 
-No air drag or wind.
+Assumes no air resistance.
 
-Assumes flat terrain.
+Flat launch and landing surfaces.
 
-Possible Extensions:
+Extensions:
 
-Add launch height 
+Include initial height 
 ℎ
-h: modifies the time of flight.
+h.
 
-Include air resistance for a more realistic model.
+Model air drag or wind.
 
-Simulate launch and landing at different heights or sloped surfaces.
+Simulate real-world applications (e.g., soccer kicks, rocket launches).
 
- Deliverables
+Deliverables
 A Markdown or Jupyter Notebook including:
 
-Theoretical derivations and equations.
+Theoretical derivation.
 
-Python script implementing simulation.
+Python script for simulation.
 
-Graphs of range vs angle under varying parameters.
+Graphs of range vs angle.
 
-Discussion of model limitations and possible improvements.
-
+Discussion on model limitations and extensions.
