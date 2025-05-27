@@ -239,59 +239,31 @@ F = \frac{G M m}{r^2}
 <p>The third cosmic velocity depends on the body’s position relative to the Sun and is often computed based on heliocentric energy conditions.</p>
 <hr/>
 <h3 id="planetary-data">Planetary Data</h3>
-<p>```python
-import numpy as np
-import matplotlib.pyplot as plt</p>
+<p>import numpy as np</p>
 <h1 id="gravitational-constant">Gravitational constant</h1>
-<p>G = 6.674e-11  # N·m²/kg²</p>
-<h1 id="planetary-mass-kg-and-radius-m">Planetary mass (kg) and radius (m)</h1>
+<p>G = 6.67430e-11  # m^3/kg/s^2</p>
+<h1 id="planetary-data-mass-in-kg-radius-in-meters">Planetary data (mass in kg, radius in meters)</h1>
 <p>bodies = {
-    "Earth":   {"M": 5.972e24, "r": 6.371e6},
-    "Mars":    {"M": 6.39e23,  "r": 3.39e6},
-    "Jupiter": {"M": 1.898e27, "r": 6.99e7}
+    "Earth": {"M": 5.972e24, "r": 6.371e6},
+    "Mars": {"M": 6.39e23, "r": 3.39e6},
+    "Jupiter": {"M": 1.898e27, "r": 6.9911e7}
 }</p>
-<p>results = {}</p>
-<h1 id="compute-v1-and-v2-for-each-body">Compute v1 and v2 for each body</h1>
+<h1 id="calculate-and-print-velocities">Calculate and print velocities</h1>
 <p>for body, data in bodies.items():
     M = data["M"]
     r = data["r"]
-    v1 = np.sqrt(G * M / r)            # First Cosmic Velocity (orbital)
-    v2 = np.sqrt(2 * G * M / r)        # Second Cosmic Velocity (escape)
-    results[body] = {
-        "v1 (km/s)": v1 / 1000,
-        "v2 (km/s)": v2 / 1000
-    }</p>
+    v1 = np.sqrt(G * M / r)         # First cosmic velocity
+    v2 = np.sqrt(2 * G * M / r)     # Second cosmic velocity
+    print(f"{body:&lt;8} | v1 = {v1/1000:.2f} km/s | v2 = {v2/1000:.2f} km/s")</p>
 <h1 id="print-results">Print results</h1>
 <p>for body in results:
     print(f"{body} - First Cosmic Velocity: {results[body]['v1 (km/s)']:.2f} km/s")
     print(f"{body} - Second Cosmic Velocity: {results[body]['v2 (km/s)']:.2f} km/s\n")</p>
 <h2 id="sample-output-approximate">Sample Output (Approximate)</h2>
-<table>
-<thead>
-<tr>
-<th>Body</th>
-<th>v₁ (km/s)</th>
-<th>v₂ (km/s)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Earth</td>
-<td>7.91</td>
-<td>11.2</td>
-</tr>
-<tr>
-<td>Mars</td>
-<td>3.55</td>
-<td>5.03</td>
-</tr>
-<tr>
-<td>Jupiter</td>
-<td>42.1</td>
-<td>59.5</td>
-</tr>
-</tbody>
-</table>
+<p>Body      v1 (km/s)    v2 (km/s)
+Earth     7.91         11.19
+Mars      3.55         5.02
+Jupiter   42.06        59.46</p>
 <ul>
 <li><strong>v₁</strong> = First Cosmic Velocity (orbital speed at surface level)</li>
 <li><strong>v₂</strong> = Second Cosmic Velocity (escape speed from surface)</li>
