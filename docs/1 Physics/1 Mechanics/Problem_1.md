@@ -4,9 +4,11 @@ Projectile motion, while seemingly simple, provides a rich framework for explori
 
 Despite the apparent simplicity of launching an object into the air, the underlying physics involves a delicate interplay between vertical and horizontal motion, governed by both linear and quadratic relationships. These relationships are influenced by parameters such as:
 
-Initial velocity 
-𝑣
-0
+- **Initial velocity**: \( v_0 \)
+- **Gravitational acceleration**: \( g \)
+- **Launch height**: \( h \)
+
+
 v 
 0
 ​
@@ -22,25 +24,22 @@ h
 
 These variables result in a wide variety of possible trajectories, modeling real-world phenomena such as the arc of a soccer ball or the path of a rocket.
 Theoretical Background
-Assume an object is launched from flat ground at velocity 
-𝑣
-0
-v 
-0
-​
-  and angle 
-𝜃
+Assume an object is launched from flat ground with an initial velocity \( v_0 \) at an angle \( \theta \) above the horizontal. Neglecting air resistance:
+
 θ (above the horizontal). Neglecting air resistance:
 
-Equations of Motion:
-𝑥
-(
-𝑡
-)
-=
-𝑣
-0
-cos
+### Equations of Motion
+
+Horizontal position:
+\[
+x(t) = v_0 \cos(\theta) \cdot t
+\]
+
+Vertical position:
+\[
+y(t) = v_0 \sin(\theta) \cdot t - \frac{1}{2} g t^2
+\]
+
 ⁡
 (
 𝜃
@@ -112,30 +111,18 @@ g
 ​
  
 Range Equation:
-𝑅
-=
-𝑣
-0
-cos
-⁡
-(
-𝜃
-)
-⋅
-𝑡
-=
-𝑣
-0
-2
-sin
-⁡
-(
-2
-𝜃
-)
-𝑔
-R=v 
-0
+### Horizontal Range
+
+Total time of flight:
+\[
+t = \frac{2 v_0 \sin(\theta)}{g}
+\]
+
+Range:
+\[
+R = v_0 \cos(\theta) \cdot t = \frac{v_0^2 \sin(2\theta)}{g}
+\]
+
 ​
  cos(θ)⋅t= 
 g
