@@ -1,201 +1,88 @@
-# Problem 1
- Interference Patterns on a Water Surface
-1. Chosen Polygon
-We'll use a square (4-point sources) as an example. You can easily switch to a triangle, pentagon, etc.
+# 🌊 Waves — Interference Patterns on a Water Surface
 
-2. Wave Equation
-For each source at position 
-(
-𝑥
-𝑖
-,
-𝑦
-𝑖
-)
-(x 
-i
-​
- ,y 
-i
-​
- ), the wave at a point 
-(
-𝑥
-,
-𝑦
-)
-(x,y) and time 
-𝑡
-t is:
+## 🔍 Problem 1: Interference Patterns on a Water Surface
 
-𝜓
-𝑖
-(
-𝑥
-,
-𝑦
-,
-𝑡
-)
-=
-𝐴
-⋅
-cos
-⁡
-(
-𝑘
-𝑟
-𝑖
-−
-𝜔
-𝑡
-+
-𝜙
-)
-ψ 
-i
-​
- (x,y,t)=A⋅cos(kr 
-i
-​
- −ωt+ϕ)
+### 🧠 **Motivation**
+Interference occurs when waves from different sources overlap, creating new patterns. On a water surface, this is seen when ripples from different points meet, forming areas where waves reinforce or cancel each other out. 
+
+This experiment helps us visually understand key concepts in wave physics, such as coherence, phase difference, and constructive/destructive interference.
+
+---
+
+## 🎯 Task
+
+Analyze the interference patterns formed on the water surface due to the superposition of waves emitted from point sources placed at the vertices of a **regular polygon**.
+
+---
+
+## 🛠️ Steps to Follow
+
+### 1. Select a Regular Polygon
+We choose a **square** with 4 point sources at the vertices.
+
+### 2. Position the Sources
+The sources are placed evenly on a circle (radius = 3 units), forming a square.
+
+### 3. Wave Equation
+Each wave from a source \((x_i, y_i)\) is given by:
+
+\[
+\psi_i(x, y, t) = A \cdot \cos(k r_i - \omega t + \phi)
+\]
+
 Where:
+- \( A \): amplitude
+- \( k = \frac{2\pi}{\lambda} \): wave number
+- \( \omega = 2\pi f \): angular frequency
+- \( r_i = \sqrt{(x - x_i)^2 + (y - y_i)^2} \): distance from source to point
+- \( \phi \): initial phase (same for all sources)
 
-𝐴
-A: amplitude (same for all)
+### 4. Superposition of Waves
 
-𝑘
-=
-2
-𝜋
-𝜆
-k= 
-λ
-2π
-​
- : wave number
+\[
+\psi_{\text{total}}(x, y, t) = \sum_{i=1}^{N} \psi_i(x, y, t)
+\]
 
-𝜔
-=
-2
-𝜋
-𝑓
-ω=2πf: angular frequency
+### 5. Analyze Interference
+We visualize the total wave field \(\psi_{\text{total}}(x, y, t)\) to identify constructive and destructive interference regions.
 
-𝑟
-𝑖
-=
-(
-𝑥
-−
-𝑥
-𝑖
-)
-2
-+
-(
-𝑦
-−
-𝑦
-𝑖
-)
-2
-r 
-i
-​
- = 
-(x−x 
-i
-​
- ) 
-2
- +(y−y 
-i
-​
- ) 
-2
- 
-​
- : distance from source 
-𝑖
-i
+---
 
-𝜙
-ϕ: initial phase (same for all sources due to coherence)
+## 🐍 Python Simulation Code
 
-3. Superposition
-Total displacement:
-
-𝜓
-total
-(
-𝑥
-,
-𝑦
-,
-𝑡
-)
-=
-∑
-𝑖
-=
-1
-𝑁
-𝜓
-𝑖
-(
-𝑥
-,
-𝑦
-,
-𝑡
-)
-ψ 
-total
-​
- (x,y,t)= 
-i=1
-∑
-N
-​
- ψ 
-i
-​
- (x,y,t)
-
-Python Code Outline
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Parameters
-A = 1.0         # amplitude
-wavelength = 1  # wavelength (λ)
-frequency = 1   # frequency (f)
-phi = 0         # initial phase
-N = 4           # number of sources (square)
-radius = 3      # radius of the polygon
+# Wave parameters
+A = 1.0            # Amplitude
+wavelength = 1.0   # Wavelength λ
+frequency = 1.0    # Frequency f
+phi = 0            # Initial phase
+N = 4              # Number of sources (square)
+radius = 3         # Radius of the polygon
 
 # Derived parameters
-k = 2 * np.pi / wavelength
-omega = 2 * np.pi * frequency
+k = 2 * np.pi / wavelength  # Wave number
+omega = 2 * np.pi * frequency  # Angular frequency
 
-# Create the polygon vertices
+# Define polygon vertices
 angles = np.linspace(0, 2 * np.pi, N, endpoint=False)
 sources = [(radius * np.cos(a), radius * np.sin(a)) for a in angles]
 
-# Grid setup
+# Create grid
 x = np.linspace(-6, 6, 500)
 y = np.linspace(-6, 6, 500)
 X, Y = np.meshgrid(x, y)
-t = 0  # fixed time
+t = 0  # Snapshot at t=0
 
-# Compute the total wave
+# Superposition of waves
 Z = np.zeros_like(X)
 for (x0, y0) in sources:
     r = np.sqrt((X - x0)**2 + (Y - y0)**2)
     Z += A * np.cos(k * r - omega * t + phi)
 
-# Plot
+# Visualization
 plt.figure(figsize=(8, 6))
 plt.contourf(X, Y, Z, levels=100, cmap='RdBu')
 plt.colorbar(label='Wave Displacement')
@@ -204,9 +91,3 @@ plt.xlabel('x')
 plt.ylabel('y')
 plt.axis('equal')
 plt.show()
-Explanation of Interference Patterns
-Constructive Interference occurs where the crests (or troughs) from multiple sources align, resulting in higher amplitude.
-
-Destructive Interference happens where crests meet troughs, cancelling out the displacement.
-
-The pattern reflects the symmetry of the polygon, and periodic regions of constructive and destructive interference form.
