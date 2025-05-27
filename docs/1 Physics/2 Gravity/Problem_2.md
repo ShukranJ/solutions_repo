@@ -74,32 +74,26 @@ The third cosmic velocity depends on the body’s position relative to the Sun a
 
 ### Planetary Data
 
-```python
 import numpy as np
-import matplotlib.pyplot as plt
 
 # Gravitational constant
-G = 6.674e-11  # N·m²/kg²
+G = 6.67430e-11  # m^3/kg/s^2
 
-# Planetary mass (kg) and radius (m)
+# Planetary data (mass in kg, radius in meters)
 bodies = {
-    "Earth":   {"M": 5.972e24, "r": 6.371e6},
-    "Mars":    {"M": 6.39e23,  "r": 3.39e6},
-    "Jupiter": {"M": 1.898e27, "r": 6.99e7}
+    "Earth": {"M": 5.972e24, "r": 6.371e6},
+    "Mars": {"M": 6.39e23, "r": 3.39e6},
+    "Jupiter": {"M": 1.898e27, "r": 6.9911e7}
 }
 
-results = {}
-
-# Compute v1 and v2 for each body
+# Calculate and print velocities
 for body, data in bodies.items():
     M = data["M"]
     r = data["r"]
-    v1 = np.sqrt(G * M / r)            # First Cosmic Velocity (orbital)
-    v2 = np.sqrt(2 * G * M / r)        # Second Cosmic Velocity (escape)
-    results[body] = {
-        "v1 (km/s)": v1 / 1000,
-        "v2 (km/s)": v2 / 1000
-    }
+    v1 = np.sqrt(G * M / r)         # First cosmic velocity
+    v2 = np.sqrt(2 * G * M / r)     # Second cosmic velocity
+    print(f"{body:<8} | v1 = {v1/1000:.2f} km/s | v2 = {v2/1000:.2f} km/s")
+
 
 # Print results
 for body in results:
@@ -108,11 +102,11 @@ for body in results:
 
 ## Sample Output (Approximate)
 
-| Body     | v₁ (km/s) | v₂ (km/s) |
-|----------|------------|------------|
-| Earth    | 7.91       | 11.2       |
-| Mars     | 3.55       | 5.03       |
-| Jupiter  | 42.1       | 59.5       |
+Body      v1 (km/s)    v2 (km/s)
+Earth     7.91         11.19
+Mars      3.55         5.02
+Jupiter   42.06        59.46
+
 
 - **v₁** = First Cosmic Velocity (orbital speed at surface level)
 - **v₂** = Second Cosmic Velocity (escape speed from surface)
