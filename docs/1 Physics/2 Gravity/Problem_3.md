@@ -1,205 +1,72 @@
-Problem 3: Trajectories of a Freely Released Payload Near Earth
+# Problem 3: Trajectories of a Freely Released Payload Near Earth
 
-1. Background & Physics Principles
+---
 
-Newton's Law of Gravitation
+## 1. Background & Physics Principles
+
+### Newton's Law of Gravitation
+
 The gravitational force acting on the payload near Earth is:
 
-F
-=
-−
-G
-M
-m
-r
-2
-r
-^
-F=− 
-r 
-2
- 
-GMm
-​	
-  
-r
-^
- 
+\[
+\mathbf{F} = - \frac{GMm}{r^2} \hat{r}
+\]
+
 where
 
-G
-=
-6.67430
-×
-10
-−
-11
- 
-m
-3
-k
-g
-−
-1
-s
-−
-2
-G=6.67430×10 
-−11
- m 
-3
- kg 
-−1
- s 
-−2
-  is the gravitational constant,
-M
-=
-5.972
-×
-10
-24
- 
-k
-g
-M=5.972×10 
-24
- kg is Earth's mass,
-m
-m is the payload mass,
-r
-r is the distance from Earth's center,
-r
-^
-r
-^
-  is the unit vector from Earth’s center to the payload.
+- \(G = 6.67430 \times 10^{-11} \, m^3 kg^{-1} s^{-2}\) is the gravitational constant,
+- \(M = 5.972 \times 10^{24} \, kg\) is Earth's mass,
+- \(m\) is the payload mass,
+- \(r\) is the distance from Earth's center,
+- \(\hat{r}\) is the unit vector from Earth’s center to the payload.
+
 The acceleration due to Earth's gravity is:
 
-a
-=
-−
-G
-M
-r
-3
-r
-a=− 
-r 
-3
- 
-GM
-​	
- r
-Equations of Motion
+\[
+\mathbf{a} = - \frac{GM}{r^3} \mathbf{r}
+\]
+
+---
+
+### Equations of Motion
+
 The motion of the payload under gravity satisfies:
 
-d
-2
-r
-d
-t
-2
-=
-−
-G
-M
-r
-3
-r
-dt 
-2
- 
-d 
-2
- r
-​	
- =− 
-r 
-3
- 
-GM
-​	
- r
-Given initial conditions 
-r
-0
-r 
-0
-​	
-  and 
-v
-0
-v 
-0
-​	
- , the trajectory is computed numerically.
+\[
+\frac{d^2 \mathbf{r}}{dt^2} = - \frac{GM}{r^3} \mathbf{r}
+\]
 
-2. Types of Trajectories
+Given initial conditions \(\mathbf{r}_0\) and \(\mathbf{v}_0\), the trajectory is computed numerically.
 
-The shape of the trajectory depends on the total specific mechanical energy 
-E
-E:
+---
 
-E
-=
-v
-2
-2
-−
-G
-M
-r
-E= 
-2
-v 
-2
- 
-​	
- − 
-r
-GM
-​	
- 
-Elliptical orbit: 
-E
-<
-0
-E<0 (bound orbit),
-Parabolic trajectory: 
-E
-=
-0
-E=0 (escape velocity),
-Hyperbolic trajectory: 
-E
->
-0
-E>0 (unbound, escape path).
-3. Numerical Simulation Method
+## 2. Types of Trajectories
+
+The shape of the trajectory depends on the total specific mechanical energy \(E\):
+
+\[
+E = \frac{v^2}{2} - \frac{GM}{r}
+\]
+
+- **Elliptical orbit:** \(E < 0\) (bound orbit),
+- **Parabolic trajectory:** \(E = 0\) (escape velocity),
+- **Hyperbolic trajectory:** \(E > 0\) (unbound, escape path).
+
+---
+
+## 3. Numerical Simulation Method
 
 We solve the second-order ODE using numerical integration (e.g., RK4):
 
-Initial conditions: 
-r
-0
-r 
-0
-​	
- , 
-v
-0
-v 
-0
-​	
- ,
-Update position and velocity at each timestep 
-Δ
-t
-Δt,
-Continue until simulation time ends or payload hits Earth.
-4. Python Implementation
+- Initial conditions: \(\mathbf{r}_0\), \(\mathbf{v}_0\),
+- Update position and velocity at each timestep \(\Delta t\),
+- Continue until simulation time ends or payload hits Earth.
 
+---
+
+## 4. Python Implementation
+
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -297,79 +164,3 @@ plt.ylabel('Specific Mechanical Energy (J/kg)')
 plt.title('Energy vs Time (should be roughly constant)')
 plt.grid()
 plt.show()
-5. Interpretation of Results
-
-When initial velocity 
-v
-0
-<
-v
-e
-s
-c
-a
-p
-e
-=
-2
-G
-M
-/
-r
-0
-v 
-0
-​	
- <v 
-escape
-​	
- = 
-2GM/r 
-0
-​	
- 
-​	
- , the payload remains in elliptical orbit around Earth.
-At exactly escape velocity 
-v
-0
-=
-v
-e
-s
-c
-a
-p
-e
-v 
-0
-​	
- =v 
-escape
-​	
- , the trajectory becomes parabolic, allowing the payload to escape Earth's gravity.
-If 
-v
-0
->
-v
-e
-s
-c
-a
-p
-e
-v 
-0
-​	
- >v 
-escape
-​	
- , the trajectory is hyperbolic and the payload escapes Earth entirely.
-The simulation allows visualization of these trajectories and energy conservation checks.
-
-6. Real-World Applications
-
-Orbital insertion: Satellites released from rockets must achieve proper velocity vectors to orbit Earth stably.
-Reentry: Payloads returning to Earth need controlled velocities and angles to avoid burning up or skipping the atmosphere.
-Escape trajectories: Missions aiming for Moon, Mars, or beyond require trajectories above escape velocity.
