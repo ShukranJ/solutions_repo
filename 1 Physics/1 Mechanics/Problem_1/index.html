@@ -172,58 +172,51 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
-<p>Investigating the Range as a Function of the Angle of Projection
-1. Theoretical Foundation
-We begin with a classical model of projectile motion assuming:</p>
-<p>Constant gravitational field 
-𝑔
-g</p>
-<p>No air resistance</p>
-<p>Flat launch and landing height</p>
-<p>Initial speed 
-𝑣
-0
-v 
-0
-​</p>
-<p>Launch angle 
-𝜃
-θ</p>
-<p>Equations of Motion
-Breaking down the initial velocity:</p>
+<p>Theoretical Foundation
+Equations of Motion: A Fundamental Approach
+Projectile motion can be analyzed by decomposing it into horizontal and vertical components, based on Newton’s Second Law:</p>
+<p>𝐹
+⃗
+=
+𝑚
+𝑎
+⃗
+F
+ =m 
+a</p>
+<p>where 
+𝐹
+⃗
+F
+  is the force, 
+𝑚
+m is the mass, and 
+𝑎
+⃗
+a
+  is the acceleration of the projectile.</p>
+<p>Horizontal Motion: Constant Velocity
+Assuming no air resistance, no net force acts horizontally, so the horizontal velocity remains constant:</p>
 <p>𝑣
-0
 𝑥
 =
 𝑣
 0
 cos
 ⁡
+(
 𝜃
+)
 v 
-0x
+x
 ​
  =v 
 0
 ​
- cosθ</p>
-<p>𝑣
-0
-𝑦
-=
-𝑣
-0
-sin
-⁡
-𝜃
-v 
-0y
-​
- =v 
-0
-​
- sinθ</p>
-<p>Position as a function of time:</p>
+ cos(θ)
+The horizontal displacement over time 
+𝑡
+t is:</p>
 <p>𝑥
 (
 𝑡
@@ -233,14 +226,30 @@ v
 0
 cos
 ⁡
+(
 𝜃
-⋅
+)
 𝑡
 x(t)=v 
 0
 ​
- cosθ⋅t</p>
-<p>𝑦
+ cos(θ)t
+Vertical Motion: Accelerated Motion Due to Gravity
+Gravity acts vertically downward with acceleration 
+𝑔
+g:</p>
+<p>𝑎
+𝑦
+=
+−
+𝑔
+a 
+y
+​
+ =−g
+Integrating acceleration with respect to time yields:</p>
+<p>𝑣
+𝑦
 (
 𝑡
 )
@@ -249,8 +258,31 @@ x(t)=v
 0
 sin
 ⁡
+(
 𝜃
-⋅
+)
+−
+𝑔
+𝑡
+v 
+y
+​
+ (t)=v 
+0
+​
+ sin(θ)−gt
+𝑦
+(
+𝑡
+)
+=
+𝑣
+0
+sin
+⁡
+(
+𝜃
+)
 𝑡
 −
 1
@@ -261,28 +293,28 @@ sin
 y(t)=v 
 0
 ​
- sinθ⋅t− 
+ sin(θ)t− 
 2
 1
 ​
  gt 
 2</p>
-<p>Time of Flight (until 
+<p>Time of Flight
+The projectile lands when 
 𝑦
 (
 𝑡
 )
 =
 0
-y(t)=0):
-0
-=
-𝑣
+y(t)=0. Solving:</p>
+<p>𝑣
 0
 sin
 ⁡
+(
 𝜃
-⋅
+)
 𝑡
 −
 1
@@ -290,55 +322,120 @@ sin
 𝑔
 𝑡
 2
-⇒
-𝑡
 =
-2
-𝑣
 0
-sin
-⁡
-𝜃
-𝑔
-0=v 
+v 
 0
 ​
- sinθ⋅t− 
+ sin(θ)t− 
 2
 1
 ​
  gt 
 2
- ⇒t= 
+ =0
+Factoring:</p>
+<p>𝑡
+(
+𝑣
+0
+sin
+⁡
+(
+𝜃
+)
+−
+1
+2
+𝑔
+𝑡
+)
+=
+0
+t(v 
+0
+​
+ sin(θ)− 
+2
+1
+​
+ gt)=0
+Solutions:</p>
+<h1 id="t">𝑡</h1>
+<p>0
+t=0 (launch)</p>
+<h1 id="t_1">𝑡</h1>
+<p>2
+𝑣
+0
+sin
+⁡
+(
+𝜃
+)
+𝑔
+t= 
 g
 2v 
 0
 ​
- sinθ
-​</p>
-<p>Range (Horizontal Distance):
+ sin(θ)
+​
+  (total time of flight)</p>
+<p>Horizontal Range 
 𝑅
-=
-𝑥
-(
-𝑡
-)
-=
-𝑣
+R
+Substitute total time into horizontal motion equation:</p>
+<h1 id="r">𝑅</h1>
+<p>𝑣
 0
 cos
 ⁡
+(
 𝜃
+)
 ⋅
 2
 𝑣
 0
 sin
 ⁡
+(
 𝜃
+)
 𝑔
+R=v 
+0
+​
+ cos(θ)⋅ 
+g
+2v 
+0
+​
+ sin(θ)
+​</p>
+<p>Using identity 
+sin
+⁡
+(
+2
+𝜃
+)
 =
-𝑣
+2
+sin
+⁡
+(
+𝜃
+)
+cos
+⁡
+(
+𝜃
+)
+sin(2θ)=2sin(θ)cos(θ):</p>
+<h1 id="r_1">𝑅</h1>
+<p>𝑣
 0
 2
 sin
@@ -348,17 +445,7 @@ sin
 𝜃
 )
 𝑔
-R=x(t)=v 
-0
-​
- cosθ⋅ 
-g
-2v 
-0
-​
- sinθ
-​
- = 
+R= 
 g
 v 
 0
@@ -366,127 +453,347 @@ v
 ​
  sin(2θ)
 ​</p>
-<p>This is the classic range formula.</p>
-<ol>
-<li>Analysis of the Range
-Dependence on Angle:
+<p>Key Insights
 Maximum range occurs at 
 𝜃
 =
 45
 ∘
 θ=45 
+∘</p>
+<p>Symmetry: 
+𝜃
+θ and 
+90
 ∘
-  since 
+−
+𝜃
+90 
+∘
+ −θ yield the same range</p>
+<p>Quadratic dependence: 
+𝑅
+∝
+𝑣
+0
+2
+R∝v 
+0
+2
+​
+ ; doubling 
+𝑣
+0
+v 
+0
+​
+  quadruples the range</p>
+<p>Analysis of the Range
+Effect of Angle of Projection
+From 
+𝑅
+=
+𝑣
+0
+2
 sin
 ⁡
 (
 2
 𝜃
 )
-sin(2θ) is maximal at 
-90
+𝑔
+R= 
+g
+v 
+0
+2
+​
+ sin(2θ)
+​
+ :</p>
+<p>Maximum when 
+sin
+⁡
+(
+2
+𝜃
+)
+=
+1
+⇒
+𝜃
+=
+45
 ∘
-90 
+sin(2θ)=1⇒θ=45 
+∘</p>
+<p>Same range at complementary angles (e.g., 
+30
 ∘
- .</li>
-</ol>
-<p>The function is symmetric around 
+30 
+∘
+  and 
+60
+∘
+60 
+∘
+ )</p>
+<p>Effect of Initial Velocity
+Since 
+𝑅
+∝
+𝑣
+0
+2
+R∝v 
+0
+2
+​
+ :</p>
+<p>Doubling the speed results in a range four times longer</p>
+<p>High-speed projectiles, like bullets or rockets, travel significantly farther</p>
+<p>Effect of Gravity
+The greater the gravitational acceleration 
+𝑔
+g, the shorter the range:</p>
+<p>𝑅
+∝
+1
+𝑔
+R∝ 
+g
+1
+​</p>
+<p>Example:</p>
+<p>On the Moon (
+𝑔
+≈
+1.6
+ 
+m/s
+2
+g≈1.6m/s 
+2
+ ), the range is ~6 times greater than on Earth</p>
+<p>Practical Applications
+Sports
+Soccer: Long passes use angles near 
+45
+∘
+45 
+∘</p>
+<p>Basketball: Higher arcs improve the chance of scoring</p>
+<p>Baseball: Home runs involve optimal launch angles and high initial velocities</p>
+<p>Engineering &amp; Ballistics
+Artillery: Cannons are often angled near 
 45
 ∘
 45 
 ∘
- : 
-𝑅
+  for maximum distance</p>
+<p>Aerospace: Trajectories must consider gravity, air resistance, and Earth's curvature</p>
+<p>Effects of Uneven Terrain
+When the projectile lands at a height different from the launch height (e.g., a hill, valley, or platform), the standard range formula must be adjusted. The vertical motion becomes:</p>
+<p>𝑦
 (
-𝜃
-)
-=
-𝑅
-(
-90
-∘
-−
-𝜃
-)
-R(θ)=R(90 
-∘
- −θ)</p>
-<p>Influence of Other Parameters:
-Initial velocity: Range is proportional to 
-𝑣
-0
-2
-v 
-0
-2
-​</p>
-<p>Gravitational acceleration: Range is inversely proportional to 
-𝑔
-g</p>
-<ol>
-<li>Practical Applications
-In real-world cases:</li>
-</ol>
-<p>Uneven terrain: Final height 
-ℎ
-≠
-0
-h
-
-=0 requires solving a quadratic in 
 𝑡
-t</p>
-<p>Air resistance: Adds drag force 
-𝐹
-𝑑
+)
 =
-−
-𝑘
+𝑦
+0
++
 𝑣
+0
+sin
+⁡
+(
+𝜃
+)
+𝑡
+−
+1
+2
+𝑔
+𝑡
+2
+y(t)=y 
+0
+​
+ +v 
+0
+​
+ sin(θ)t− 
+2
+1
+​
+ gt 
+2</p>
+<p>Set 
+𝑦
+(
+𝑡
+)
+=
+𝑦
+𝑓
+y(t)=y 
+f
+​
+  to solve for time of flight using the quadratic formula:</p>
+<p>1
+2
+𝑔
+𝑡
+2
+−
+𝑣
+0
+sin
+⁡
+(
+𝜃
+)
+𝑡
++
+(
+𝑦
+0
+−
+𝑦
+𝑓
+)
+=
+0
+2
+1
+​
+ gt 
+2
+ −v 
+0
+​
+ sin(θ)t+(y 
+0
+​
+ −y 
+f
+​
+ )=0
+Solving this equation gives the time(s) when the projectile reaches the final height 
+𝑦
+𝑓
+y 
+f
+​
+ . The corresponding horizontal range is then:</p>
+<h1 id="r_2">𝑅</h1>
+<p>𝑣
+0
+cos
+⁡
+(
+𝜃
+)
+⋅
+𝑡
+landing
+R=v 
+0
+​
+ cos(θ)⋅t 
+landing
+​</p>
+<p>Air Resistance and Wind Effects
+Air Resistance
+Real projectiles experience drag, a force opposing motion through the air:</p>
+<p>𝐹
+drag
+=
+1
+2
+𝐶
+𝑑
+𝜌
+𝐴
+𝑣
+2
 F 
+drag
+​
+ = 
+2
+1
+​
+ C 
 d
 ​
- =−kv, making equations nonlinear</p>
-<p>Ballistics, sports, rocketry: All involve tuning angle/velocity to maximize distance or accuracy</p>
-<ol>
-<li>Implementation (Python Script)
-python
+ ρAv 
+2</p>
+<p>Where:</p>
+<p>𝐶
+𝑑
+C 
+d
+​
+  = drag coefficient</p>
+<p>𝜌
+ρ = air density</p>
+<p>𝐴
+A = cross-sectional area</p>
+<p>𝑣
+v = instantaneous velocity</p>
+<p>Air resistance causes the trajectory to:</p>
+<p>Decrease in range</p>
+<p>Become asymmetrical</p>
+<p>Flatten at the peak</p>
+<p>Analytical solutions become impractical; numerical simulations are needed.</p>
+<p>Wind Effects
+Tailwind (wind blowing in the direction of motion) increases range</p>
+<p>Headwind (opposing motion) decreases range</p>
+<p>Crosswinds can alter the projectile's lateral position</p>
+<p>Computational Modeling: Python Simulation
+Below is a Python script that simulates the range as a function of the angle of projection under ideal conditions (no air resistance or wind):</p>
+<p>python
 Copy
 Edit
 import numpy as np
-import matplotlib.pyplot as plt</li>
-</ol>
-<p>def compute_range(v0, g, theta_deg):
-    theta_rad = np.radians(theta_deg)
-    return (v0**2 * np.sin(2 * theta_rad)) / g</p>
-<h1 id="parameters">Parameters</h1>
-<p>v0 = 30  # m/s
-g = 9.81  # m/s²
-angles = np.linspace(0, 90, 500)
-ranges = [compute_range(v0, g, angle) for angle in angles]</p>
-<h1 id="plot">Plot</h1>
+import matplotlib.pyplot as plt</p>
+<h1 id="constants">Constants</h1>
+<p>g = 9.81  # Acceleration due to gravity (m/s^2)
+v0 = 20.0  # Initial velocity (m/s)</p>
+<h1 id="angle-range-from-0-to-90-degrees">Angle range from 0 to 90 degrees</h1>
+<p>angles_deg = np.linspace(0, 90, 500)
+angles_rad = np.radians(angles_deg)</p>
+<h1 id="range-equation-r-v02-sin2-g">Range equation: R = (v0^2 * sin(2θ)) / g</h1>
+<p>ranges = (v0**2 * np.sin(2 * angles_rad)) / g</p>
+<h1 id="find-maximum-range-and-corresponding-angle">Find maximum range and corresponding angle</h1>
+<p>max_range = np.max(ranges)
+optimal_angle = angles_deg[np.argmax(ranges)]</p>
+<h1 id="plotting">Plotting</h1>
 <p>plt.figure(figsize=(10, 6))
-plt.plot(angles, ranges, label=f'v₀ = {v0} m/s, g = {g} m/s²')
-plt.title('Projectile Range vs. Angle of Projection')
-plt.xlabel('Angle (degrees)')
+plt.plot(angles_deg, ranges, label=f'v0 = {v0} m/s', color='royalblue')
+plt.axvline(optimal_angle, color='red', linestyle='--', label=f'Max at {optimal_angle:.1f}°')
+plt.title('Projectile Range vs Launch Angle')
+plt.xlabel('Launch Angle (degrees)')
 plt.ylabel('Range (meters)')
 plt.grid(True)
 plt.legend()
+plt.tight_layout()
 plt.show()
-5. Limitations &amp; Extensions
-Limitations:
-Assumes no air resistance</p>
-<p>Launch and landing heights are equal</p>
-<p>Ignores wind, spin, or terrain</p>
-<p>Extensions:
-Air drag model: Use numerical integration (e.g., Runge-Kutta)</p>
-<p>Non-flat terrain: Include different landing height</p>
-<p>Wind or spin: Add lateral forces</p>
-<ol>
-<li>Conclusion
-This analysis shows the elegance of projectile motion and its strong dependence on projection angle. While idealized, the model is foundational for many applied physics problems, from sports to aerospace.</li>
-</ol>
+Limitations and Realistic Considerations
+Assumptions of the Ideal Model:
+No air resistance</p>
+<p>Flat terrain (initial and final height are equal)</p>
+<p>Constant gravity</p>
+<p>No wind</p>
+<p>When These Assumptions Fail:
+In long-distance or high-speed motion, drag significantly affects results</p>
+<p>In hilly environments, terrain must be accounted for</p>
+<p>For planetary applications, gravity may not be constant (e.g., large altitudes)</p>
+<p>Conclusion
+This exploration of projectile motion demonstrates how range depends on the angle of launch, with the ideal model offering simple and insightful predictions. However, real-world complexities like air resistance, wind, and terrain require more sophisticated modeling using numerical methods.</p>
+<p>By combining theory with computational tools such as Python, we gain not only a deep understanding of projectile mechanics but also a powerful method to explore real-world applications in sports, engineering, and space science.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
