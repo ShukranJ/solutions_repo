@@ -76,55 +76,64 @@ plt.ylabel('Range (meters)')
 plt.grid(True)
 plt.legend()
 plt.show()
-Observations
-The function 
-𝑅
-(
-𝜃
-)
-R(θ) is symmetric about 45°.
+## Observations
 
-The range is maximum at 
-𝜃
-=
-45
-∘
-θ=45 
-∘
- .
+From the analytical expression:
 
-Increasing the initial velocity 
-𝑣
-0
-v 
-0
-​
-  increases the range quadratically.
+\[
+R = \frac{v_0^2 \sin(2\theta)}{g}
+\]
 
-Limitations and Extensions
-Limitations:
+We observe the following:
 
-Assumes no air resistance.
+- The range is **maximum at** \( \theta = 45^\circ \), since \( \sin(90^\circ) = 1 \).
+- The function \( \sin(2\theta) \) is **symmetric** about \( \theta = 45^\circ \), meaning:
+  \[
+  R(\theta) = R(90^\circ - \theta)
+  \]
+- **Doubling** the initial velocity \( v_0 \) results in **quadrupling** the range, due to the \( v_0^2 \) term.
+- **Gravitational acceleration** \( g \) is inversely proportional to the range; lower gravity (e.g., on the Moon) results in longer ranges.
+- For small and large angles (close to \( 0^\circ \) or \( 90^\circ \)), the range is very short due to \( \sin(2\theta) \approx 0 \).
 
-Flat launch and landing surfaces.
+---
 
-Extensions:
+## Limitations
 
-Include initial height 
-ℎ
-h.
+While the ideal projectile motion model is insightful, it has several simplifying assumptions:
 
-Model air drag or wind.
+- **No air resistance**: Real-world projectiles experience drag forces that reduce range.
+- **Flat terrain**: The model assumes launch and landing occur at the same height.
+- **No wind**: External forces such as wind or spin are not considered.
+- **No rotational effects**: The projectile is treated as a point mass.
 
-Simulate real-world applications (e.g., soccer kicks, rocket launches).
+These simplifications may result in discrepancies when comparing theoretical and experimental outcomes.
 
-Deliverables
-A Markdown or Jupyter Notebook including:
+---
 
-Theoretical derivation.
+## Extensions and Real-World Applications
 
-Python script for simulation.
+The basic model can be extended to account for more complex and realistic situations:
 
-Graphs of range vs angle.
+- **Initial Height**: If the projectile is launched from a height \( h \), the total flight time and range change significantly.
+- **Air Resistance**: Incorporating drag introduces nonlinear differential equations, which typically require numerical methods.
+- **Uneven Terrain**: Modeling launch and landing at different elevations reflects real-life applications like ballistic launches.
+- **Wind Effects**: Adding wind velocity vectors changes both the range and trajectory shape.
+- **Rotational Dynamics**: For spinning objects (e.g., balls), lift forces like the Magnus effect may alter the motion.
 
-Discussion on model limitations and extensions.
+These extensions make the model applicable in fields such as:
+
+- **Sports Physics** (e.g., soccer, basketball, golf)
+- **Aerospace and Ballistics**
+- **Robotics and Engineering Trajectory Planning**
+
+---
+
+## Deliverables Summary
+
+Your submission should include:
+
+- 📄 A **Markdown document** or **Jupyter Notebook** containing:
+  - ✅ Derivation of theoretical equations
+  - ✅ Simulation using Python
+  - ✅ Graphical analysis (e.g., range vs. angle)
+  - ✅ Discussion on assumptions, limitations, and real-world extensions
