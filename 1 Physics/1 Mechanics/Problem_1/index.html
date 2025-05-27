@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 1 - Physics and Mathematics</title>
+<title>Problem 1: Investigating the Range as a Function of the Angle of Projection - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 1";
+        var mkdocs_page_name = "Problem 1: Investigating the Range as a Function of the Angle of Projection";
         var mkdocs_page_input_path = "1 Physics/1 Mechanics/Problem_1.md";
         var mkdocs_page_url = null;
       </script>
@@ -46,8 +46,22 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal current">1 Mechanics</a>
 <ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1: Investigating the Range as a Function of the Angle of Projection</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#motivation">Motivation</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#theoretical-background">Theoretical Background</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#equations-of-motion">Equations of Motion</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#time-of-flight">Time of Flight</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#horizontal-range">Horizontal Range</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#python-simulation-example">Python Simulation Example</a>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../Problem_2/">Problem 2</a>
@@ -163,7 +177,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">1 Mechanics</li>
-<li class="breadcrumb-item active">Problem 1</li>
+<li class="breadcrumb-item active">Problem 1: Investigating the Range as a Function of the Angle of Projection</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -171,147 +185,77 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<p>Problem 1: Investigating the Range as a Function of the Angle of Projection
-Motivation
-Projectile motion, while seemingly simple, provides a rich framework for exploring core principles of classical mechanics. The goal of this problem is to analyze how the range of a projectile depends on its angle of projection.</p>
+<h1 id="problem-1-investigating-the-range-as-a-function-of-the-angle-of-projection">Problem 1: Investigating the Range as a Function of the Angle of Projection</h1>
+<h2 id="motivation">Motivation</h2>
+<p>Projectile motion, while seemingly simple, provides a rich framework for exploring core principles of classical mechanics. The goal of this problem is to analyze how the <strong>range</strong> of a projectile depends on its <strong>angle of projection</strong>.</p>
 <p>Despite the apparent simplicity of launching an object into the air, the underlying physics involves a delicate interplay between vertical and horizontal motion, governed by both linear and quadratic relationships. These relationships are influenced by parameters such as:</p>
 <ul>
 <li><strong>Initial velocity</strong>: <span class="arithmatex">\( v_0 \)</span></li>
 <li><strong>Gravitational acceleration</strong>: <span class="arithmatex">\( g \)</span></li>
 <li><strong>Launch height</strong>: <span class="arithmatex">\( h \)</span></li>
 </ul>
-<p>v 
-0
-​</p>
-<p>Gravitational acceleration 
-𝑔
-g</p>
-<p>Launch height 
-ℎ
-h</p>
-<p>These variables result in a wide variety of possible trajectories, modeling real-world phenomena such as the arc of a soccer ball or the path of a rocket.
-Theoretical Background
-Assume an object is launched from flat ground with an initial velocity <span class="arithmatex">\( v_0 \)</span> at an angle <span class="arithmatex">\( \theta \)</span> above the horizontal. Neglecting air resistance:</p>
-<p>θ (above the horizontal). Neglecting air resistance:</p>
+<p>These variables result in a wide variety of possible trajectories, modeling real-world phenomena such as the arc of a soccer ball or the path of a rocket.</p>
+<hr/>
+<h2 id="theoretical-background">Theoretical Background</h2>
+<p>Assume an object is launched from flat ground with an initial velocity <span class="arithmatex">\( v_0 \)</span> at an angle <span class="arithmatex">\( \theta \)</span> (above the horizontal). Neglecting air resistance:</p>
 <h3 id="equations-of-motion">Equations of Motion</h3>
-<p>Horizontal position:
-[
-x(t) = v_0 \cos(\theta) \cdot t
-]</p>
-<p>Vertical position:
-[
-y(t) = v_0 \sin(\theta) \cdot t - \frac{1}{2} g t^2
-]</p>
-<p>⁡
-(
-𝜃
-)
-⋅
-𝑡
-x(t)=v 
-0
-​
- cos(θ)⋅t
-𝑦
-(
-𝑡
-)
-=
-𝑣
-0
-sin
-⁡
-(
-𝜃
-)
-⋅
-𝑡
-−
-1
-2
-𝑔
-𝑡
-2
-y(t)=v 
-0
-​
- sin(θ)⋅t− 
-2
-1
-​
- gt 
-2</p>
-<p>Time of flight when the projectile returns to the ground 
-(
-𝑦
-(
-𝑡
-)
-=
-0
-)
-(y(t)=0):</p>
-<h1 id="t">𝑡</h1>
-<p>2
-𝑣
-0
-sin
-⁡
-(
-𝜃
-)
-𝑔
-t= 
-g
-2v 
-0
-​
- sin(θ)
-​</p>
-<p>Range Equation:</p>
-<h3 id="horizontal-range">Horizontal Range</h3>
-<p>Total time of flight:
-[
+<ul>
+<li>
+<p><strong>Horizontal position</strong>:
+  $$
+  x(t) = v_0 \cos(\theta) \cdot t
+  $$</p>
+</li>
+<li>
+<p><strong>Vertical position</strong>:
+  $$
+  y(t) = v_0 \sin(\theta) \cdot t - \frac{1}{2} g t^2
+  $$</p>
+</li>
+</ul>
+<h3 id="time-of-flight">Time of Flight</h3>
+<p>The projectile returns to the ground when <span class="arithmatex">\( y(t) = 0 \)</span>. Solving:</p>
+<div class="arithmatex">\[
 t = \frac{2 v_0 \sin(\theta)}{g}
-]</p>
-<p>Range:
-[
+\]</div>
+<h3 id="horizontal-range">Horizontal Range</h3>
+<p>The horizontal range <span class="arithmatex">\( R \)</span> is:</p>
+<div class="arithmatex">\[
 R = v_0 \cos(\theta) \cdot t = \frac{v_0^2 \sin(2\theta)}{g}
-]</p>
-<p>​
- cos(θ)⋅t= 
-g
-v 
-0
-2
-​
- sin(2θ)
-​</p>
-<p>Python Simulation Example
-python
-Copy
-Edit
+\]</div>
+<blockquote>
+<p>📌 <strong>Maximum range</strong> occurs at <span class="arithmatex">\( \theta = 45^\circ \)</span></p>
+</blockquote>
+<hr/>
+<h2 id="python-simulation-example">Python Simulation Example</h2>
+<p>```python
 import numpy as np
 import matplotlib.pyplot as plt</p>
 <h1 id="parameters">Parameters</h1>
-<p>v0 = 20  # initial velocity (m/s)
-g = 9.81  # gravity (m/s^2)</p>
-<h1 id="angle-range-0-to-90-degrees">Angle range (0 to 90 degrees)</h1>
+<p>v0 = 20  # initial velocity in m/s
+g = 9.81  # gravity in m/s^2</p>
+<h1 id="angle-range">Angle range</h1>
 <p>angles_deg = np.linspace(0, 90, 100)
 angles_rad = np.radians(angles_deg)</p>
-<h1 id="compute-range">Compute range</h1>
+<h1 id="calculate-range">Calculate range</h1>
 <p>ranges = (v0**2 * np.sin(2 * angles_rad)) / g</p>
-<h1 id="plotting">Plotting</h1>
+<h1 id="plot">Plot</h1>
 <p>plt.figure(figsize=(10, 6))
-plt.plot(angles_deg, ranges, color='blue', label=f'Initial Velocity = {v0} m/s')
+plt.plot(angles_deg, ranges, label=f'Initial Velocity = {v0} m/s', color='blue')
 plt.title('Projectile Range vs Angle of Projection')
 plt.xlabel('Launch Angle (degrees)')
 plt.ylabel('Range (meters)')
 plt.grid(True)
 plt.legend()
 plt.show()
-📈 Expected Output and Discussion
-The maximum range occurs at 
+Observations
+The function 
+𝑅
+(
+𝜃
+)
+R(θ) is symmetric about 45°.</p>
+<p>The range is maximum at 
 𝜃
 =
 45
@@ -319,45 +263,29 @@ The maximum range occurs at
 θ=45 
 ∘
  .</p>
-<p>The function 
-𝑅
-(
-𝜃
-)
-R(θ) is symmetric about 45°, i.e., 
-𝑅
-(
-𝜃
-)
-=
-𝑅
-(
-90
-∘
-−
-𝜃
-)
-R(θ)=R(90 
-∘
- −θ).</p>
-<p>Higher initial velocities result in longer ranges.</p>
-<p>This model assumes no air resistance and launch/landing at equal heights.</p>
+<p>Increasing the initial velocity 
+𝑣
+0
+v 
+0
+​
+  increases the range quadratically.</p>
 <p>Limitations and Extensions
 Limitations:</p>
-<p>No air drag or wind.</p>
-<p>Assumes flat terrain.</p>
-<p>Possible Extensions:</p>
-<p>Add launch height 
+<p>Assumes no air resistance.</p>
+<p>Flat launch and landing surfaces.</p>
+<p>Extensions:</p>
+<p>Include initial height 
 ℎ
-h: modifies the time of flight.</p>
-<p>Include air resistance for a more realistic model.</p>
-<p>Simulate launch and landing at different heights or sloped surfaces.</p>
+h.</p>
+<p>Model air drag or wind.</p>
+<p>Simulate real-world applications (e.g., soccer kicks, rocket launches).</p>
 <p>Deliverables
 A Markdown or Jupyter Notebook including:</p>
-<p>Theoretical derivations and equations.</p>
-<p>Python script implementing simulation.</p>
-<p>Graphs of range vs angle under varying parameters.</p>
-<p>Discussion of model limitations and possible improvements.</p>
+<p>Theoretical derivation.</p>
+<p>Python script for simulation.</p>
+<p>Graphs of range vs angle.</p>
+<p>Discussion on model limitations and extensions.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
