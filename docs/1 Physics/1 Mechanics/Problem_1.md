@@ -83,33 +83,44 @@ This model applies to real-world phenomena such as:
 - Wind and rotational effects (e.g., Coriolis force).
 
 ---
-
 ## Python Simulation
-
-## Python Simulation
-
-### Constants
 
 ```python
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Gravity and initial velocity
-g = 9.81            # gravitational acceleration (m/s²)
-v0 = 30             # initial velocity (m/s)
-# Create an array of angles in degrees and convert to radians
-angles_deg = np.linspace(0, 90, 500)
-angles_rad = np.radians(angles_deg)
-# Calculate range using the projectile motion formula
-R = (v0**2) * np.sin(2 * angles_rad) / g
-# Plot range versus angle
+# --- Constants ---
+g = 9.81             # Acceleration due to gravity (m/s²)
+v0 = 30              # Initial velocity (m/s)
+
+# --- Angles from 0 to 90 degrees ---
+angles_deg = np.linspace(0, 90, 500)       # 500 points from 0° to 90°
+angles_rad = np.radians(angles_deg)        # Convert to radians for computation
+
+# --- Range Calculation ---
+R = (v0**2) * np.sin(2 * angles_rad) / g   # R = (v₀² * sin(2θ)) / g
+
+# --- Plotting ---
 plt.figure(figsize=(10, 6))
 plt.plot(angles_deg, R, color='navy', label=f'v₀ = {v0} m/s')
 plt.axvline(45, color='red', linestyle='--', label='Maximum at 45°')
 plt.title('Range vs Angle of Projection')
 plt.xlabel('Angle (degrees)')
 plt.ylabel('Range (meters)')
-plt.legend()
 plt.grid(True)
+plt.legend()
 plt.show()
+
+---
+
+### ✅ Explanation:
+- `np.linspace(0, 90, 500)`: Generates 500 evenly spaced angles between 0° and 90°.
+- `np.radians(...)`: Converts degrees to radians since `np.sin()` expects radians.
+- `R = (v0**2) * np.sin(2 * θ) / g`: Formula for range of projectile on flat ground.
+- `plt.axvline(45, ...)`: Highlights the theoretical maximum range at 45°.
+
+Let me know if you’d like:
+- The version with launch height,
+- A notebook file (.ipynb),
+- Or explanations included as comments for educational purposes.
 
