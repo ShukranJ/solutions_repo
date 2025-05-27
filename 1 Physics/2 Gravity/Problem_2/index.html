@@ -60,21 +60,11 @@
 <ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="#motivation">Motivation</a>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#definitions">Definitions</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#first-cosmic-velocity-orbital-velocity">First Cosmic Velocity (Orbital Velocity)</a>
+<li class="toctree-l3"><a class="reference internal" href="#task">Task</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#second-cosmic-velocity-escape-velocity">Second Cosmic Velocity (Escape Velocity)</a>
+<li class="toctree-l3"><a class="reference internal" href="#deliverables">Deliverables</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#third-cosmic-velocity-stellar-escape-velocity">Third Cosmic Velocity (Stellar Escape Velocity)</a>
-</li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#derivations-and-mathematical-background">Derivations and Mathematical Background</a>
-<ul>
-<li class="toctree-l4"><a class="reference internal" href="#planetary-data">Planetary Data</a>
-</li>
-</ul>
+<li class="toctree-l3"><a class="reference internal" href="#python-simulation-code">Python Simulation Code</a>
 </li>
 </ul>
 </li>
@@ -191,144 +181,60 @@
 <div class="section" itemprop="articleBody">
 <h1 id="problem-2-escape-velocities-and-cosmic-velocities">Problem 2: Escape Velocities and Cosmic Velocities</h1>
 <h2 id="motivation">Motivation</h2>
-<p>Escape velocity is a fundamental concept in celestial mechanics and space exploration. It determines the minimum velocity needed for an object to overcome a planet's or star's gravitational field. Expanding on this, the three <strong>cosmic velocities</strong> mark critical thresholds in orbital mechanics:</p>
+<p>The concept of <strong>escape velocity</strong> is crucial for understanding the conditions required to leave a celestial body's gravitational influence. Extending this concept, the <strong>first</strong>, <strong>second</strong>, and <strong>third cosmic velocities</strong> define the thresholds for orbiting, escaping, and leaving a star system. These principles underpin modern space exploration, from launching satellites to interplanetary missions.</p>
+<hr/>
+<h2 id="task">Task</h2>
 <ul>
-<li><strong>First Cosmic Velocity</strong>: Required for circular orbital motion near the surface.</li>
-<li><strong>Second Cosmic Velocity</strong>: Required to escape the gravitational influence of a planet.</li>
-<li><strong>Third Cosmic Velocity</strong>: Required to escape the gravitational pull of the entire star system.</li>
+<li>Define the <strong>first</strong>, <strong>second</strong>, and <strong>third cosmic velocities</strong>, explaining their physical meaning.</li>
+<li>Analyze the <strong>mathematical derivations</strong> and parameters affecting these velocities.</li>
+<li><strong>Calculate and visualize</strong> these velocities for different celestial bodies like <strong>Earth</strong>, <strong>Mars</strong>, and <strong>Jupiter</strong>.</li>
+<li>Discuss their importance in <strong>space exploration</strong>, including launching satellites, missions to other planets, and potential interstellar travel.</li>
 </ul>
-<p>These velocities are essential in planning missions for satellites, interplanetary probes, and future interstellar spacecraft.</p>
 <hr/>
-<h2 id="definitions">Definitions</h2>
-<h3 id="first-cosmic-velocity-orbital-velocity">First Cosmic Velocity (Orbital Velocity)</h3>
-<p>The minimum speed required for a circular orbit just above the surface of a celestial body:</p>
-<div class="arithmatex">\[
-v_1 = \sqrt{\frac{G M}{r}}
-\]</div>
-<p>Where:
-- <span class="arithmatex">\( G \)</span> is the gravitational constant <span class="arithmatex">\( \approx 6.674 \times 10^{-11} \, \text{Nm}^2/\text{kg}^2 \)</span>
-- <span class="arithmatex">\( M \)</span> is the mass of the celestial body
-- <span class="arithmatex">\( r \)</span> is the radius from the center of mass (usually the surface radius)</p>
+<h2 id="deliverables">Deliverables</h2>
+<ul>
+<li>A <strong>Markdown document</strong> with Python script or Jupyter notebook implementing the simulations.</li>
+<li>A <strong>detailed explanation</strong> of the subjects and their derivations.</li>
+<li><strong>Graphical representations</strong> of escape velocities and cosmic velocities for various celestial bodies.</li>
+</ul>
 <hr/>
-<h3 id="second-cosmic-velocity-escape-velocity">Second Cosmic Velocity (Escape Velocity)</h3>
-<p>The speed required to escape a planet’s gravitational field without additional propulsion:</p>
-<div class="arithmatex">\[
-v_2 = \sqrt{2} \cdot v_1 = \sqrt{\frac{2GM}{r}}
-\]</div>
-<hr/>
-<h3 id="third-cosmic-velocity-stellar-escape-velocity">Third Cosmic Velocity (Stellar Escape Velocity)</h3>
-<p>The velocity needed to escape the Sun’s gravitational influence from Earth’s orbit:</p>
-<div class="arithmatex">\[
-v_3 = \sqrt{\frac{2 G M_{\odot}}{r_{\text{Earth orbit}}}} \approx 42.1 \, \text{km/s}
-\]</div>
-<p>This is a simplified model assuming a direct escape path and no planetary assists.</p>
-<hr/>
-<h2 id="derivations-and-mathematical-background">Derivations and Mathematical Background</h2>
-<p>From Newton’s Law of Universal Gravitation:</p>
-<div class="arithmatex">\[
-F = \frac{G M m}{r^2}
-\]</div>
-<p>Using Newton's second law and equating gravitational force to centripetal force for circular orbit:</p>
-<div class="arithmatex">\[
-\frac{m v^2}{r} = \frac{G M m}{r^2} \Rightarrow v_1 = \sqrt{\frac{GM}{r}}
-\]</div>
-<p>For escape velocity (conservation of energy):</p>
-<div class="arithmatex">\[
-\frac{1}{2}mv^2 = \frac{GMm}{r} \Rightarrow v_2 = \sqrt{\frac{2GM}{r}}
-\]</div>
-<p>The third cosmic velocity depends on the body’s position relative to the Sun and is often computed based on heliocentric energy conditions.</p>
-<hr/>
-<h3 id="planetary-data">Planetary Data</h3>
-<p>import numpy as np</p>
+<h2 id="python-simulation-code">Python Simulation Code</h2>
+<p>```python
+import numpy as np</p>
 <h1 id="gravitational-constant">Gravitational constant</h1>
 <p>G = 6.67430e-11  # m^3/kg/s^2</p>
-<h1 id="planetary-data-mass-in-kg-radius-in-meters">Planetary data (mass in kg, radius in meters)</h1>
+<h1 id="celestial-body-data-mass-in-kg-radius-in-meters">Celestial body data (mass in kg, radius in meters)</h1>
 <p>bodies = {
     "Earth": {"M": 5.972e24, "r": 6.371e6},
     "Mars": {"M": 6.39e23, "r": 3.39e6},
     "Jupiter": {"M": 1.898e27, "r": 6.9911e7}
 }</p>
-<h1 id="calculate-and-print-velocities">Calculate and print velocities</h1>
-<p>for body, data in bodies.items():
+<p>print("Body\t\tv1 (km/s)\tv2 (km/s)")
+for body, data in bodies.items():
     M = data["M"]
     r = data["r"]
-    v1 = np.sqrt(G * M / r)         # First cosmic velocity
-    v2 = np.sqrt(2 * G * M / r)     # Second cosmic velocity
-    print(f"{body:&lt;8} | v1 = {v1/1000:.2f} km/s | v2 = {v2/1000:.2f} km/s")</p>
-<h1 id="print-results">Print results</h1>
-<p>for body in results:
-    print(f"{body} - First Cosmic Velocity: {results[body]['v1 (km/s)']:.2f} km/s")
-    print(f"{body} - Second Cosmic Velocity: {results[body]['v2 (km/s)']:.2f} km/s\n")</p>
-<h2 id="sample-output-approximate">Sample Output (Approximate)</h2>
-<p>Body      v1 (km/s)    v2 (km/s)
-Earth     7.91         11.19
-Mars      3.55         5.02
-Jupiter   42.06        59.46</p>
-<ul>
-<li><strong>v₁</strong> = First Cosmic Velocity (orbital speed at surface level)</li>
-<li><strong>v₂</strong> = Second Cosmic Velocity (escape speed from surface)</li>
-</ul>
-<hr/>
-<h2 id="discussion-and-applications">Discussion and Applications</h2>
-<h3 id="real-world-uses">Real-World Uses</h3>
-<ul>
-<li>
-<p><strong>First Cosmic Velocity</strong><br/>
-  Used to place satellites into <strong>Low Earth Orbit (LEO)</strong> and other orbital paths around a planet.</p>
-</li>
-<li>
-<p><strong>Second Cosmic Velocity</strong><br/>
-  Required for <strong>lunar and interplanetary missions</strong>, such as going to Mars, Venus, or outer planets.</p>
-</li>
-<li>
-<p><strong>Third Cosmic Velocity</strong><br/>
-  Needed to <strong>leave the solar system</strong>, used by <strong>Voyager 1 and 2</strong> and other deep-space probes.</p>
-</li>
-</ul>
-<h3 id="engineering-considerations">Engineering Considerations</h3>
-<ul>
-<li>
-<p><strong>Atmospheric Drag</strong><br/>
-  In real-world conditions, launch velocities must account for <strong>air resistance</strong>, which is neglected in idealized models.</p>
-</li>
-<li>
-<p><strong>Planetary Rotation</strong><br/>
-  Launching near the <strong>equator</strong> takes advantage of the planet’s rotational speed to reduce fuel consumption.</p>
-</li>
-<li>
-<p><strong>Gravity Assists</strong><br/>
-<strong>Slingshot maneuvers</strong> around planets are commonly used to achieve higher velocities for <strong>interplanetary or interstellar travel</strong>.</p>
-</li>
-</ul>
-<hr/>
-<h2 id="limitations-and-extensions">Limitations and Extensions</h2>
-<ul>
-<li><strong>Ideal Assumptions</strong><br/>
-  The basic model assumes:</li>
-<li>Vacuum (no atmospheric drag)</li>
-<li>Spherical, uniform mass distributions</li>
-<li>
-<p>Non-rotating bodies</p>
-</li>
-<li>
-<p><strong>Relativistic Effects</strong><br/>
-  Near very <strong>massive bodies</strong> (e.g., black holes), <strong>general relativity</strong> replaces Newtonian gravity.</p>
-</li>
-<li>
-<p><strong>Advanced Propulsion</strong><br/>
-  Reaching the <strong>third cosmic velocity</strong> and beyond requires:</p>
-</li>
-<li><strong>Ion thrusters</strong></li>
-<li><strong>Solar sails</strong></li>
-<li><strong>Nuclear propulsion</strong></li>
-</ul>
-<hr/>
-<h2 id="conclusion">Conclusion</h2>
-<p>Cosmic velocities define the <strong>minimum energy requirements</strong> for various classes of space missions:
-- From launching satellites and exploring planets
-- To escaping Earth’s gravity entirely
-- And ultimately, traveling beyond the solar system</p>
-<p>Understanding these velocities helps engineers and scientists <strong>design feasible missions</strong>, optimize fuel efficiency, and explore the <strong>limits of human space exploration</strong>. Through both <strong>analytical equations</strong> and <strong>numerical simulations</strong>, we gain powerful insights into the physics that govern motion in our universe.</p>
+    v1 = np.sqrt(G * M / r)
+    v2 = np.sqrt(2 * G * M / r)
+    print(f"{body:&lt;10}\t{v1/1000:.2f}\t\t{v2/1000:.2f}")
+Body        v1 (km/s)    v2 (km/s)
+Earth       7.91         11.2
+Mars        3.55         5.03
+Jupiter     42.1         59.5</p>
+<p>Discussion and Applications</p>
+<p>Real-World Uses
+First Cosmic Velocity: Launching satellites into Low Earth Orbit (LEO).
+Second Cosmic Velocity: Missions to the Moon, Mars, and outer planets.
+Third Cosmic Velocity: Required for interstellar probes like Voyager 1 and 2.
+Engineering Considerations
+Real launch speeds are higher due to atmospheric drag and non-vertical paths.
+Planetary rotation assists launch when launched from the equator.
+Missions often use gravity assists for interplanetary or interstellar speeds.
+Limitations and Extensions</p>
+<p>Ideal models ignore air resistance, non-spherical gravity, and planetary rotation.
+Relativistic corrections become important near massive objects or at high speeds.
+Interstellar travel requires propulsion beyond escape velocity (e.g., ion drives, solar sails).
+Conclusion</p>
+<p>Cosmic velocities define the energetic thresholds of space travel. From placing satellites into orbit to launching spacecraft beyond the Solar System, understanding these concepts is essential. Through theoretical analysis and computational simulations, we gain both practical and conceptual insight into the physics of gravitational escape.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
