@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Investigating the Range as a Function of the Angle of Projection - Physics and Mathematics</title>
+<title>Problem 1 - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Investigating the Range as a Function of the Angle of Projection";
+        var mkdocs_page_name = "Problem 1";
         var mkdocs_page_input_path = "1 Physics/1 Mechanics/Problem_1.md";
         var mkdocs_page_url = null;
       </script>
@@ -46,29 +46,37 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal current">1 Mechanics</a>
 <ul class="current">
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Investigating the Range as a Function of the Angle of Projection</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
 <ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="#1-theoretical-foundation">1. Theoretical Foundation</a>
+<li class="toctree-l3"><a class="reference internal" href="#investigating-the-range-as-a-function-of-the-angle-of-projection">Investigating the Range as a Function of the Angle of Projection</a>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#11-deriving-the-equations-of-motion">1.1 Deriving the Equations of Motion</a>
-</li>
-<li class="toctree-l4"><a class="reference internal" href="#12-family-of-solutions">1.2 Family of Solutions</a>
+<li class="toctree-l4"><a class="reference internal" href="#motivation">📌 Motivation</a>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#2-analysis-of-the-range">2. Analysis of the Range</a>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#3-practical-applications-and-limitations">3. Practical Applications and Limitations</a>
+<li class="toctree-l3"><a class="reference internal" href="#1-theoretical-foundation">🧠 1. Theoretical Foundation</a>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#real-world-adjustments">Real-world adjustments:</a>
+<li class="toctree-l4"><a class="reference internal" href="#derivation-of-equations-of-motion">Derivation of Equations of Motion</a>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#extensions">Extensions:</a>
+<li class="toctree-l4"><a class="reference internal" href="#time-of-flight">Time of Flight</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#horizontal-range">Horizontal Range</a>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#4-implementation-python-simulation">4. Implementation: Python Simulation</a>
+<li class="toctree-l3"><a class="reference internal" href="#2-analysis-of-the-range">📊 2. Analysis of the Range</a>
 <ul>
-<li class="toctree-l4"><a class="reference internal" href="#python-code">Python Code</a>
+<li class="toctree-l4"><a class="reference internal" href="#python-simulation">Python Simulation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#observations">📈 Observations:</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#3-practical-applications">🌍 3. Practical Applications</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#4-implementation">💻 4. Implementation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#5-limitations-and-extensions">⚠️ 5. Limitations and Extensions</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#conclusion">📎 Conclusion</a>
 </li>
 </ul>
 </li>
@@ -187,7 +195,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">1 Mechanics</li>
-<li class="breadcrumb-item active">Investigating the Range as a Function of the Angle of Projection</li>
+<li class="breadcrumb-item active">Problem 1</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -195,114 +203,120 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="investigating-the-range-as-a-function-of-the-angle-of-projection">Investigating the Range as a Function of the Angle of Projection</h1>
-<h2 id="1-theoretical-foundation">1. Theoretical Foundation</h2>
-<h3 id="11-deriving-the-equations-of-motion">1.1 Deriving the Equations of Motion</h3>
-<p>Consider a projectile launched from the origin at an initial speed <span class="arithmatex">\( v_0 \)</span> and angle <span class="arithmatex">\( \theta \)</span> above the horizontal. The acceleration due to gravity is <span class="arithmatex">\( g \)</span> downward.</p>
+<p>Problem 1</p>
+<h1 id="mechanics-problem-1">Mechanics – Problem 1</h1>
+<h2 id="investigating-the-range-as-a-function-of-the-angle-of-projection">Investigating the Range as a Function of the Angle of Projection</h2>
+<h3 id="motivation">📌 Motivation</h3>
+<p>Projectile motion, while seemingly simple, offers a rich playground for exploring fundamental principles of physics. The problem is straightforward: analyze how the range of a projectile depends on its angle of projection. Yet, beneath this simplicity lies a complex and versatile framework.</p>
+<p>What makes this topic particularly compelling is the number of free parameters involved in these equations, such as initial velocity, gravitational acceleration, and launch height. These parameters give rise to a diverse set of solutions that can describe a wide array of real-world phenomena, from the arc of a soccer ball to the trajectory of a rocket.</p>
+<hr/>
+<h2 id="1-theoretical-foundation">🧠 1. Theoretical Foundation</h2>
+<h3 id="derivation-of-equations-of-motion">Derivation of Equations of Motion</h3>
+<p>Starting from Newton’s second law:</p>
 <ul>
-<li><strong>Horizontal motion:</strong></li>
+<li>
+<p><strong>Horizontal motion (no acceleration):</strong><br/>
+  [
+  x(t) = v_0 \cos(\theta) t
+  ]</p>
+</li>
+<li>
+<p><strong>Vertical motion (constant downward acceleration):</strong><br/>
+  [
+  y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2
+  ]</p>
+</li>
 </ul>
+<p>Where:
+- <span class="arithmatex">\( v_0 \)</span>: initial velocity<br/>
+- <span class="arithmatex">\( \theta \)</span>: angle of projection<br/>
+- <span class="arithmatex">\( g \)</span>: gravitational acceleration<br/>
+- <span class="arithmatex">\( x(t), y(t) \)</span>: position at time <span class="arithmatex">\( t \)</span></p>
+<h3 id="time-of-flight">Time of Flight</h3>
+<p>The projectile hits the ground when <span class="arithmatex">\( y(t) = 0 \)</span> (assuming launch and landing heights are equal):</p>
 <div class="arithmatex">\[
-x(t) = v_0 \cos\theta \cdot t
+t_{\text{flight}} = \frac{2v_0 \sin(\theta)}{g}
 \]</div>
-<ul>
-<li><strong>Vertical motion:</strong></li>
-</ul>
+<h3 id="horizontal-range">Horizontal Range</h3>
 <div class="arithmatex">\[
-y(t) = v_0 \sin\theta \cdot t - \frac{1}{2} g t^2
+R = v_0 \cos(\theta) \cdot t_{\text{flight}} = \frac{v_0^2 \sin(2\theta)}{g}
 \]</div>
-<p>These come from integrating the acceleration <span class="arithmatex">\( \vec{a} = (0, -g) \)</span> twice, with initial velocity components <span class="arithmatex">\( v_0 \cos\theta \)</span> and <span class="arithmatex">\( v_0 \sin\theta \)</span>.</p>
-<h3 id="12-family-of-solutions">1.2 Family of Solutions</h3>
-<p>The time of flight <span class="arithmatex">\( T \)</span> is found by setting <span class="arithmatex">\( y(T) = 0 \)</span> (returns to launch height):</p>
-<div class="arithmatex">\[
-v_0 \sin\theta \cdot T - \frac{1}{2} g T^2 = 0 \quad \Rightarrow \quad T = \frac{2 v_0 \sin\theta}{g}
-\]</div>
-<p>The horizontal range <span class="arithmatex">\( R \)</span> is:</p>
-<div class="arithmatex">\[
-R = x(T) = v_0 \cos\theta \cdot T = \frac{v_0^2}{g} \sin 2\theta
-\]</div>
-<p>The family of solutions depends on <span class="arithmatex">\( v_0 \)</span>, <span class="arithmatex">\( g \)</span>, and <span class="arithmatex">\( \theta \)</span>. Changing these parameters alters the shape and extent of the projectile’s trajectory.</p>
-<h2 id="2-analysis-of-the-range">2. Analysis of the Range</h2>
-<p>The range <span class="arithmatex">\( R \)</span> is maximal when:</p>
-<div class="arithmatex">\[
-\sin 2\theta = 1 \quad \Rightarrow \quad 2\theta = 90^\circ \quad \Rightarrow \quad \theta = 45^\circ
-\]</div>
-<p><strong>Influence of parameters:</strong></p>
-<ul>
-<li>Increasing <span class="arithmatex">\( v_0 \)</span> increases <span class="arithmatex">\( R \)</span> quadratically.</li>
-<li>Increasing <span class="arithmatex">\( g \)</span> decreases <span class="arithmatex">\( R \)</span> inversely.</li>
-<li>The angle <span class="arithmatex">\( \theta \)</span> controls the shape of the sine function, shifting the range.</li>
-</ul>
-<h2 id="3-practical-applications-and-limitations">3. Practical Applications and Limitations</h2>
-<h3 id="real-world-adjustments">Real-world adjustments:</h3>
-<ul>
-<li>Launch height different from zero modifies the time of flight and range.</li>
-<li>Air resistance reduces range and alters trajectory shape.</li>
-<li>Uneven terrain complicates impact points.</li>
-</ul>
-<h3 id="extensions">Extensions:</h3>
-<ul>
-<li>Include drag force proportional to velocity.</li>
-<li>Model wind as horizontal acceleration.</li>
-<li>Use numerical integration for non-constant acceleration.</li>
-</ul>
-<h2 id="4-implementation-python-simulation">4. Implementation: Python Simulation</h2>
-<h3 id="python-code">Python Code</h3>
-<p>```python
-import numpy as np
-import matplotlib.pyplot as plt</p>
-<h1 id="constants">Constants</h1>
-<p>v0 = 10  # initial velocity in m/s
-g = 9.8  # acceleration due to gravity in m/s^2</p>
-<h1 id="angle-range-from-0-to-90-degrees">Angle range from 0 to 90 degrees</h1>
-<p>angles_deg = np.linspace(0, 90, 1000)
-angles_rad = np.deg2rad(angles_deg)</p>
-<h1 id="range-formula">Range formula</h1>
-<p>range_values = (v0**2 * np.sin(2 * angles_rad)) / g</p>
-<h1 id="plotting">Plotting</h1>
-<p>plt.figure(figsize=(10, 6))
-plt.plot(angles_deg, range_values, label='Range vs Angle', color='teal')
-plt.axvline(45, color='gray', linestyle='--', label='Maximum Range at 45°')</p>
-<p>plt.title('Projectile Range as a Function of Launch Angle')
-plt.xlabel('Launch Angle (degrees)')
-plt.ylabel('Range (meters)')
+<p>Thus, the <strong>range depends on</strong>:
+- <span class="arithmatex">\( v_0^2 \)</span>: quadratic in initial velocity
+- <span class="arithmatex">\( \sin(2\theta) \)</span>: maximized at <span class="arithmatex">\( \theta = 45^\circ \)</span>
+- Inversely proportional to <span class="arithmatex">\( g \)</span></p>
+<hr/>
+<h2 id="2-analysis-of-the-range">📊 2. Analysis of the Range</h2>
+<h3 id="python-simulation">Python Simulation</h3>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+g = 9.81  # m/s^2
+v0 = 20   # m/s
+
+# Angles from 0 to 90 degrees
+angles = np.linspace(0, 90, 500)
+angles_rad = np.radians(angles)
+
+# Range calculation
+R = (v0**2) * np.sin(2 * angles_rad) / g
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.plot(angles, R, label=f'v₀ = {v0} m/s')
+plt.xlabel('Angle of Projection (degrees)')
+plt.ylabel('Range (m)')
+plt.title('Projectile Range vs. Angle of Projection')
 plt.grid(True)
 plt.legend()
-plt.tight_layout()
-plt.show()</p>
-<ol>
-<li>Graph and Interpretation
-Visualization Overview
-The plot generated by the simulation shows how the projectile range varies with respect to the launch angle from 0° to 90°.</li>
-</ol>
-<p>Key observations:</p>
-<p>The range increases as the angle increases from 0° to 45°.</p>
-<p>The maximum range is achieved at 45°.</p>
-<p>Beyond 45°, the range decreases symmetrically, approaching zero at 90°.</p>
-<p>The plot is symmetric around 45°, confirming that:</p>
-<p>Different launch angles can result in the same horizontal distance but with different flight characteristics (trajectory height and flight time).</p>
-<p>Real-World Insight
-Such graphical analysis provides a deeper understanding of projectile motion:</p>
-<p>In sports, optimizing throw or kick angles improves performance.</p>
-<p>In engineering, ideal launch angles reduce energy costs or material usage.</p>
-<p>In aerospace, it helps model ideal launch trajectories (neglecting drag).</p>
-<p>This visualization confirms the theoretical predictions and provides a strong foundation for exploring more complex or real-world scenarios in future sections.</p>
-<ol>
-<li>Limitations and Further Improvements
-Idealized Assumptions
-This model makes several simplifying assumptions:</li>
-</ol>
-<p>No air resistance: In reality, drag significantly affects the range, especially at higher velocities.</p>
-<p>Launch from ground level: The model does not account for launches from elevated platforms or terrains.</p>
-<p>Constant gravity: Gravitational acceleration is treated as constant, though it can vary slightly with altitude or location.</p>
-<p>No wind or atmospheric effects: Wind direction and speed can greatly alter projectile behavior.</p>
-<p>Possible Extensions
-To increase realism, future versions of the model can include:</p>
-<p>Air resistance (quadratic drag or using differential equations),</p>
-<p>Launch from an arbitrary height,</p>
-<p>Custom terrain elevation or slope,</p>
-<p>Variable gravitational environments (e.g., other planets),</p>
-<p>3D projectile motion.</p>
+plt.axvline(45, color='red', linestyle='--', label='Maximum Range at 45°')
+plt.legend()
+plt.show()
+</code></pre>
+<p><img alt="alt text" src="../Figure_1.png"/></p>
+<h3 id="observations">📈 Observations:</h3>
+<ul>
+<li><strong>Maximum range</strong> occurs at <span class="arithmatex">\( \theta = 45^\circ \)</span></li>
+<li><strong>Symmetry</strong>: The range at angle <span class="arithmatex">\( \theta \)</span> is the same as at <span class="arithmatex">\( 90^\circ - \theta \)</span></li>
+<li><strong>Increasing</strong> <span class="arithmatex">\( v_0 \)</span> increases the entire curve <strong>quadratically</strong></li>
+<li><strong>Increasing</strong> <span class="arithmatex">\( g \)</span> (e.g., on different planets) <strong>compresses the range</strong></li>
+</ul>
+<hr/>
+<h3 id="3-practical-applications">🌍 3. Practical Applications</h3>
+<ul>
+<li><strong>Sports</strong>: Optimizing throw angles in javelin, soccer, basketball  </li>
+<li><strong>Engineering</strong>: Launching projectiles in defense or construction  </li>
+<li><strong>Astrophysics</strong>: Trajectories of space probes under planetary gravity  </li>
+<li><strong>Education</strong>: Classic introductory example of 2D motion</li>
+</ul>
+<hr/>
+<h3 id="4-implementation">💻 4. Implementation</h3>
+<p>The included Python script simulates the range as a function of angle and allows for parameter variation:</p>
+<ul>
+<li>Change <code>v0</code> to observe effects of <strong>initial speed</strong></li>
+<li>Modify <code>g</code> to simulate <strong>other planets</strong> (e.g., Moon or Mars)</li>
+<li>Extend to <strong>3D</strong> or add <strong>drag force</strong> for realism</li>
+</ul>
+<hr/>
+<h3 id="5-limitations-and-extensions">⚠️ 5. Limitations and Extensions</h3>
+<h4 id="limitations">Limitations:</h4>
+<ul>
+<li>Neglects <strong>air resistance</strong></li>
+<li>Assumes <strong>level ground</strong></li>
+<li>Assumes <strong>constant gravitational field</strong></li>
+<li>Ignores <strong>spin or shape</strong> of projectile</li>
+</ul>
+<h4 id="possible-extensions">Possible Extensions:</h4>
+<ul>
+<li>Add <strong>quadratic drag</strong>: <span class="arithmatex">\( F_{\text{drag}} \propto v^2 \)</span></li>
+<li>Model <strong>variable terrain</strong>: <span class="arithmatex">\( y(t) \ne 0 \)</span> at impact</li>
+<li>Vary <strong>initial height</strong>: <span class="arithmatex">\( y_0 &gt; 0 \)</span></li>
+</ul>
+<hr/>
+<h3 id="conclusion">📎 Conclusion</h3>
+<p>Projectile motion offers both <strong>analytical beauty</strong> and <strong>practical relevance</strong>.<br/>
+The range as a function of angle exhibits a clear, elegant dependence on <span class="arithmatex">\( \sin(2\theta) \)</span>, and this can be extended in many ways to model <strong>real-world systems</strong> more closely.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
