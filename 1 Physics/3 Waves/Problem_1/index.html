@@ -189,17 +189,17 @@
 <p>Studying these patterns deepens understanding of wave behavior and phase relationships in a simple, intuitive way. This hands-on approach is useful for exploring wave physics and real-world applications such as acoustics, optics, and fluid dynamics.</p>
 <hr/>
 <h2 id="problem-statement">Problem Statement</h2>
-<p>A circular wave on a water surface, emanating from a point source located at <span class="arithmatex">\(\mathbf{r}_i\)</span>
-, can be described by the <strong>Single Disturbance equation</strong>:</p>
+<p>A circular wave on a water surface, emanating from a point source located at <span class="arithmatex">\(\mathbf{r}_i\)</span>,<br/>
+can be described by the <strong>Single Disturbance equation</strong>:</p>
 <div class="arithmatex">\[
 \eta(\mathbf{r}, t) = A \cos(k r - \omega t + \phi)
 \]</div>
-<p>where:
-- <span class="arithmatex">\(\eta(\mathbf{r}, t)\)</span> is the displacement of the water surface at position <span class="arithmatex">\(\mathbf{r}\)</span> and time <span class="arithmatex">\(t\)</span>,
-- <span class="arithmatex">\(A\)</span> is the amplitude of the wave,
-- <span class="arithmatex">\(k = \frac{2\pi}{\lambda}\)</span> is the wave number, with <span class="arithmatex">\(\lambda\)</span> the wavelength,
-- <span class="arithmatex">\(\omega = 2 \pi f\)</span> is the angular frequency, with <span class="arithmatex">\(f\)</span> the frequency,
-- <span class="arithmatex">\(r = |\mathbf{r} - \mathbf{r}_i|\)</span> is the distance from the source at <span class="arithmatex">\(\mathbf{r}_i\)</span> to the point <span class="arithmatex">\(\mathbf{r}\)</span>,
+<p>where:<br/>
+- <span class="arithmatex">\(\eta(\mathbf{r}, t)\)</span> is the displacement of the water surface at position <span class="arithmatex">\(\mathbf{r}\)</span> and time <span class="arithmatex">\(t\)</span>,<br/>
+- <span class="arithmatex">\(A\)</span> is the amplitude of the wave,<br/>
+- <span class="arithmatex">\(k = \frac{2\pi}{\lambda}\)</span> is the wave number, with <span class="arithmatex">\(\lambda\)</span> the wavelength,<br/>
+- <span class="arithmatex">\(\omega = 2 \pi f\)</span> is the angular frequency, with <span class="arithmatex">\(f\)</span> the frequency,<br/>
+- <span class="arithmatex">\(r = |\mathbf{r} - \mathbf{r}_i|\)</span> is the distance from the source at <span class="arithmatex">\(\mathbf{r}_i\)</span> to the point <span class="arithmatex">\(\mathbf{r}\)</span>,<br/>
 - <span class="arithmatex">\(\phi\)</span> is the initial phase.</p>
 <hr/>
 <h2 id="steps-to-follow">Steps to Follow</h2>
@@ -210,31 +210,18 @@
 </li>
 <li>
 <p><strong>Position the Sources</strong><br/>
-   Place point wave sources at the vertices of the selected polygon, each at position $
-\mathbf{r}_i
-$
-.</p>
+   Place point wave sources at the vertices of the selected polygon, each at position <span class="arithmatex">\(\mathbf{r}_i\)</span>.</p>
 </li>
 <li>
 <p><strong>Wave Equations</strong><br/>
    Write the wave equation emitted from each source <span class="arithmatex">\(i\)</span>:</p>
 </li>
 </ol>
-<p>$
+<p>$$
    \eta_i(\mathbf{r}, t) = A \cos(k |\mathbf{r} - \mathbf{r}_i| - \omega t + \phi_i)
-   $</p>
-<p>Assuming all sources have the same amplitude <span class="arithmatex">\(A\)</span>, wavelength $
-\lambda
-$
-frequency
-$
-f
-$
-and phase
-$
-\phi_i = 0
-$
- for coherence.</p>
+   $$</p>
+<p>Assuming all sources have the same amplitude <span class="arithmatex">\(A\)</span>, wavelength <span class="arithmatex">\(\lambda\)</span>, frequency <span class="arithmatex">\(f\)</span>,<br/>
+   and phase <span class="arithmatex">\(\phi_i = 0\)</span> for coherence.</p>
 <ol>
 <li><strong>Superposition of Waves</strong><br/>
    Apply the principle of superposition by summing the displacements from all <span class="arithmatex">\(N\)</span> sources:</li>
@@ -245,8 +232,8 @@ $
 <ol>
 <li>
 <p><strong>Analyze Interference Patterns</strong><br/>
-   Analyze <span class="arithmatex">\(\eta_{\mathrm{total}}(\mathbf{r}, t)\)</span> as a function of position <span class="arithmatex">\(\mathbf{r}\)</span> and time <span class="arithmatex">\(t\)</span>
- to identify regions of:</p>
+   Analyze <span class="arithmatex">\(\eta_{\mathrm{total}}(\mathbf{r}, t)\)</span> as a function of position <span class="arithmatex">\(\mathbf{r}\)</span> and time <span class="arithmatex">\(t\)</span><br/>
+   to identify regions of:</p>
 </li>
 <li>
 <p><strong>Constructive interference:</strong> where waves reinforce (<span class="arithmatex">\(\eta\)</span> maxima),  </p>
