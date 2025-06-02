@@ -10,21 +10,20 @@ Studying these patterns deepens understanding of wave behavior and phase relatio
 
 ## Problem Statement
 
-A circular wave on a water surface, emanating from a point source located at $\mathbf{r}_i$
-, can be described by the **Single Disturbance equation**:
+A circular wave on a water surface, emanating from a point source located at $\mathbf{r}_i$,  
+can be described by the **Single Disturbance equation**:
 
 $$
 \eta(\mathbf{r}, t) = A \cos(k r - \omega t + \phi)
 $$
 
-where:
-- $\eta(\mathbf{r}, t)$ is the displacement of the water surface at position $\mathbf{r}$ and time $t$,
-- $A$ is the amplitude of the wave,
-- $k = \frac{2\pi}{\lambda}$ is the wave number, with $\lambda$ the wavelength,
-- $\omega = 2 \pi f$ is the angular frequency, with $f$ the frequency,
-- $r = |\mathbf{r} - \mathbf{r}_i|$ is the distance from the source at $\mathbf{r}_i$ to the point $\mathbf{r}$,
+where:  
+- $\eta(\mathbf{r}, t)$ is the displacement of the water surface at position $\mathbf{r}$ and time $t$,  
+- $A$ is the amplitude of the wave,  
+- $k = \frac{2\pi}{\lambda}$ is the wave number, with $\lambda$ the wavelength,  
+- $\omega = 2 \pi f$ is the angular frequency, with $f$ the frequency,  
+- $r = |\mathbf{r} - \mathbf{r}_i|$ is the distance from the source at $\mathbf{r}_i$ to the point $\mathbf{r}$,  
 - $\phi$ is the initial phase.
-
 
 ---
 
@@ -34,50 +33,37 @@ where:
    Choose a regular polygon (e.g., equilateral triangle, square, regular pentagon).
 
 2. **Position the Sources**  
-   Place point wave sources at the vertices of the selected polygon, each at position $
-\mathbf{r}_i
-$
-.
+   Place point wave sources at the vertices of the selected polygon, each at position $\mathbf{r}_i$.
 
 3. **Wave Equations**  
-   Write the wave equation emitted from each source \(i\):
+   Write the wave equation emitted from each source $i$:
 
-   $
+   $$
    \eta_i(\mathbf{r}, t) = A \cos(k |\mathbf{r} - \mathbf{r}_i| - \omega t + \phi_i)
-   $
+   $$
 
-   Assuming all sources have the same amplitude \(A\), wavelength $
-\lambda
-$
-frequency
-$
-f
-$
-and phase
-$
-\phi_i = 0
-$
- for coherence.
+   Assuming all sources have the same amplitude $A$, wavelength $\lambda$, frequency $f$,  
+   and phase $\phi_i = 0$ for coherence.
 
 4. **Superposition of Waves**  
-   Apply the principle of superposition by summing the displacements from all \(N\) sources:
+   Apply the principle of superposition by summing the displacements from all $N$ sources:
 
    $$
    \eta_{\mathrm{total}}(\mathbf{r}, t) = \sum_{i=1}^N \eta_i(\mathbf{r}, t) = \sum_{i=1}^N A \cos(k |\mathbf{r} - \mathbf{r}_i| - \omega t)
    $$
 
 5. **Analyze Interference Patterns**  
-   Analyze $\eta_{\mathrm{total}}(\mathbf{r}, t)$ as a function of position $\mathbf{r}$ and time $t$
- to identify regions of:
+   Analyze $\eta_{\mathrm{total}}(\mathbf{r}, t)$ as a function of position $\mathbf{r}$ and time $t$  
+   to identify regions of:
 
    - **Constructive interference:** where waves reinforce ($\eta$ maxima),  
-- **Destructive interference:** where waves cancel out ($\eta$ minima).
-
+   - **Destructive interference:** where waves cancel out ($\eta$ minima).
 
 6. **Visualization**  
    Create graphical representations of the interference patterns on the water surface for the chosen polygon.
 
 ---
+
 
 ## 3. Python Simulation Implementation
 
