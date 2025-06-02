@@ -70,8 +70,9 @@ $
    Analyze $\eta_{\mathrm{total}}(\mathbf{r}, t)$ as a function of position $\mathbf{r}$ and time $t$
  to identify regions of:
 
-   - **Constructive interference:** where waves reinforce (\(\eta\) maxima),
-   - **Destructive interference:** where waves cancel out (\(\eta\) minima).
+   - **Constructive interference:** where waves reinforce ($\eta$ maxima),  
+- **Destructive interference:** where waves cancel out ($\eta$ minima).
+
 
 6. **Visualization**  
    Create graphical representations of the interference patterns on the water surface for the chosen polygon.
