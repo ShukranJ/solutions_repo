@@ -92,6 +92,24 @@
 <ul class="current">
 <li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 1</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#measuring-earths-gravitational-acceleration-with-a-pendulum">Measuring Earth's Gravitational Acceleration with a Pendulum</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#motivation">Motivation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#task">Task</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#procedure">Procedure</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#calculations">Calculations</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#sample-data">Sample Data</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#example-calculations">Example Calculations</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#discussion">Discussion</a>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -172,6 +190,157 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h2 id="measuring-earths-gravitational-acceleration-with-a-pendulum">Measuring Earth's Gravitational Acceleration with a Pendulum</h2>
+<h3 id="motivation">Motivation</h3>
+<p>The acceleration <span class="arithmatex">\(g\)</span> due to gravity is a fundamental constant that influences a wide range of physical phenomena. Measuring <span class="arithmatex">\(g\)</span> accurately is crucial for understanding gravitational interactions, designing structures, and conducting experiments in various fields. One classic method for determining <span class="arithmatex">\(g\)</span> is through the oscillations of a simple pendulum, where the period of oscillation depends on the local gravitational field.</p>
+<hr/>
+<h3 id="task">Task</h3>
+<p>Measure the acceleration <span class="arithmatex">\(g\)</span> due to gravity using a pendulum and analyze in detail the uncertainties in the measurements.</p>
+<p>This exercise emphasizes rigorous measurement practices, uncertainty analysis, and their role in experimental physics.</p>
+<hr/>
+<h3 id="procedure">Procedure</h3>
+<h4 id="1-materials">1. Materials:</h4>
+<ul>
+<li>A string (1 or 1.5 meters long)</li>
+<li>A small weight (e.g., bag of coins, bag of sugar, key chain) mounted on the string</li>
+<li>Stopwatch (or smartphone timer)</li>
+<li>Ruler or measuring tape</li>
+</ul>
+<h4 id="2-setup">2. Setup:</h4>
+<ul>
+<li>Attach the weight to the string and fix the other end to a sturdy support.</li>
+<li>Measure the length of the pendulum, <span class="arithmatex">\(L\)</span>, from the suspension point to the center of the weight using a ruler or measuring tape.  </li>
+<li>Record the resolution of the measuring tool and calculate the uncertainty as half the resolution, <span class="arithmatex">\(u_L = \frac{\text{resolution}}{2}\)</span>.</li>
+</ul>
+<h4 id="3-data-collection">3. Data Collection:</h4>
+<ul>
+<li>Displace the pendulum slightly (&lt;15°) and release it.</li>
+<li>Measure the time for 10 full oscillations (<span class="arithmatex">\(T_{10}\)</span>) and repeat this process 10 times. Record all 10 measurements.</li>
+<li>Calculate the mean time for 10 oscillations (<span class="arithmatex">\(\bar{T}_{10}\)</span>) and the standard deviation (<span class="arithmatex">\(s\)</span>).</li>
+<li>Determine the uncertainty in the mean time as:<br/>
+$$
+u_{\bar{T}_{10}} = \frac{s}{\sqrt{10}}
+$$</li>
+</ul>
+<hr/>
+<h3 id="calculations">Calculations</h3>
+<h4 id="1-calculate-the-period-t">1. Calculate the period <span class="arithmatex">\(T\)</span>:</h4>
+<div class="arithmatex">\[
+T = \frac{\bar{T}_{10}}{10} \quad,\quad u_T = \frac{u_{\bar{T}_{10}}}{10}
+\]</div>
+<h4 id="2-determine-g">2. Determine <span class="arithmatex">\(g\)</span>:</h4>
+<div class="arithmatex">\[
+g = \frac{4\pi^2 L}{T^2}
+\]</div>
+<h4 id="3-propagate-uncertainties">3. Propagate uncertainties:</h4>
+<div class="arithmatex">\[
+u_g = g \sqrt{\left(\frac{u_L}{L}\right)^2 + \left(2 \frac{u_T}{T}\right)^2}
+\]</div>
+<hr/>
+<h3 id="sample-data">Sample Data</h3>
+<table>
+<thead>
+<tr>
+<th>Trial #</th>
+<th><span class="arithmatex">\(T_{10}\)</span> (s)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>20.15</td>
+</tr>
+<tr>
+<td>2</td>
+<td>20.20</td>
+</tr>
+<tr>
+<td>3</td>
+<td>20.10</td>
+</tr>
+<tr>
+<td>4</td>
+<td>20.18</td>
+</tr>
+<tr>
+<td>5</td>
+<td>20.22</td>
+</tr>
+<tr>
+<td>6</td>
+<td>20.25</td>
+</tr>
+<tr>
+<td>7</td>
+<td>20.17</td>
+</tr>
+<tr>
+<td>8</td>
+<td>20.19</td>
+</tr>
+<tr>
+<td>9</td>
+<td>20.13</td>
+</tr>
+<tr>
+<td>10</td>
+<td>20.21</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h3 id="example-calculations">Example Calculations</h3>
+<ul>
+<li>
+<p>Mean time for 10 oscillations:<br/>
+$$
+\bar{T}<em>{10} = \frac{1}{10} \sum</em>{i=1}^{10} T_{10,i} = 20.18 \text{ s}
+$$</p>
+</li>
+<li>
+<p>Standard deviation:<br/>
+$$
+s = \sqrt{\frac{1}{9} \sum_{i=1}^{10} (T_{10,i} - \bar{T}_{10})^2} = 0.05 \text{ s}
+$$</p>
+</li>
+<li>
+<p>Uncertainty in mean time:<br/>
+$$
+u_{\bar{T}_{10}} = \frac{s}{\sqrt{10}} = \frac{0.05}{3.16} \approx 0.016 \text{ s}
+$$</p>
+</li>
+<li>
+<p>Period and uncertainty:<br/>
+<span class="arithmatex">\(T = \frac{\bar{T}_{10}}{10} = 2.018\)</span> s, and<br/>
+<span class="arithmatex">\(u_T = \frac{u_{\bar{T}_{10}}}{10} = 0.0016\)</span> s</p>
+</li>
+<li>
+<p>Pendulum length and uncertainty:<br/>
+<span class="arithmatex">\(L = 1.00\)</span> m,<br/>
+<span class="arithmatex">\(u_L = \frac{0.01}{2} = 0.005\)</span> m</p>
+</li>
+<li>
+<p>Calculate <span class="arithmatex">\(g\)</span>:<br/>
+$$
+g = \frac{4\pi^2 L}{T^2} = \frac{4 \times (3.1416)^2 \times 1.00}{(2.018)^2} \approx 9.70 \, m/s^2
+$$</p>
+</li>
+<li>
+<p>Propagate uncertainty:<br/>
+$$
+u_g = g \sqrt{\left(\frac{u_L}{L}\right)^2 + \left(2 \frac{u_T}{T}\right)^2} = 9.70 \times \sqrt{(0.005)^2 + \left(2 \times \frac{0.0016}{2.018}\right)^2} \approx 0.05 \, m/s^2
+$$</p>
+</li>
+</ul>
+<hr/>
+<h3 id="discussion">Discussion</h3>
+<ul>
+<li>The measured value <span class="arithmatex">\(g = 9.70 \pm 0.05 \, m/s^2\)</span> is close to the standard <span class="arithmatex">\(9.81 \, m/s^2\)</span>, with slight deviations likely due to experimental uncertainties.</li>
+<li>Measurement resolution for length (<span class="arithmatex">\(\pm 0.005\)</span> m) contributes less uncertainty compared to timing.</li>
+<li>Timing variability significantly impacts the uncertainty in <span class="arithmatex">\(g\)</span>, as timing uncertainty enters the formula squared.</li>
+<li>Assumptions include small oscillation angles (&lt;15°) and neglecting air resistance and friction.</li>
+<li>Limitations include manual stopwatch reaction times and difficulty precisely measuring the pendulum length to the center of mass.</li>
+</ul>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
