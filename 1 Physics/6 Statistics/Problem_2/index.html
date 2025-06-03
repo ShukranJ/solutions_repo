@@ -6,13 +6,13 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <link href="../../../img/favicon.ico" rel="shortcut icon"/>
-<title>Problem 2 - Physics and Mathematics</title>
+<title>Problem 2: Estimating π Using Monte Carlo Methods - Physics and Mathematics</title>
 <link href="../../../css/theme.css" rel="stylesheet"/>
 <link href="../../../css/theme_extra.css" rel="stylesheet"/>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" rel="stylesheet"/>
 <script>
         // Current page data
-        var mkdocs_page_name = "Problem 2";
+        var mkdocs_page_name = "Problem 2: Estimating \u03c0 Using Monte Carlo Methods";
         var mkdocs_page_input_path = "1 Physics/6 Statistics/Problem_2.md";
         var mkdocs_page_url = null;
       </script>
@@ -84,8 +84,38 @@
 <ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../Problem_1/">Problem 1: Exploring the Central Limit Theorem through Simulations</a>
 </li>
-<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 2</a>
+<li class="toctree-l2 current"><a class="reference internal current" href="#">Problem 2: Estimating π Using Monte Carlo Methods</a>
 <ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="#motivation">Motivation</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#part-1-estimating-using-a-circle">Part 1: Estimating π Using a Circle</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#1-theoretical-foundation">1. Theoretical Foundation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#2-simulation-code">2. Simulation Code</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#3-visualization">3. Visualization</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#4-analysis">4. Analysis</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#part-2-estimating-using-buffons-needle">Part 2: Estimating π Using Buffon’s Needle</a>
+<ul>
+<li class="toctree-l4"><a class="reference internal" href="#1-theoretical-foundation_1">1. Theoretical Foundation</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#2-simulation-code_1">2. Simulation Code</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#3-visualization_1">3. Visualization</a>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#4-analysis_1">4. Analysis</a>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#final-analysis-and-comparison">Final Analysis and Comparison</a>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -163,7 +193,7 @@
 <li><a aria-label="Docs" class="icon icon-home" href="../../.."></a></li>
 <li class="breadcrumb-item">1 Physics</li>
 <li class="breadcrumb-item">6 Statistics</li>
-<li class="breadcrumb-item active">Problem 2</li>
+<li class="breadcrumb-item active">Problem 2: Estimating π Using Monte Carlo Methods</li>
 <li class="wy-breadcrumbs-aside">
 </li>
 </ul>
@@ -171,7 +201,194 @@
 </div>
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
-<h1 id="problem-2">Problem 2</h1>
+<h1 id="problem-2-estimating-using-monte-carlo-methods">Problem 2: Estimating π Using Monte Carlo Methods</h1>
+<h2 id="motivation">Motivation</h2>
+<p>Monte Carlo simulations use randomness to estimate values and solve complex problems. Estimating π is one of the most intuitive examples, showing how probability, geometry, and computational techniques can come together. We'll explore two methods:</p>
+<ul>
+<li>Estimating π using random points in a square and circle.</li>
+<li>Estimating π using Buffon’s Needle experiment.</li>
+</ul>
+<hr/>
+<h2 id="part-1-estimating-using-a-circle">Part 1: Estimating π Using a Circle</h2>
+<h3 id="1-theoretical-foundation">1. Theoretical Foundation</h3>
+<p>We generate random points in a square bounding a unit circle. The ratio of the number of points that fall inside the circle to the total number of points approximates:</p>
+<div class="arithmatex">\[
+\frac{\text{Points inside circle}}{\text{Total points}} \approx \frac{\pi}{4}
+\]</div>
+<p>Hence,</p>
+<div class="arithmatex">\[
+\pi \approx 4 \times \frac{\text{Points inside circle}}{\text{Total points}}
+\]</div>
+<hr/>
+<h3 id="2-simulation-code">2. Simulation Code</h3>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+def estimate_pi_circle(n_points):
+    x = np.random.uniform(-1, 1, n_points)
+    y = np.random.uniform(-1, 1, n_points)
+
+    inside_circle = x**2 + y**2 &lt;= 1
+    pi_estimate = 4 * np.sum(inside_circle) / n_points
+
+    # Visualization
+    plt.figure(figsize=(6, 6))
+    plt.scatter(x[inside_circle], y[inside_circle], color='blue', s=1, label='Inside Circle')
+    plt.scatter(x[~inside_circle], y[~inside_circle], color='red', s=1, label='Outside Circle')
+    circle = plt.Circle((0, 0), 1, color='black', fill=False)
+    plt.gca().add_artist(circle)
+    plt.title(f"Circle Method: π ≈ {pi_estimate:.5f} (n = {n_points})")
+    plt.axis('equal')
+    plt.legend()
+    plt.show()
+
+    return pi_estimate
+
+# Example usage:
+estimate_pi_circle(10000)
+</code></pre>
+<p><img alt="alt text" src="../Figure_89.png"/></p>
+<h3 id="3-visualization">3. Visualization</h3>
+<ul>
+<li><strong>Blue dots</strong> represent points inside the circle.</li>
+<li><strong>Red dots</strong> are outside the circle.</li>
+<li>As the number of points increases, the estimate converges to <strong>π</strong>.</li>
+</ul>
+<hr/>
+<h3 id="4-analysis">4. Analysis</h3>
+<ul>
+<li><strong>Larger sample sizes</strong> yield more accurate estimates.</li>
+<li><strong>Fast convergence</strong> with increasing number of points.</li>
+<li>Very <strong>intuitive</strong> and <strong>efficient</strong> for parallel computation.</li>
+</ul>
+<hr/>
+<h2 id="part-2-estimating-using-buffons-needle">Part 2: Estimating π Using Buffon’s Needle</h2>
+<h3 id="1-theoretical-foundation_1">1. Theoretical Foundation</h3>
+<p>Buffon’s Needle experiment drops a needle on a surface with equally spaced parallel lines. The probability <span class="arithmatex">\( P \)</span> that a needle crosses a line is given by:</p>
+<div class="arithmatex">\[
+P = \frac{2l}{\pi d}
+\]</div>
+<p>Rearranging the formula to solve for π:</p>
+<div class="arithmatex">\[
+\pi \approx \frac{2l \cdot N}{d \cdot H}
+\]</div>
+<p>Where:</p>
+<ul>
+<li><span class="arithmatex">\( l \)</span> = length of the needle  </li>
+<li><span class="arithmatex">\( d \)</span> = distance between the lines  </li>
+<li><span class="arithmatex">\( N \)</span> = total number of needle drops  </li>
+<li><span class="arithmatex">\( H \)</span> = number of times the needle crosses a line  </li>
+</ul>
+<h3 id="2-simulation-code_1">2. Simulation Code</h3>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+def estimate_pi_buffon(n_drops, needle_length=1.0, line_spacing=1.5):
+    hits = 0
+    x_centers = []
+    angles = []
+    crosses = []
+
+    for _ in range(n_drops):
+        x_center = np.random.uniform(0, line_spacing / 2)
+        theta = np.random.uniform(0, np.pi / 2)
+
+        if (needle_length / 2) * np.sin(theta) &gt;= x_center:
+            hits += 1
+            crosses.append(True)
+        else:
+            crosses.append(False)
+
+        x_centers.append(x_center)
+        angles.append(theta)
+
+    if hits == 0:
+        return None  # Avoid division by zero
+
+    pi_estimate = (2 * needle_length * n_drops) / (hits * line_spacing)
+
+    # Visualization
+    plt.figure(figsize=(8, 6))
+    for i in range(n_drops):
+        x = np.random.uniform(0, 10)
+        y = np.random.uniform(0, 10)
+        angle = angles[i]
+        dx = (needle_length / 2) * np.cos(angle)
+        dy = (needle_length / 2) * np.sin(angle)
+        x1, x2 = x - dx, x + dx
+        y1, y2 = y - dy, y + dy
+        color = 'green' if crosses[i] else 'gray'
+        plt.plot([x1, x2], [y1, y2], color=color, alpha=0.6)
+
+    for i in range(11):
+        plt.axhline(i * line_spacing, color='black', linewidth=0.5)
+
+    plt.title(f"Buffon’s Needle: π ≈ {pi_estimate:.5f} (n = {n_drops})")
+    plt.xlim(0, 10)
+    plt.ylim(0, 10)
+    plt.gca().set_aspect('equal')
+    plt.show()
+
+    return pi_estimate
+
+# Example usage:
+estimate_pi_buffon(1000)
+</code></pre>
+<p><img alt="alt text" src="../Figure_1w-1.png"/></p>
+<h3 id="3-visualization_1">3. Visualization</h3>
+<ul>
+<li>Each needle is drawn over horizontal lines.</li>
+<li><strong>Green:</strong> crosses a line</li>
+<li><strong>Gray:</strong> does not cross</li>
+<li>More drops lead to better approximation.</li>
+</ul>
+<hr/>
+<h3 id="4-analysis_1">4. Analysis</h3>
+<ul>
+<li>Estimates π probabilistically using trigonometry.</li>
+<li>Convergence is slower than the circle method.</li>
+<li>More complex logic and geometry, but historically significant.</li>
+</ul>
+<hr/>
+<h2 id="final-analysis-and-comparison">Final Analysis and Comparison</h2>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Code Complexity</th>
+<th>Convergence Speed</th>
+<th>Accuracy</th>
+<th>Visual Appeal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Circle Method</td>
+<td>Simple</td>
+<td>Fast</td>
+<td>High</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Buffon’s Needle</td>
+<td>Medium</td>
+<td>Slower</td>
+<td>Medium</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The circle method is recommended for fast, accurate results.</li>
+<li>Buffon’s needle is a beautiful illustration of how geometry and probability can reveal deep mathematical truths.</li>
+</ul>
+<hr/>
+<h2 id="summary">Summary</h2>
+<ul>
+<li>Both methods estimate π using randomness.</li>
+<li>The circle-based method is more efficient and easier to implement.</li>
+<li>Buffon’s needle connects to classical probability and is valuable for educational purposes.</li>
+</ul>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
