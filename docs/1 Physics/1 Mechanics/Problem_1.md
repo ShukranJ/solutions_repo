@@ -113,26 +113,26 @@ The included Python script simulates the range as a function of angle and allows
 - Extend to **3D** or add **drag force** for realism
 
 ---
+⚠️ **5. Limitations and Extensions**
 
-### ⚠️ 5. Limitations and Extensions
+**Limitations:**  
+- Neglects air resistance  
+- Assumes level ground  
+- Assumes constant gravitational field  
+- Ignores spin or shape of projectile  
 
-#### Limitations:
-- Neglects **air resistance**
-- Assumes **level ground**
-- Assumes **constant gravitational field**
-- Ignores **spin or shape** of projectile
-
-#### Possible Extensions:
-- Add **quadratic drag**: \( F_{\text{drag}} \propto v^2 \)
-- Model **variable terrain**: \( y(t) \ne 0 \) at impact
-- Vary **initial height**: \( y_0 > 0 \)
+**Possible Extensions:**  
+- Add quadratic drag: ($F_{\text{drag}} \propto v^2$)  
+- Model variable terrain: ($y(t) \ne 0$ at impact)  
+- Vary initial height: ($y_0 > 0$)  
 
 ---
 
-### 📎 Conclusion
+📎 **Conclusion**
 
-Projectile motion offers both **analytical beauty** and **practical relevance**.  
-The range as a function of angle exhibits a clear, elegant dependence on \( \sin(2\theta) \), and this can be extended in many ways to model **real-world systems** more closely.
+Projectile motion offers both analytical beauty and practical relevance.  
+The range as a function of angle exhibits a clear, elegant dependence on ($\sin(2\theta)$), and this can be extended in many ways to model real-world systems more closely.
+
 
 
 
