@@ -16,14 +16,14 @@ What makes this topic particularly compelling is the number of free parameters i
 Starting from Newton’s second law:
 
 - **Horizontal motion (no acceleration):**  
-  \[
+  $$
   x(t) = v_0 \cos(\theta) t
-  \]
+  $$
 
 - **Vertical motion (constant downward acceleration):**  
-  \[
+  $$
   y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2
-  \]
+  $$
 
 Where:
 - \( v_0 \): initial velocity  
