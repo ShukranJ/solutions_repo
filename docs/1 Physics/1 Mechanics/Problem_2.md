@@ -115,8 +115,9 @@ plt.show()
 ```
 ![alt text](Figure_2-1.png)
 ![alt text](Figure_3.png)
+---
 
-6. Extensions and Further Analysis
+## 6. Extensions and Further Analysis
 
 - **Poincaré Sections:** Sampling the system state at intervals equal to the driving period reveals discrete points that can classify motion types.
 
@@ -128,7 +129,7 @@ plt.show()
 
 ---
 
-7. Limitations
+## 7. Limitations
 
 - The small-angle approximation is insufficient for large oscillations.
 
@@ -143,3 +144,4 @@ plt.show()
 **Conclusion**
 
 The forced damped pendulum offers profound insights into nonlinear dynamics, illustrating how simple systems can exhibit complex and unpredictable behavior. Numerical simulations combined with phase space analysis enable exploration beyond analytic solutions, providing a window into resonance, chaos, and real-world oscillatory phenomena.
+
